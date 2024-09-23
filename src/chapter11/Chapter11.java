@@ -46,8 +46,62 @@ public class Chapter11 {
      *                      AbstractList         List
      *                        ↑
      *                      Vector ↗
-     *  Collection인터페이스                    
+     *  Collection인터페이스
+     *  Collection인터페이스는 컬렉션 클래스에 저장된 데이터를 일고, 추가하고 삭제하는 등
+     *  컬렉션을 다루는데 가장 기본적인 메서드들을 정의하고 있다.
      */
+
+    /**
+     * List인터페이스
+     * List인터페이스는 중복을 허용하면서 저장순서가 유지되는 컬렉션을 구현하는데 사용된다.
+     *                  List
+     *       ↗          ↑             ↖
+     * Vector           ArrayList     LinkedList
+     * ↑
+     * Stack
+     */
+
+    /**
+     * Set인터페이스
+     * Set인터페이스는 중복을 허용하지 않고 저장순서가 유지되지 않는 컬렉션 클래스를 구현
+     * 하는데 사용된다. Set인터페이스를 구현한 클래스로는 HastSet, TreeSet 등이 있다.
+     *          Set
+     * ↗        ↑
+     * HastSet  SortedSet
+     *          ↑
+     *          TreeSet
+     */
+
+    /**
+     * Map인터페이스
+     * Map인터페이스는 키(key)와 값(value)을 하나의 쌍으로 묶어서 저장하는 컬렉션 클래스
+     * 를 구현하는 데 사용된다. 키는 중복될 수 없지만 값은 중복을 허용한다. 기존에 저장된
+     * 데이터와 중복된 키와 값을 저장하면 기존의 값은 없어지고 마지막에 저장된 값이 남게
+     * 된다.
+     * ※ Map이란 갠며은 어떤 두 값을 연결한다는 의미에서 붙여진 이름이다.
+     *                  Map
+     *    ↗              ↑          ↖
+     * Hashtable        HashMap     SortedMap
+     *                  ↑               ↑
+     *                  LinkedHashMap  TreeMap
+     * Set keySet() - Map에 저장된 모든 key객체를 반환한다.
+     * Collection values() - Map에 저장된 모든 value객체를 반환한다.
+     * values()에서는 반환타입이 Collection이고, keySet()에서는 반환타입이 Set인 것에 주
+     * 목하자, Map인터페이스에서 값(value)은 중복을 허용하기 때문에 Collection타입으로 반
+     * 환하고, 키(key)는 중복을 허용하지 않기 때문에 Set타입으로 반환한다.
+     */
+
+    /**
+     * Map.Entry인터페이스
+     * Map.Entry인터페이스는 Map인터페이스의 내부 인터페이스이다. 내부 클래스와 같이 인
+     * 터페이스도 인터페이스 안에 인터페이스를 정의하는 내부 인터페이스(inner interface)를
+     * 정의하는 것이 가능하다.
+     * Map에 저장되는 key-value쌍을 다루기 위해 내부적으로 Entry인터페이스를 정의해
+     * 놓았다.
+     */
+
+
+
 
 }
 
