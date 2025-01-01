@@ -28,7 +28,7 @@
     - [x] 1.10 HashMap과 Hashtable
     - [x] 1.11 TreeMap
     - [x] 1.12 Properties
-    - [x] 1.13 Coolections
+    - [x] 1.13 Collections
     - [x] 1.14 컬렉션 클래스 정리 & 요약
 - [ ] Chapter12. 지네릭스, 열거형, 애너테이션
     - [x] 1.1 지네릭스란?
