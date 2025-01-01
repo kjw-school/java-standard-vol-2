@@ -12,10 +12,6 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### 구성
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=kjw1995)](https://github.com/anuraghazra/github-readme-stats)
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## 로드맵
 
 - [x] Chapter11. 컬렉션 프레임웍(Collections Framework)
