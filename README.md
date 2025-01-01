@@ -13,7 +13,7 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### 구성
-[![Java][Java]][Java-url]
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=kjw1995)](https://github.com/anuraghazra/github-readme-stats)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 로드맵
@@ -50,15 +50,12 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 연락처
-Java-standard-vol-1: (https://github.com/kjw-school/java-standard-vol-1)
-
-email: rohawell@daum.net, wjddn312@gmail.com
-
-blog: https://velog.io/@kjw1995/posts
-
-notion: https://www.notion.so/Introduce-16d84523c0398055805fcd4d4d5aecb5
-
+## Contact
+<a href="https://github.com/kjw-school/java-standard-vol-1"><img src="https://img.shields.io/badge/Vol.1-FFFFFF?style=flat-square&logo=GitHub&logoColor=181717"/></a>
+<a href="rohawell@daum.net"><img src="https://img.shields.io/badge/Email-FFFFFF?style=flat-square&logo=Mail.Ru&logoColor=20C997"/></a>
+<a href="wjddn312@gmail.com"><img src="https://img.shields.io/badge/Gmail-FFFFFF?style=flat-square&logo=Gmail&logoColor=E60012"/></a>
+<a href="https://velog.io/@kjw1995/posts"><img src="https://img.shields.io/badge/Velog-FFFFFF?style=flat-square&logo=Velog&logoColor=20C997"/></a>
+<a href="https://www.notion.so/Introduce-16d84523c0398055805fcd4d4d5aecb5"><img src="https://img.shields.io/badge/Notion-FFFFFF?style=flat-square&logo=Notion&logoColor=000000"/></a>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 [Java]: https://img.shields.io/badge/java-000000?style=for-the-badge&logo=java&logoColor=white
