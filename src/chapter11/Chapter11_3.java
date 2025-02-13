@@ -107,17 +107,48 @@ public class Chapter11_3 {
     }
 
     /**
-     * 결론1. 순차적으로 추가/삭제하는 경우에는 ArrayList가 LinkedList보다 빠르다.
-     * 만일 ArrayList의 크기가 충분하지 않으면, 새로운 크기의 ArrayList를 생성하고 데이터를 복사하는 일이 발생하게 되므로 순차적으로 데이
-     * 터를 추가해도 ArrayList보다 LinkedList가 더 빠를 수 있다.
-     * 순차적으로 삭제한다는 것은 마지막 데이터로부터 역순으로 삭제해나간다는 것을 의미하며, ArrayList는 마지막 데이터부터 삭제할 경우 각
-     * 요소들의 재배치가 필요허지 않기 때문에 상당히 빠르다. 단지 마지막 요소의 값을 null로만 바꾸면 되니까.
+     * 결론1. <b>순차적으로 추가/삭제하는 경우에는 ArrayList가 LinkedList보다 빠르다.</b><br>
+     * 만일 ArrayList의 크기가 충분하지 않으면, 새로운 크기의 ArrayList를 생성하고 데이터를 복사하는 일이 발생하게 되므로 순차적으로 데이터를 추가해도 ArrayList보다 LinkedList가 더 빠를 수 있다.<br>
+     * 순차적으로 삭제한다는 것은 마지막 데이터로부터 역순으로 삭제해나간다는 것을 의미하며, ArrayList는 마지막 데이터부터 삭제할 경우 각요소들의 재배치가 필요허지 않기 때문에 상당히 빠르다. 단지 마지막 요소의 값을 null로만 바꾸면 되니까.<br>
+     * 결론2. <b>중간 데이터를 추가/삭제하는 경우에는 LinkedList가 ArrayList보다 빠르다.</b><br>
+     * 중간 요소를 추가 또는 삭제하는 경우, LinkedList는 각 요소간의 연결만 변경해주면 되기 때문에 처리속도가 상당히 빠르다. 반면에 ArrayList는 각 요소들을 재배치하여 추가할 공간을 확보하거나 빈 공간을 채워야하기 때문에 처리속도가 늦다.
+     * <br>
+     * 배열의 경우 만일 인덱스가 n인 요소의 값을 얻어 오고자 한다면 단순히 아래와 같은 수식을 계산함으로써 해결된다.<br>
+     * <b>인덱스가 n인 데이터의 주소 = 배열의 주소 + n * 데이터 타입의 크기</b>
      */
+    class Memo01{}
 
     /**
-     * 결론2. 중간 데이터를 추가/삭제하는 경우에는 LinkedList가 ArrayList보다 빠르다.
-     * 중간 요소를 추가 또는 삭제하는 경우, LinkedList는 각 요소간의 연결만 변경해주면 되기 때문에 처리속도가 상당히 빠르다. 반면에 Array
-     * List는 각 요소들을 재배치하여 추가할 공간을 확보하거나 빈 공간을 채워야하기 때문에 처리속도가 늦다.
+     * 컬렉션 | 읽기(접근시간) | 추가 / 삭제 | 비고<br>
+     * ArrayList | 빠르다 | 느리다 | 순차적인 추가삭제는 더 빠름. 비효율적인 메모리 사용<br>
+     * LinkedList | 느리다 | 빠르다 | 데이터가 많은수록 접근성이 떨어짐
      */
+    static class ArrayListLinkedListTest2 {
+
+        public static void main(String[] args) {
+            ArrayList a1 = new ArrayList(1000000);
+            LinkedList l1 = new LinkedList();
+            add(a1);
+            add(l1);
+
+            System.out.println("= 접근시간 테스트 =");
+            System.out.println("ArrayList : " + access(a1));
+            System.out.println("LinkedList : " + access(l1));
+
+        }
+
+        public static void add(List list) {
+            for(int i = 0; i < 100000; i++) list.add(i+"");
+        }
+
+        public static long access(List list) {
+            long start = System.currentTimeMillis();
+            for(int i = 0; i < 1000; i++) list.get(i);
+            long end = System.currentTimeMillis();
+            return end - start;
+        }
+
+    }
+
 
 }
