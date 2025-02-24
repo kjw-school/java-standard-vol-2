@@ -129,19 +129,20 @@ public class Chapter11_2 {
             System.out.println("capacity :" + v.capacity());
         }
 
-        /**
-         * v.trimToSize()를 호출하면 v의 빈 공간을 없애서 size와 capacitry를 같게 한다. 배열은 크기를 변경할 수 없기 때문에 새로운
-         * 배열을 생성해서 그 주소값을 변수 v에 할당한다. 기존의 Vector인스턴스는 더 이상 사용할 수 없으면, 후에 가비지 컬렉터(garbage
-         * collector)에 의해서 메모리에서 제거된다.
-         * v.ensureCapacity(6)는 v의 capacity가 최소한 6이 되도록 한다. 만일 v의 capacity가 6이상 이라면 아무 일도 일어나지 않는다.
-         * 현재는 v의 capacity가 3이므로 크기가 6인 배열을 생성해서 v의 내용을 복사했다. 기존의 인스턴스를 다시 사용하는 것이 아니라 새로
-         * 운 인스턴스를 생성하였음에 주의하자.
-         * v.setSize(7)는 v의 size가 7이 되도록 한다. 만일 v의 capacity가 충분하면 새로 인스턴스를 생성하지 않아도 되지만 지금은 capa
-         * city가 6이므로 새로운 인스턴스를 생성해야한다. Vector는 capacity가 부족할 경우 자동적으로 기존의 크기보다 2배의 크기로 증가된
-         * 다. 그래서 v의 capacity는 12가 된다.
-         */
-
     }
+
+    /**
+     * v.trimToSize()를 호출하면 v의 빈 공간을 없애서 size와 capacitry를 같게 한다. 배열은 크기를 변경할 수 없기 때문에 새로운
+     * 배열을 생성해서 그 주소값을 변수 v에 할당한다. 기존의 Vector인스턴스는 더 이상 사용할 수 없으면, 후에 가비지 컬렉터(garbage
+     * collector)에 의해서 메모리에서 제거된다.
+     * v.ensureCapacity(6)는 v의 capacity가 최소한 6이 되도록 한다. 만일 v의 capacity가 6이상 이라면 아무 일도 일어나지 않는다.
+     * 현재는 v의 capacity가 3이므로 크기가 6인 배열을 생성해서 v의 내용을 복사했다. 기존의 인스턴스를 다시 사용하는 것이 아니라 새로
+     * 운 인스턴스를 생성하였음에 주의하자.
+     * v.setSize(7)는 v의 size가 7이 되도록 한다. 만일 v의 capacity가 충분하면 새로 인스턴스를 생성하지 않아도 되지만 지금은 capa
+     * city가 6이므로 새로운 인스턴스를 생성해야한다. Vector는 capacity가 부족할 경우 자동적으로 기존의 크기보다 2배의 크기로 증가된
+     * 다. 그래서 v의 capacity는 12가 된다.
+     */
+    class Memo01{}
 
     /**
      * ArrayList나 Vector 같이 배열을 이용한 자료구조는 데이터를 읽어오고 저장하는 데는 효율이 좋지만, 용량을 변경해야할 때는 새로운 배열
@@ -153,5 +154,6 @@ public class Chapter11_2 {
      * 짧지만, 배열의 중간에 위치한 객체를 추가하거나 삭제하는 경우 System.arraycopy()를 호출해서 다른 데이터의 위치를 이동시켜 줘야 하기
      * 때문에 다루는 데이터의 개수가 많을수록 작업시간이 오래 걸린다는 것이다.
      */
+    class Memo02{}
 
 }
