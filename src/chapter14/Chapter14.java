@@ -12,7 +12,8 @@ public class Chapter14 {
 	 *     특히 람다식의 도입으로 인해, 이제 자바는 객체지향언어인 동시에 함수형 언어가 되었다.
 	 * </p>
 	 */
-	class Memo01{}
+	class Memo01 {
+	}
 
 	/**
 	 * <p>
@@ -32,7 +33,8 @@ public class Chapter14 {
 	 *       그러나 이제 다시 람다식을 통해 메서드가 하나의 독립적인 기능을 하기 때문에 함수라는 용어를 사용하게 되었다.<br>
 	 * </p>
 	 */
-	class Memo02{}
+	class Memo02 {
+	}
 
 	/**
 	 * <p>
@@ -64,7 +66,8 @@ public class Chapter14 {
 	 *		그러나 괄호{}안의 문장이 return문일 경우 괄호{}를 생략할 수 없다.
 	 * </p>
 	 */
-	class Memo03{}
+	class Memo03 {
+	}
 
 	/**
 	 * <h5>1.3 함수형 인터페이스(Functional Interface)</h5><br>
@@ -90,7 +93,8 @@ public class Chapter14 {
 	 * 람다식을 참조변수로 다룰 수 있다는 것은 메서드를 통해 람다식을 주고받을 수 있다는 것을 의미한다. 즉, 변수처럼 메서드를 주고받는 것이 가능해진 것이다.<br>
 	 * 사실상 메서드가 아니라 객체를 주고받는 것이라 근본적으로 달라진 것은 아무것도 없다.
 	 */
-	class Memo04{}
+	class Memo04 {
+	}
 
 	@FunctionalInterface
 	interface MyFunction {
@@ -99,6 +103,91 @@ public class Chapter14 {
 
 	static class LambdaEx1 {
 
+		static void execute(MyFunction f) { // 매개변수의 타입이 MyFunction인 메서드
+			f.run();
+		}
+
+		static MyFunction getMyFunction() {  // 반환타입이 MyFunction인 메서드
+			MyFunction f = () -> System.out.println("f3.run()");
+			return f;
+		}
+
+		public static void main(String[] args) {
+			// 람다식으로 MyFunction의 run()을 구현
+			MyFunction f1 = () -> System.out.println("f1.run()");
+
+			MyFunction f2 = new MyFunction() { // 익명클래스로 run()을 구현
+				public void run() {
+					System.out.println("f2.run()");
+				}
+			};
+
+			MyFunction f3 = getMyFunction();
+
+			f1.run();
+			f2.run();
+			f3.run();
+
+			execute(f1);
+			execute(() -> System.out.println("run()"));
+
+		}
+
+	}
+
+	/**
+	 * <h5>람다식의 타입과 형변환</h5><br>
+	 * 함수형 인터페이스로 람다식을 참조할 수 있는 것일 뿐, 람다식의 타입이 함수형 인터페이스의 타입과 일치하는 것은 아니다.<br>
+	 * 람다식은 익명 객체이고 익명 객체는 타입이 없다. 정확히는 타입은 있지만 컴파일러가 임의로 이름을 정하기 때문에 알 수 없는 것이다.<br>
+	 * 그래서 대입 연산자의 양변의 타입을 일치시키기 위해 아래와 같이 형변환이 필요하다.<br>
+	 * MyFunction f = (MyFunction)( () -> {} ); // 양변의 타입이 다르므로 형변환이 필요<br>
+	 * 람다식은 MyFunction인터페이스를 직접 구현하지 않았지만, 이 인터페이스를 구현한 클래스의 객체와 완전히 동일하기 때문에 위와 같은 형변환을 허용한다.<br>
+	 * 그리고 이 형변환은 생략가능하다.<br>
+	 * 람다식은 이름이 없을 뿐 분명히 객체인데도, 아래와 같이 Object타입으로 형변환 할 수 없다. 람다식은 오직 함수형 인터페이스로만 형변환이 가능하다.<br>
+	 * Object obj = (Object)( () -> {} ) // 에러. 함수형 인터페이스로만 형변환 가능
+	 */
+	class Memo05 {
+	}
+
+	/**
+	 * 실행 결과를 보면, 컴파일러가 람다식의 타입을 어떤 형식으로 만들어내는지 알 수 있다.<br>
+	 * 일반적인 익명 객체라면, 객체의 타입이 '외부클래스이름$번호'와 같은 형식으로 타입이 결정되었을 텐데, 람다식의 타입은 '외부클래스이름$$Lambda$번호'와 같은 형식으로 되어 있는 것을 확인할 수 있다.
+	 */
+	static class LambdaEx02 {
+
+		@FunctionalInterface
+		interface MyFunction {
+			void myMethod(); // public abstract void myMethod();
+		}
+
+		public static void main(String[] args) {
+			MyFunction f = () -> { // MyFunction f = (MyFunction)( () -> {} );
+			};
+			Object obj = (MyFunction)(() -> { // Object타입으로 형변환이 생략됨
+			});
+			String str = ((Object)(MyFunction)(() -> {
+			})).toString();
+
+			System.out.println(f);
+			System.out.println(obj);
+			System.out.println(str);
+
+			// System.out.println(() -> ()); 에러. 람다식은 Object타입으로 형변환이 안됨
+			System.out.println((MyFunction)(() -> {
+			}));
+
+			// System.out.println(() -> {}).toString(); 에러
+			System.out.println(((Object)(MyFunction)(() -> {
+			})).toString());
+
+		}
+
+	}
+
+	/**
+	 * <h5>외부 변수를 참조하는 람다식</h5>
+	 */
+	class Memo06 {
 	}
 
 }
