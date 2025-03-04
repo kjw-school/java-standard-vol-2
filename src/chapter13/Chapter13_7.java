@@ -1,5 +1,10 @@
 package chapter13;
 
+import static java.lang.Thread.*;
+
+import java.util.Iterator;
+import java.util.Map;
+
 /**
  * <h1>7. 데몬 쓰레드(daemon thread)</h1>
  */
@@ -29,7 +34,7 @@ public class Chapter13_7 {
 
 			for (int i = 1; i <= 10; i++) {
 				try {
-					Thread.sleep(1000);
+					sleep(1000);
 				} catch (InterruptedException e) {
 
 				}
@@ -47,7 +52,7 @@ public class Chapter13_7 {
 		public void run() {
 			while (true) {
 				try {
-					Thread.sleep(3 * 1000); // 3초마다
+					sleep(3 * 1000); // 3초마다
 				} catch (InterruptedException e) {
 				}
 
@@ -60,6 +65,72 @@ public class Chapter13_7 {
 
 		public void autoSave() {
 			System.out.println("작업파일이 자동저장되었습니다.");
+		}
+
+	}
+
+	/**
+	 * getAllStackTraces()를 이용하면 실행 중 또는 대기상태, 즉 작업이 완료되지 않은 모든 쓰레드의 호출스택을 출력할 수 있다.<br>
+	 * 결과를 보면 getAllStackTraces()가 호출되었을 때, 새로 생성한 Thread1, Thread2를 포함해서 모두 6개의 쓰레드가 실행 중 또는 대기상태에 있다는 것을 알 수 있다.<br>
+	 * 프로그램을 실행하면, JVM은 가비지컬렉션, 이벤트처리, 그래픽처리와 같이 프로그램이 실행되는 데 필요한 보조작업을 수행하는 데몬 쓰레드들을 자동적으로 생성해서 실행시킨다.<br>
+	 * 그리고 이 들은 'system쓰레드 그룹' 또는 'main쓰레드 그룹'에 속한다.<br>
+	 * <small>※GUI는 Graphic User Interface의 약자로 Java에서는 AWT나 Swing을 이용해서 GUI를 가진 프로그램을 작성할 수 있다. JavaFx라는 보다 발전된 GUI기술도 있다.</small>
+	 */
+	static class ThreadEx02 {
+
+		public static void main(String[] args) {
+
+			ThreadEx02_1 t1 = new ThreadEx02_1("Thread1");
+			ThreadEx02_2 t2 = new ThreadEx02_2("Thread2");
+			t1.start();
+			t2.start();
+
+		}
+
+	}
+
+	static class ThreadEx02_1 extends Thread {
+
+		ThreadEx02_1(String name) {
+			super(name);
+		}
+
+		public void run() {
+			try {
+				sleep(5 * 1000); // 5초 동안 기다린다.
+			} catch (InterruptedException e) {
+			}
+		}
+
+	}
+
+	static class ThreadEx02_2 extends Thread {
+
+		ThreadEx02_2(String name) {
+			super(name);
+		}
+
+		public void run() {
+			Map map = getAllStackTraces();
+			Iterator it = map.keySet().iterator();
+
+			int x = 0;
+			while (it.hasNext()) {
+				Object obj = it.next();
+				Thread t = (Thread)obj;
+				StackTraceElement[] ste = (StackTraceElement[])(map.get(obj));
+
+				System.out.println(
+					"[" + ++x + "] name : " + t.getName() + ", group : " + t.getThreadGroup().getName() + ", daemon : "
+						+ t.isDaemon());
+
+				for (int i = 0; i < ste.length; i++) {
+					System.out.println(ste[i]);
+				}
+
+				System.out.println();
+
+			}
 		}
 
 	}
