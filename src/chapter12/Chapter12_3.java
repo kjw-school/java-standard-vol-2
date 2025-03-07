@@ -1,9 +1,9 @@
 package chapter12;
 
 /**
- * <h1>애너테이션(annotation)</h1>
+ * <h1>3. 애너테이션(annotation)</h1>
  */
-public class Chapter12_03 {
+public class Chapter12_3 {
 
 	/**
 	 * <p>
