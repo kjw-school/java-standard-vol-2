@@ -1,5 +1,7 @@
 package chapter13;
 
+import javax.swing.*;
+
 /**
  * <h1>8. 쓰레드의 실행제어</h1>
  */
@@ -49,8 +51,166 @@ public class Chapter13_8 {
 	class Memo02 {
 	}
 
+	/**
+	 * th1이 2초 동안 작업을 멈추고 일시정지 상태에 있도록 하였으니까 쓰레드 th1이 가장 늦게 종료되어야 하는데 결과에서는 제일 먼저 종료되었다.<br>
+	 * 그 이유는 sleep()이 항상 현재 실행 중인 쓰레드에 대해 작동하기 때문에 'th1.sleep(2000)'과 같이 호출하였어도 실제로 영향을 받는 것은 main메서드를 실행하는 main쓰레드이다.
+	 */
 	static class ThreadEx01 {
-		
+		public static void main(String[] args) {
+			ThreadEx01_1 th1 = new ThreadEx01_1();
+			ThreadEx01_2 th2 = new ThreadEx01_2();
+			th1.start();
+			th2.start();
+
+			try {
+				th1.sleep(2000);
+			} catch (InterruptedException e) {
+			}
+
+			System.out.println("<<main 종료>>");
+		} // main
+	}
+
+	static class ThreadEx01_1 extends Thread {
+		@Override
+		public void run() {
+			for (int i = 0; i < 300; i++)
+				System.out.print("-");
+			System.out.print("<<th1 종료>>");
+		} // run()
+	}
+
+	static class ThreadEx01_2 extends Thread {
+		@Override
+		public void run() {
+			for (int i = 0; i < 300; i++)
+				System.out.print("|");
+			System.out.println("<<th2 종료>>");
+		} // run()
+	}
+
+	/**
+	 * <h5>interrupt()와 interrupted() - 쓰레드의 작업을 취소한다.</h5><br>
+	 * 진행 중인 쓰레드의 작업이 끝나기 전에 취소시켜야할 때가 있다. 예를 들어 큰 파일을 다운로드 받을 때 시간이 너무 오래 걸리면 중간에 다운로드를 포기하고 취소할 수 있어야 한다.<br>
+	 * interrupt()는 쓰레드에게 작업을 멈추라고 요청한다. 단지 멈추라고 요청만 하는 것일 뿐 쓰레드를 강제로 종료시키지는 못한다.<br>
+	 * interrupt()는 그저 쓰레드의 interrupted상태(인스턴스 변수)를 바꾸는 것일 뿐이다.<br>
+	 * 그리고 interrupted()는 쓰레드에 대해 interrupt()가 호출되었다면 true를 반환한다.<br>
+	 * isInterrupted()도 쓰레드의 interrupted()가 호출되었는지 확인하는데 사용할 수 있지만, interrupted()와 달리 isInterrupted()는 쓰레드의 interrupted상태를 false로 초기화하지 않는다.<br>
+	 * <code>
+	 *     void interrupt() 쓰레드의 interrupted상태를 false에서 true로 변경<br>
+	 *     boolean isInterrupted() 쓰레드의 interrupted상태를 반환.<br>
+	 *     static boolean interrupted() 현재 쓰레드의 interrupted상태를 반환 후, false로 변경
+	 * </code><br>
+	 * 쓰레드가 sleep(), wait(), join()에 의해 '일시정지 상태(WAITING)'에 있을 때, 해당 쓰레드에 대해 interrupt()를 호출하면, sleep(), wait(), join()에서 InterruptedException이 발생하고 쓰레드는 '실행대기 상태(RUNNABLE)'로 바뀐다.<br>
+	 * 즉, 멈춰있던 쓰레드를 깨워서 실행가능한 상태로 만드는 것이다.
+	 */
+	class Memo03 {
+	}
+
+	static class ThreadEx02 {
+		public static void main(String[] args) {
+
+			ThreadEx02_1 th1 = new ThreadEx02_1();
+			th1.start();
+			String input = JOptionPane.showInputDialog("아무 값이나 입력하세요.");
+			th1.interrupt(); // interrupt()를 호출하면, interrupted상태가 true가 된다.
+			System.out.println("isInterrupted(): " + th1.isInterrupted()); // true
+		}
+	}
+
+	static class ThreadEx02_1 extends Thread {
+		@Override
+		public void run() {
+			int i = 10;
+
+			while (i != 0 && !isInterrupted()) {
+				System.out.println(i--);
+				for (long x = 0; x < 2500000000L; x++)
+					; // 시간 지연
+			}
+			System.out.println("카운트가 종료되었습니다.");
+		}
+
+	}
+
+	static class ThreadEx03 {
+		public static void main(String[] args) {
+			ThreadEx03_1 th1 = new ThreadEx03_1();
+			th1.start();
+
+			String input = JOptionPane.showInputDialog("아무 값이나 입력하세요.");
+			System.out.println("입력하신 값은 " + input + "입니다.");
+			th1.interrupt(); // interrupt()를 호출하면, interrupted상태가 true가 된다.
+			System.out.println("isInterrupted(): " + th1.isInterrupted()); // true
+
+		}
+	}
+
+	static class ThreadEx03_1 extends Thread {
+		@Override
+		public void run() {
+			int i = 10;
+			while (i != 0 && !isInterrupted()) {
+				System.out.println(i--);
+				try {
+					Thread.sleep(1000); // 1초 지연
+				} catch (InterruptedException e) {
+				}
+			}
+			System.out.println("카운트가 종료되었습니다.");
+		}
+	}
+
+	/**
+	 * <h5>suspend(), resume(), stop()</h5><br>
+	 * suspend()는 sleep()처럼 쓰레드를 멈추게 한다. suspend()에 의해 정지된 쓰레드는 resume()을 호출해야 다시 실행대기 상태가 된다.<br>
+	 * stop()은 호출되는 즉시 쓰레드가 종료된다.<br>
+	 * suspend(), resume(), stop()은 쓰레드의 실행을 제어하는 가장 손쉬운 방법이지만, suspend()와 stop()이 교착상태(deadlock)를 일으키기 쉽게 작성되어있으므로 사용이 권장되지 않는다.<br>
+	 * 그래서 이 메서드들은 모두 'deprecated'되었다.
+	 */
+	class Memo04 {
+	}
+
+	static class TheadEx04 {
+		public static void main(String[] args) {
+			ThreadEx04_1 th = new ThreadEx04_1();
+			Thread th1 = new Thread(th, "*");
+			Thread th2 = new Thread(th, "**");
+			Thread th3 = new Thread(th, "***");
+			th1.start();
+			th2.start();
+			th3.start();
+
+			try {
+				Thread.sleep(2000);
+				th1.suspend();
+				Thread.sleep(2000);
+				th2.suspend();
+				Thread.sleep(3000);
+				th1.resume();
+				Thread.sleep(3000);
+				th1.stop();
+				th2.stop();
+				Thread.sleep(2000);
+				th3.stop();
+			} catch (InterruptedException e) {
+			}
+
+		} // main
+	}
+
+	static class ThreadEx04_1 implements Runnable {
+
+		@Override
+		public void run() {
+			while (true) {
+				System.out.println(Thread.currentThread().getName());
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+				}
+			}
+		} // run()
 	}
 
 }
