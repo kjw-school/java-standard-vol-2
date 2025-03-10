@@ -118,9 +118,26 @@ public class Chapter11_3 {
     class Memo01{}
 
     /**
-     * 컬렉션 | 읽기(접근시간) | 추가 / 삭제 | 비고<br>
-     * ArrayList | 빠르다 | 느리다 | 순차적인 추가삭제는 더 빠름. 비효율적인 메모리 사용<br>
-     * LinkedList | 느리다 | 빠르다 | 데이터가 많은수록 접근성이 떨어짐
+     * <table border="1">
+     *     <tr>
+     *         <th>컬렉션</th>
+     *         <th>읽기(접근시간)</th>
+     *         <th>추가/삭제</th>
+     *         <th>비고</th>
+     *     </tr>
+     *     <tr>
+     *         <td>ArrayList</td>
+     *         <td>빠르다</td>
+     *         <td>느리다</td>
+     *         <td>순차적인 추가삭제는 더 빠름, 비효율적인 메모리 사용</td>
+     *     </tr>
+     *     <tr>
+     *         <td>LinkedList</td>
+     *         <td>느리다</td>
+     *         <td>빠르다</td>
+     *         <td>데이터가 많을수록 접근성이 떨어짐</td>
+     *     </tr>
+     * </table>
      */
     static class ArrayListLinkedListTest2 {
 
