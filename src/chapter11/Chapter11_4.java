@@ -19,19 +19,32 @@ public class Chapter11_4 {
 	 * 첫 번째 저장된 데이터를 삭제하므로, ArrayList와 같은 배열기반의 컬렉션 클래스를 사용한다면 데이터를 꺼낼 때 마다 빈 공간을 채우기 위해<br>
 	 * 데이터의 복사가 발생하므로 비효율적이다. 그래서 큐는 ArrayList보다 데이터의 추가/삭제가 쉬운 LinkedList로 구현하는 것이 더 적합하다.<br>
 	 * <b>Stack의 메서드</b>
-	 * <br>
-	 * 메서드 | 설명
-	 * <br>
-	 * boolean empty() | Stack이 비어있는지 알려준다
-	 * <br>
-	 * Object peek() | Stack의 맨 위에 저장된 객체를 반환, pop()과 달리 Stack에서 객체를 꺼내지는 않음.(비었을 때는 EmptyStackException발생)
-	 * <br>
-	 * Object pop() | stack의 맨 위에 저장된 객체를 꺼낸다. (비었을 때는 EmptyStackException발생)
-	 * <br>
-	 * Object push(Object item) | Stack에 객체(item)를 저장한다.
-	 * <br>
-	 * int search(Object o) | Stack에서 주어진 객체(o)를 찾아서 그 위치를 반환, 못찾으면 -1을 반환.(배열과 달리 위치는 0이 아닌 1부터 시작)
-	 * <br>
+	 * <table>
+	 *     <tr>
+	 *         <th style="border: 1px solid white; text-align: center; vertical-align: center;">메서드</th>
+	 *         <th style="border: 1px solid white; text-align: center; vertical-align: center;">설명</th>
+	 *     </tr>
+	 *     <tr>
+	 *         <td style="border: 1px solid white;">boolean empty()</td>
+	 *         <td style="border: 1px solid white;">Stack이 비어있는지 알려준다.</td>
+	 *     </tr>
+	 *     <tr>
+	 *         <td style="border: 1px solid white;">Object peek()</td>
+	 *         <td style="border: 1px solid white;">Stack의 맨 위에 저장된 객체를 반환, pop()과 달리 Stack에서 객체를 꺼내지는 않음.(비었을 때는 EmptyStackException 발생)</td>
+	 *     </tr>
+	 *     <tr>
+	 *         <td style="border: 1px solid white;">Object pop()</td>
+	 *         <td style="border: 1px solid white;">Stack의 맨 위에 저장된 객체를 꺼낸다.(비었을 때는 EmptystackException 발생)</td>
+	 *     </tr>
+	 *     <tr>
+	 *         <td style="border: 1px solid white;">Object push(Object item)</td>
+	 *         <td style="border: 1px solid white;">Stack에 객체(item)를 저장한다.</td>
+	 *     </tr>
+	 *     <tr>
+	 *         <td style="border: 1px solid white;">int search(Object o)</td>
+	 *         <td style="border: 1px solid white;">Stack에서 주어진 객체(o)를 찾아서 그위치를 반환, 못 찾으면 -1을 반환.(배열과 달리 위치는 0이 아닌 1부터 시작</td>
+	 *     </tr>
+	 * </table>
 	 * <b>Queue의 메서드</b>
 	 * <br>
 	 * 메서드 | 설명
