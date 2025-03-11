@@ -34,7 +34,7 @@ public class Chapter13_9_5 {
 	 * <code>
 	 *	public long compute() {<br>
 	 *
-	 * 		long size = to - form + 1; // form <= i <= to<br>
+	 * 		long size = to - from + 1; // from <= i <= to<br>
 	 *
 	 * 		if (size <= 5) // 더할 숫자가 5개 이하면<br>
 	 * 			return sum; // 숫자의 합을 반환. sum()은 from부터 to까지의 수를 더해서 반환<br>
@@ -42,7 +42,7 @@ public class Chapter13_9_5 {
 	 * 		// 범위를 반으로 나눠서 두 개의 작업을 생성<br>
 	 * 		long half = (from + to) / 2;<br>
 	 *
-	 * 		SumTask leftSum = new Sumtask(from, half);<br>
+	 * 		SumTask leftSum = new SumTask(from, half);<br>
 	 * 		SumTask rightSum = new SumTask(half + 1, to);<br>
 	 *
 	 * 		leftSum.fork(); // 작업(leftSum)을 작업 큐에 넣는다.<br>

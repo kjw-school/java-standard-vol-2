@@ -1,12 +1,12 @@
 package chapter13;
 
 /**
- * Chapter13 쓰레드 thread
+ * <h1>Chapter13. 쓰레드 thread</h1>
  */
 public class Chapter13 {
 
     /**
-     * 1. 프로세스와 쓰레드<br>
+     * <h5>1. 프로세스와 쓰레드</h5><br>
      *
      * <p>
      * 프로세스(process)란 간단히 말해서 '실행 중인 프로그램(program)'이다. 프로그램을 실행하면 OS로 부터 실행에 필요한 자원(메모리)을
@@ -23,7 +23,7 @@ public class Chapter13 {
     static class Memo01 {}
 
     /**
-     * 멀티태스킹과 멀티쓰레딩<br>
+     * <h5>멀티태스킹과 멀티쓰레딩</h5><br>
      * <p>
      * 현재 우리가 사용하고 있는 윈도우나 유닉스를 포함한 대부분의 OS는 멀티태스킹(multi-tasking, 다중작업)을 지원하기 때문에 여러 개의
      * 프로세스가 동시에 실행될 수 있다.<br>
@@ -37,9 +37,9 @@ public class Chapter13 {
     static class Memo02 {}
 
     /**
-     * 멀티쓰레딩의 장단점<br>
+     * <h5>멀티쓰레딩의 장단점</h5><br>
      * <p>
-     * 멀티쓰레딩의 장점
+     * <b>멀티쓰레딩의 장점</b>
      * <blockquote>
      *  - CPU의 사용률을 향상시킨다.<br>
      *  - 자원을 보다 효율적으로 사용할 수 있다.<br>
