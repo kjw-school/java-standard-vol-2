@@ -185,9 +185,96 @@ public class Chapter14 {
 	}
 
 	/**
-	 * <h5>외부 변수를 참조하는 람다식</h5>
+	 * <h5>외부 변수를 참조하는 람다식</h5><br>
+	 * 람다식도 익명 객체, 즉 익명 클래스의 인스턴스이므로 람다식에서 외부에 선언된 변수에 접근하는 규칙은 앞서 익명 클래스에서 배운 것과 동일하다.<br>
+	 * 람다식 내에서 참조하는 지역변수는 final이 붙지 않았어도 상수로 간주된다.<br>
+	 * 외부 지역변수와 같은 이름의 람다식 매개변수는 허용되지 않는다.
+	 */
+	static class LambdaEx03 {
+
+		@FunctionalInterface
+		interface MyFunction {
+			void myMethod();
+		}
+
+		static class Outer {
+			int val = 10; // Outer.this.val
+
+			class Inner {
+				int val = 20; // this.val
+
+				void method(int i) {// void method(final int i) {
+					int val = 30; // final int val = 30;
+					// i = 10; 에러. 상수의 값을 변경할 수 없음.
+
+					MyFunction f = () -> {
+						System.out.println(" i :" + i);
+						System.out.println(" val :" + val);
+						System.out.println(" this.val :" + ++this.val);
+						System.out.println("Outer.this.val :" + ++Outer.this.val);
+					};
+
+					f.myMethod();
+
+				} // Innter클래스의 끝
+
+			} // Outer 클래스의 끝
+		}
+
+		public static void main(String[] args) {
+			Outer outer = new Outer();
+			Outer.Inner inner = outer.new Inner();
+			inner.method(100);
+		}
+
+	}
+
+	/**
+	 * <h5>1.4 java.util.function패키지</h5><br>
+	 * java.util.function패키지에 일반적으로 자주 쓰이는 형식의 메서드를 함수형 인터페이스로 미리 정의해 놓았다.<br>
+	 * <table border="1">
+	 *     <tr>
+	 *         <th>함수형 인터페이스</th>
+	 *         <th>메서드</th>
+	 *         <th>설명</th>
+	 *     </tr>
+	 *     <tr>
+	 *         <td>java.lang.Runnable</td>
+	 *         <td>void run()</td>
+	 *         <td>매개변수도 없고, 반환값도 없음.</td>
+	 *     </tr>
+	 *     <tr>
+	 *         <td>Supplier&lt;T&gt;</td>
+	 *         <td>T get()</td>
+	 *         <td>매개변수는 없고, 반환값만 있음</td>
+	 *     </tr>
+	 *     <tr>
+	 *         <td>Consumer&lt;T&gt;</td>
+	 *         <td>void accept(T t)</td>
+	 *         <td>Supplier와 반대로 매개변수만 있고, 반환값이 없음</td>
+	 *     </tr>
+	 *     <tr>
+	 *         <td>Function&lt;T,R&gt;</td>
+	 *         <td>R apply(T t)</td>
+	 *         <td>일반적인 함수, 하나의 매개변수를 받아서 결과를 반환</td>
+	 *     </tr>
+	 *     <tr>
+	 *         <td>Predicate&lt;T&gt;</td>
+	 *         <td>boolean test(T t)</td>
+	 *         <td>조건식을 표현하는데 사용됨. 매개변수는 하나, 반환 타입은 boolean</td>
+	 *     </tr>
+	 * </table><br>
+	 * Predicate는 조건식을 함수로 표현하는데 사용된다.
 	 */
 	class Memo06 {
+
+	}
+
+	/**
+	 * <h5>조건식에 표현에 사용되는 Predicate</h5><br>
+	 */
+	class Memo07 {
+
 	}
 
 }
