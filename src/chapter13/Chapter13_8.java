@@ -1,5 +1,7 @@
 package chapter13;
 
+import static java.lang.Thread.*;
+
 import javax.swing.*;
 
 /**
@@ -63,7 +65,7 @@ public class Chapter13_8 {
 			th2.start();
 
 			try {
-				th1.sleep(2000);
+				sleep(2000);
 			} catch (InterruptedException e) {
 			}
 
@@ -153,7 +155,7 @@ public class Chapter13_8 {
 			while (i != 0 && !isInterrupted()) {
 				System.out.println(i--);
 				try {
-					Thread.sleep(1000); // 1초 지연
+					sleep(1000); // 1초 지연
 				} catch (InterruptedException e) {
 				}
 			}
@@ -182,16 +184,16 @@ public class Chapter13_8 {
 			th3.start();
 
 			try {
-				Thread.sleep(2000);
+				sleep(2000);
 				th1.suspend();
-				Thread.sleep(2000);
+				sleep(2000);
 				th2.suspend();
-				Thread.sleep(3000);
+				sleep(3000);
 				th1.resume();
-				Thread.sleep(3000);
+				sleep(3000);
 				th1.stop();
 				th2.stop();
-				Thread.sleep(2000);
+				sleep(2000);
 				th3.stop();
 			} catch (InterruptedException e) {
 			}
@@ -206,11 +208,156 @@ public class Chapter13_8 {
 			while (true) {
 				System.out.println(Thread.currentThread().getName());
 				try {
-					Thread.sleep(1000);
+					sleep(1000);
 				} catch (InterruptedException e) {
 				}
 			}
 		} // run()
+	}
+
+	static class ThreadEx05 {
+		public static void main(String[] args) {
+			ThreadEx05_1 r1 = new ThreadEx05_1();
+			ThreadEx05_1 r2 = new ThreadEx05_1();
+			ThreadEx05_1 r3 = new ThreadEx05_1();
+			Thread th1 = new Thread(r1, "*");
+			Thread th2 = new Thread(r2, "**");
+			Thread th3 = new Thread(r3, "***");
+			th1.start();
+			th2.start();
+			th3.start();
+
+			try {
+				Thread.sleep(2000);
+				r1.suspend();
+				Thread.sleep(2000);
+				r2.suspend();
+				Thread.sleep(3000);
+				r1.resume();
+				Thread.sleep(3000);
+				r1.stop();
+				r2.stop();
+				Thread.sleep(2000);
+				r3.stop();
+			} catch (InterruptedException e) {
+			}
+		}
+	}
+
+	static class ThreadEx05_1 implements Runnable {
+
+		boolean suspended = false;
+		boolean stopped = false;
+
+		@Override
+		public void run() {
+			while (!stopped) {
+				if (!suspended) {
+					System.out.println(Thread.currentThread().getName());
+					try {
+						sleep(1000);
+					} catch (InterruptedException e) {
+					}
+				}
+			}
+
+			System.out.println(Thread.currentThread().getName() + " - stopped");
+		}
+
+		public void suspend() {
+			suspended = true;
+		}
+
+		public void resume() {
+			suspended = false;
+		}
+
+		public void stop() {
+			stopped = true;
+		}
+
+	}
+
+	static class ThreadEx06 {
+
+		public static void main(String[] args) {
+			ThreadEx06_1 th1 = new ThreadEx06_1("*");
+			ThreadEx06_1 th2 = new ThreadEx06_1("**");
+			ThreadEx06_1 th3 = new ThreadEx06_1("***");
+			th1.start();
+			th2.start();
+			th3.start();
+
+			try {
+
+				Thread.sleep(2000);
+				th1.suspend();
+				Thread.sleep(2000);
+				th2.suspend();
+				Thread.sleep(3000);
+				th1.resume();
+				Thread.sleep(3000);
+				th1.stop();
+				th2.stop();
+				Thread.sleep(2000);
+				th3.stop();
+
+			} catch (InterruptedException e) {
+
+			}
+		}
+
+	}
+
+	static class ThreadEx06_1 implements Runnable {
+
+		boolean suspended = false;
+		boolean stopped = false;
+
+		Thread th;
+
+		ThreadEx06_1(String name) {
+			th = new Thread(this, name); // Thread(Runnable r, String name)
+		}
+
+		@Override
+		public void run() {
+			while (!stopped) {
+				if (!suspended) {
+					System.out.println(Thread.currentThread().getName());
+					try {
+						sleep(1000);
+					} catch (InterruptedException e) {
+					}
+				}
+			}
+			System.out.println(Thread.currentThread().getName() + " - stopped");
+		}
+
+		public void suspend() {
+			suspended = true;
+		}
+
+		public void resume() {
+			suspended = false;
+		}
+
+		public void stop() {
+			stopped = true;
+		}
+
+		public void start() {
+			th.start();
+		}
+	}
+
+	/**
+	 * <h5>yield() - 다른 쓰레드에게 양보한다.</h5><br>
+	 * yield()는 쓰레드 자신에게 주어진 실행시간을 다른 차례의 쓰레드에게 양보(yield)한다.<br>
+	 * 예를 들어 스케쥴러에 의해 1초의 실행시간을 할당받은 쓰레드가 0.5초의 시간동안 작업한 상태에서 yield()가 호출되면, 나머지 0.5초는 포기하고 다시 실행대기상태가 된다.
+	 */
+	class Memo05 {
+
 	}
 
 }
