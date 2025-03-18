@@ -360,4 +360,104 @@ public class Chapter13_8 {
 
 	}
 
+	/**
+	 * 만일 suspended의 값이 true라면, 즉 잠시 실행을 멈추게 한 상태라면, 쓰레드는 주어진 실행시간을 그저 while문을 의미없이 돌면서 낭비하게 될 것이다.<br>
+	 * 이런 상황을 '바쁜 대기상태(bust-waiting)'이라고 한다.<br>
+	 * 그러나 yield()을 호출해서 남은 실행시간을 while문에서 낭비하지 않고 다른 쓰레등게 양보(yield)하게 되므로 더 효울적이다.
+	 */
+	static class TheadEx07 {
+		public static void main(String[] args) {
+
+			ThreadEx07_1 th1 = new ThreadEx07_1("*");
+			ThreadEx07_1 th2 = new ThreadEx07_1("**");
+			ThreadEx07_1 th3 = new ThreadEx07_1("***");
+			th1.start();
+			th2.start();
+			th3.start();
+
+			try {
+
+				Thread.sleep(2000);
+				th1.suspend();
+				Thread.sleep(2000);
+				th2.suspend();
+				Thread.sleep(3000);
+				th1.resume();
+				Thread.sleep(3000);
+				th1.stop();
+				th2.stop();
+				Thread.sleep(2000);
+				th3.stop();
+
+			} catch (InterruptedException e) {
+			}
+
+		}
+	}
+
+	static class ThreadEx07_1 implements Runnable {
+
+		boolean suspend = false;
+		boolean stopped = false;
+
+		Thread th;
+
+		ThreadEx07_1(String name) {
+			th = new Thread(this, name); // Thread(Runnable r, String name)
+		}
+
+		@Override
+		public void run() {
+
+			String name = th.getName();
+			while (!stopped) {
+				if (!suspend) {
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						System.out.println(name + " - interrupted");
+					}
+				} else {
+					Thread.yield();
+				}
+			}
+			System.out.println(name + " - stopped");
+		}
+
+		public void suspend() {
+			suspend = true;
+			th.interrupt();
+			System.out.println(th.getName() + " - interrupt() by suspend()");
+		}
+
+		public void stop() {
+			stopped = true;
+			th.interrupt();
+			System.out.println(th.getName() + " - interrupt() by stop()");
+		}
+
+		public void resume() {
+			suspend = false;
+		}
+
+		public void start() {
+			th.start();
+		}
+
+	}
+
+	/**
+	 * <h5>join() - 다른 쓰레드의 작업을 기다린다.</h5><br>
+	 * 쓰레드 자신이 하던 작업을 잠시 멈추고 다른 쓰레드가 지정된 시간동안 작업을 수행하도록 할 때 join()을 사용한다.<br>
+	 * void join()<br>
+	 * void join(long millis)<br>
+	 * void join(long millis, int nanos)<br>
+	 * 시간을 지정하지 않으면, 해당 쓰레드가 작업을 모두 마칠 때 까지 기다리게 된다. 작업 중에 다른 쓰레드의 작업이 먼저 수행되어야할 필요가 있을 때 join()을 사용한다.<br>
+	 * join()도 sleep()처럼 interrupt()에 의해 대기상태에서 벗어날 수 있으며, join()이 호출되는 부분을 try-catch문으로 감싸야 한다.<br>
+	 * join()은 여러모로 sleep()과 유사한 점이 많은데, sleep()과 다른 점은 join()은 현재 쓰레드가 아닌 특정 쓰레드에 대해 동작하므로 static메서드가 아니라는 것이다.<br>
+	 * <small>※join()은 자신의 작업 중간에 다른 쓰레드의 작업을 참여(join)시킨다는 의미로 이름 지어진 것이다.</small>
+	 */
+	class Memo06 {
+	}
+
 }
