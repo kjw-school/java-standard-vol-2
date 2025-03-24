@@ -460,4 +460,134 @@ public class Chapter13_8 {
 	class Memo06 {
 	}
 
+	/**
+	 * join()을 사용하지 않았으면 main쓰레드는 바로 종료되었겠지만, join()으로 쓰레드 th1과 th2의 작업을 마칠 때 가지 main쓰레드가 기다리도록했다.<br.
+	 * 그래서 main쓰레드가 두 쓰레드의 작업에 소요된 시간을 출력할 수 있다.
+	 */
+	static class JoinEx {
+		static long startTime = 0;
+
+		public static void main(String[] args) {
+
+			JoinEx2 th1 = new JoinEx2();
+			JoinEx3 th2 = new JoinEx3();
+			th1.start();
+			th2.start();
+			startTime = System.currentTimeMillis();
+
+			try {
+				th1.join(); // main 쓰레드가 th1의 작업이 끝날 때까지 기다린다.
+				th2.join(); // main 쓰레드가 th2의 작업이 끝날 때까지 기다린다.
+			} catch (InterruptedException e) {
+			}
+			System.out.print("소요시간: " + (System.currentTimeMillis() - startTime));
+		} // main
+
+	}
+
+	static class JoinEx2 extends Thread {
+
+		@Override
+		public void run() {
+
+			for (int i = 0; i < 300; i++) {
+				System.out.print(new String("-"));
+			}
+
+		} // run
+
+	}
+
+	static class JoinEx3 extends Thread {
+		@Override
+		public void run() {
+			for (int i = 0; i < 300; i++) {
+				System.out.print(new String("|"));
+			}
+		} // run
+	}
+
+	/**
+	 * JVM의 가비지 컬렉터(garbage collector)를 흉내 내어 간단히 구현해 본 것이다.<br>
+	 * random()을 사용했기 때문에 실행할 때마다 결과가 다를 수 있다.<br>
+	 * 먼저 sleep()을 이용해서 10초마다 한 번씩 가비지 컬렉션을 수행하는 쓰레드를 만든 다음, 쓰레드를 생성해서 데몬 쓰레드로 설정하였다.<br>
+	 * 반복문을 사용해서 메모리의 양을 계속 감소시키도록 했고, 매 반복마다 if문으로 메모리를 확인해서 남은 메모리가 전체메모리의 40% 미만일 경우에 interrupt()를 호출해서,<br>
+	 * 즉시 가비지 컬렉터 쓰레드를 깨워서 gc()를 수행하도록 하였다.<br>
+	 * 그러나 실행 결과를 보면 MAX_MEMORY가 1000임에도 불구하고 usedMemory의 값이 1000을 넘는 것을 알 수 있다. 이것은 쓰레드 gc가 interrupt()에 의해서 깨어났음에도 불구하고<br>
+	 * gc()가 수행되기 이전에 main쓰레드의 작업이 수행되어 메모리를 사용하기 때문이다. 그래서 쓰레드 gc를 깨우는 것뿐만 아니라 join()을 이용해서 쓰레드 gc가 작업할 시간을 어느 정도 주고 main쓰레드가 기다리도록해서,<br>
+	 * 사용할 수 있는 메모리가 확보된 다음에 작업을 게속하는 것이 필요하다.
+	 * <code>
+	 *     if(gc.freeMemory() - requiredMemory...) {<br>
+	 *         gc.interrupt();<br>
+	 *     }
+	 * </code>
+	 * <br>
+	 * <code>
+	 *     if(gc.freeMemory() - requiredMemory...) {<br>
+	 *     		gc.interrupt();<br>
+	 *     	try {
+	 *     		gc.join(100);
+	 *        } catch(InterruptedException e) {}
+	 *     }
+	 * </code>
+	 */
+	static class JoinEx4 {
+		public static void main(String[] args) {
+			JoinEx5 gc = new JoinEx5();
+			gc.setDaemon(true);
+			gc.start();
+
+			int requireMemory = 0;
+
+			for (int i = 0; i < 20; i++) {
+				requireMemory += (int)(Math.random() * 10) * 20;
+
+				// 필요한 메모리가 사용할 수 있는 양보다 크거나 전체 메모리의 60%이상을
+				// 사용했을 경우 gc를 깨운다.
+				if (gc.freeMemory() < requireMemory || gc.freeMemory() < gc.totalMemory() * 0.4) {
+					gc.interrupt(); // 잠자고 있는 쓰레드 gc를 깨운다.
+				}
+
+				gc.usedMemory += requireMemory;
+				System.out.println("usedMemory:" + gc.usedMemory);
+
+			}
+
+		}
+	}
+
+	static class JoinEx5 extends Thread {
+		final static int MAX_MEMORY = 1000;
+		int usedMemory = 0;
+
+		@Override
+		public void run() {
+			while (true) {
+				try {
+					Thread.sleep(10 * 1000); // 10초를 기다린다.
+				} catch (InterruptedException e) {
+					System.out.println("Awaken by interrupt().");
+				}
+
+				gc();
+				System.out.println("Garbage Collected. Free Memory :" + freeMemory());
+			}
+		}
+
+		public void gc() {
+			usedMemory -= 300;
+			if (usedMemory < 0)
+				usedMemory = 0;
+		}
+
+		public int totalMemory() {
+			return MAX_MEMORY;
+		}
+
+		public int freeMemory() {
+			return MAX_MEMORY - usedMemory;
+		}
+
+	}
+
 }
