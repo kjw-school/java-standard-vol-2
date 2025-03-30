@@ -272,9 +272,83 @@ public class Chapter14 {
 
 	/**
 	 * <h5>조건식에 표현에 사용되는 Predicate</h5><br>
+	 * Predicate는 Function의 변형으로, 반환타입이 boolean이라는 것만 다르다, Predicate는 조건식을 람다식으로 표현하는데 사용된다.<br>
+	 * <small>수학에서 결과로 true 또는 false를 반환하는 함수를 '프레디케이트(predicate)'라고 한다.</small><br>
+	 * <code>
+	 *     Predicate&lt;String&gt; isEmptyStr = s -> s.length() == 0;<br>
+	 *     String s = "";<br>
+	 *
+	 *     if(isEmptyStr.test(s)) // if(s.length == 0)<br>
+	 *     System.,out.println("This is an empty String.");
+	 * </code>
 	 */
 	class Memo07 {
 
+	}
+
+	/**
+	 * <h5>매개변수가 두 개인 함수형 인터페이스</h5><br>
+	 * 매개변수의 개수가 2개인 함수형 인터페이스는 이름 앞에 접두사 'Bi'가 붙는다.
+	 * <table border="1">
+	 *     <thead>
+	 *         <td>함수형 인터페이스</td>
+	 *         <td>메서드</td>
+	 *         <td>설명</td>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>BiConsumer&lt;T,U&gt;</td>
+	 *             <td>T, U -> void accept(T t, U u)</td>
+	 *             <td>두 개의 매개변수만 있고 반환값이 없음</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>BiPredicate&lt;T,U&gt;</td>
+	 *             <td>T, U -> boolean test(T t, U u) -> boolean</td>
+	 *             <td>조건식을 표현하는데 사용됨, 매개변수는 둘, 반환값은 boolean</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>BiFunction&lt;T,U,R&gt;</td>
+	 *             <td>T,U -> R apply(T t, U u) -> R</td>
+	 *             <td>두 개의 매개변수를 받아서 하나의 결과를 반환</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 */
+	class Memo08 {
+
+	}
+
+	/**
+	 * <h5>UnaryOperator와 BinaryOperator</h5><br>
+	 * Function의 또 다른 변형으로 UnaryOperator와 BinaryOperator가 있는데, 매개변수의 타입과 반환타입의 타입이 모두 일치한다는 점만 제외하고는 Function과 같다.<br>
+	 * <table border="1">
+	 *     <thead>
+	 *         <td>함수형 인터페이스</td>
+	 *         <td>메서드</td>
+	 *         <td>설명</td>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>UnaryOperator&lt;T&gt;</td>
+	 *             <td>T -> T apply(T t)</td>
+	 *             <td>Function의 자손, Function과 달리 매개변수와 결과의 타입이 같다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>BinaryOpoerator&lt;T&gt;</td>
+	 *             <td>T, T -> T apply(T t, T t)</td>
+	 *             <td>BiFunction의 자손, BiFunction과 달리 매개변수와 결과의 타입이 같다.</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 */
+	class Memo09 {
+
+	}
+
+	/**
+	 * <h5>컬렉션 프레임웍과 함수형 인터페이스</h5><br>
+	 */
+	class Memo10 {
 	}
 
 }
