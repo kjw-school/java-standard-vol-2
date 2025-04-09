@@ -65,9 +65,112 @@ public class Chapter12_2 {
 	}
 
 	/**
-	 * <h5>모든 열거형의 조상 - java.lang.Enum</h5>
+	 * <h5>모든 열거형의 조상 - java.lang.Enum</h5><br>
+	 * values()는 열거형의 모든 상수를 배열에 담아 반환한다. 이 메서드는 모든 열거형이 가지고 잇는 것으로 컴파일러가 자동으로 추가해 준다.<br>
+	 * ordinal()은 모든 열거형의 조상인 java.lang.Enum클래스에 정의된 것으로, 열거형 상수가 정의된 순서(0부터 시작)를 정수로 반환한다.<br>
+	 * <table border="1">
+	 *     <thead>
+	 *         <td>메서드</td>
+	 *         <td>설명</td>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>Class&lt;E&gt; getDeclaringClass()</td>
+	 *             <td>열거형의 Class객체를 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>String name()</td>
+	 *             <td>열거형 상수의 이름을 문자열로 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>int ordinal()</td>
+	 *             <td>열거형 상수가 정의된 순서를 반환한다.(0부터 시작)</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>T valueOf(Class&lt;T&gt; enumType, String name)</td>
+	 *             <td>지정된 열거형에서 name과 일치하는 열거형 상수를 반환한다.</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 * <br>
+	 * 이외에도 values()처럼 컴파일러가 자동적으로 추가해주는 메서드가 하나 더 있다.
+	 * <pre><code>
+	 *     static E values()
+	 *     static E valueOf(String name)
+	 * </code></pre>
+	 * <br>
+	 * 이 메서드는 열거형 상수의 이름으로 문자열 상수에 대한 참조를 얻을 수 있게 해준다.
+	 * <pre><code>
+	 *     Direction d = Direction.valueOf("WEST)";
+	 *
+	 *     System.out.println(d); // WEST
+	 *     System.out.println(Direction.WEST == Direction.valueOf("WEST")); // true
+	 * </code></pre>
 	 */
 	class Memo03 {
+
+	}
+
+	/**
+	 * <h5>2.3 열거형에 멤버 추가하기</h5><br>
+	 * Enum클래스에 정의된 ordinal()이 열거형 상수가 정의된 순서를 반환하지만, 이 값을 열거형 상수의 값으로 사용하지 않는 것이 좋다.<br>
+	 * 이 값은 내부적인 용도로만 사용되기 위한 것이기 때문이다.<br>
+	 * 열거형 상수의 값이 불연속적인 경우에는 이때는 다음과 같이 열거형 상수의 이름 옆에 원하는 값을 괄호()와 함께 적어주면 된다.<br>
+	 * <code>
+	 *     enum Direction { EAST(1), SOUTH(5), WEST(-1), NORTH(10) }
+	 * </code>
+	 * <br>
+	 * 그리고 지정된 값을 저장할 수 있는 인스턴스 변수와 생성자를 새로 추가해 주어야 한다.<br>
+	 * 이 때 주의할 점은, 먼저 열거형 상수를 모두 정의한 다음에 다른 멤버들을 추가해야한다는 것이다.<br>
+	 * 열거형 상수의 마지막에 ';'도 잊지 말아야 한다.<br>
+	 * <pre><code>
+	 *
+	 *     enum Direction {
+	 *         EAST(1), SOUTh(5), WESt(-1), NORTH(10); // 끝에 ';'를 추가해야 한다.
+	 *
+	 *         private final int value; //; 정수를 저장할 필드(인스턴스 변수)를 추가
+	 *         Direction(int value) { this.value = value; } // 생성자 추가
+	 *         public int getValue() { return value; }
+	 *     }
+	 *
+	 * </code></pre>
+	 * <br>
+	 * <code>
+	 *     Direction d = new Direction(1); // 에러, 열거형의 생성자는 외부에서 호출불가
+	 * </code>
+	 * <br>
+	 * 열거형 Direction에 새로운 생성자가 추가되었지만, 위와 같이 열거형의 객체를 생성할 수 없다. 열거형의 생성자는 제어자가 묵시적으로 private이기 때문이다.<br>
+	 * 하나의 열거형 상수에 여러 값을 지정할 수도 있다. 다만 그에 맞게 인스턴스 변수와 생성자 등을 새로 추가해주어야 한다.<br>
+	 * <pre><code>
+	 *
+	 *     enum Direction {
+	 *
+	 *         EAST(1, ">"), SOUTH(2, "V"), WEST(3, "<"), NORTH(4, "^");
+	 *
+	 *         private final int value;
+	 *         private final String symbol;
+	 *
+	 *         Direction(int value, String symbol) { // 접근 제어자 private이 생략됨
+	 *             this.value = value;
+	 *             this.symbol = symbol;
+	 *         }
+	 *
+	 *         public int getValue() { return value; }
+	 *         public String getSymbol() { return symbol;}
+	 *
+	 *     }
+	 *
+	 * </code></pre>
+	 *
+	 */
+	class Memo4 {
+
+	}
+
+	/**
+	 * <h5>얼겨헝에 추상 메서드 추가하기</h5>
+	 */
+	class Memo5 {
 
 	}
 

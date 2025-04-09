@@ -68,8 +68,41 @@ public class Chapter13_9 {
 
 	/**
 	 * <h5>9.3 Lock과 Condition을 이용한 동기화</h5><br>
+	 * 동기화할 수 있는 방법은 synchronized블럭 외에도 'java.util.concurrent.locks'패키지가 제공하는 lock클래스들을 이용하는 방법이 있다.<br>
+	 * 이 패키지는 JDK1.5에 와서야 추가된 것으로 그 전에는 동기화 방법이 synchronized블럭뿐이었다.<br>
+	 * synchronized블럭으로 동기화를 하면 자동적으로 lock이 잠기고 풀리기 때문에 편리하다.<br>
+	 * 심지어 synchronized블럭 내에서 예외가 발생해도 lock은 자동적으로 풀린다. 그러나 때로는 같은 메서드 내에서만 lock을 걸 수 있다는 제약이 불편하기도 하다. 그럴 때 이 lock클래스를 사용한다.<br>
+	 * <b>lock클래스의 종류</b><br>
+	 * <b>ReentrantLock</b> 재집이 가능한 lock, 가장 일반적인 배타 lock<br>
+	 * <b>ReentrantReadWriteLock</b> 읽기에는 공유적이고, 쓰기에는 배타적인 lock<br>
+	 * <b>StampedLock</b> ReentrantReadWriteLock에 낙관적인 lock의 기능을 추가<br>
+	 * <small>※ StampedLock은 JDK1.8부터 추가되었으며, 다른 lock과 달리 Lock인터페이스를 구현하지 않았다.</small><br>
+	 * ReentrantLock은 가장 일반적인 lock이다. 'reentrant(재진입할 수 있는)'이라는 단어가 앞에 붙은 이유는 우리가 앞서 wait() & notify()에서 배운 것처럼,<br>
+	 * 특정 조건에서 lock을 풀고 나중에 다시 lock을 얻고 임계영역으로 들어와서 이후의 작업을 수행할 수 있기 때문이다.<br>
+	 * ReentrantReadWriteLock은 이름에서 알 수 있듯이, 읽기를 위한 lock과 쓰기를 위한 lock을 제공한다.<br>
+	 * ReentrantLock은 배타적인 lock이라서 무조건 lock이 있어야만 임계 영역의 코드를 수행할 수 있지만,<br>
+	 * ReentrantReadWriteLock은 읽이 lock이 걸려있으면, 다른 쓰레드가 읽이 lock을 중복해서 걸고 읽기를 수행할 수 있다.<br>
+	 * 읽기는 애용을 변경하지 않으므로 동시에 여러 쓰레드가 읽어도 문제가 되지 않는다. 그러나 읽기 lock이 걸린 상태에서 쓰기 lock을 거는 것은 허용되지 않는다.<br>
+	 * 반대의 경우도 마찬가지다, 읽기를 할때는 읽기 lock을 걸고, 쓰기 할 때는 쓰기 lock을 거는 것일 뿐 lock을 거는 방법은 같다.<br>
+	 * StampedLock은 lock을 걸거나 해지할 때 '스탬프(long타입의 정수값)'를 사용하며, 읽기와 쓰기를 위한 lock외에 '낙관적 읽기 lock(optimstic reading lock)'이 추가된 것이다.<br>
+	 * 읽기 lock이 걸려있으면, 쓰기 lock을 얻기 위해서는 읽기 lock이 풀릴 때까지 기다려야하는데 비해, '낙관적 읽기 lock'은 쓰기 lock에 의해 바로 풀린다.<br>
+	 * 그래서 낙관적 읽기에 실패하면, 읽기 lock을 얻어서 다시 읽어 와야 한다, <b>무조건 읽기 lock을 걸지 않고, 쓰기와 읽기가 충동할 때만 쓰기가 끝난 후에 읽기 lock을 거는 것이다.</b>
 	 */
 	class Memo4 {
+	}
+
+	/**
+	 * <h5>ReentrantLock의 생성자</h5><br>
+	 * <b>ReentrantLock()</b><br>
+	 * <b>ReentrantLock(boolean fair)</b><br>
+	 * 생성자의 매개변수를 true로 주면, lock이 풀렸을 때 가장 오래 기다린 쓰레드가 lock을 획득할 수 있게, 즉 공정(fair)하게 처리한다.<br>
+	 * 그러나 공정하게 처리하려면 어떤 쓰레드가 가장 오래 기다렸는지 확인하는 과정을 거칠 수밖에 없으므로 성능은 떨어진다.<br>
+	 * <b>void lock()</b> lock을 잠근다.<br>
+	 * <b>void unlock()</b> lock을 해지한다.<br>
+	 * <b>boolean isLocked()</b> lock이 잠겼는지 확인한다.<br>
+	 */
+	class Memo5 {
+
 	}
 
 }
