@@ -100,8 +100,77 @@ public class Chapter13_9 {
 	 * <b>void lock()</b> lock을 잠근다.<br>
 	 * <b>void unlock()</b> lock을 해지한다.<br>
 	 * <b>boolean isLocked()</b> lock이 잠겼는지 확인한다.<br>
+	 * 자동적으로 lock의 잠금과 해제가 관리되는 synchronized블럭과는 달리, ReetrantLock과 같은 lock클래스들은 수동으로 lock을 잠그고 해제해야 한다.<br>
+	 * 이 외에도 tryLock()이라는 메서드가 있는데, 이 메서드는 lock()과 달리, 다른 쓰레드에 의해 lock이 걸려 있으면 lock을 얻으려고 기다리지 않는다. 또는 지정된 시간만큼만 기다린다.<br>
+	 * <pre><code>
+	 *     boolean tryLock()
+	 *     boolean tryLock(long timeout, TimeUnit unit) throws InterruptedException
+	 * </code></pre>
+	 * <br>
+	 * lock()은 lock을 얻을 때까지 쓰레드를 블락(block)시키므로 쓰레드의 응답성이 나빠질수 있다. 응답성이 중요한 경우, tryLock()을 이용해서 지정된 시간동안 lock을 얻지 못하면 다시 작업을 시도할 것인지 포기한 것인지를 사용자가 결정할 수 있게 하는 것이 좋다.<br>
+	 * 그리고 이 메서드는 InterruptedException을 발생시킬 수 있는데, 이것은 지정된 시간동안 lock을 얻으려고 기다리는 중에 interrupt()에 의해 작업을 취소될 수 있도록 코드를 작성할 수 있다는 뜻이다.
 	 */
 	class Memo5 {
+
+	}
+
+	/**
+	 * <h5>ReentrantLock과 Condition</h5><br>
+	 * wait() & notify() 예제에 요리사 쓰레드와 손님 쓰레드를 구분해서 통지하지 못한 다는 단점이 있었다.<br>
+	 * wait() & notify()로 쓰레드의 종류를 구분하지 않고, 공유 객체의 waiting pool에 같이 몰아넣는 대신, 손님 쓰레드를 위한 Condition과 요리사 쓰레드를 위한 Condition을 만들어서 각각의 waiting pool에서 따로 기다리도록 하면 문제는 해결된다.<br>
+	 * Condition은 이미 생성된 lock으로부터 newCondition()을 호출해서 생성한다.<br>
+	 * <pre><code>
+	 *     private ReentrantLock lock = new ReentrantLock(); // lock을 생성
+	 *     // lock으로 condition을 생성
+	 *     private Condition forCook = lock.newCondition();
+	 *     private Condition forCust = lock.newCondition();
+	 * </code></pre>
+	 * <br>
+	 * <table border="1">
+	 *     <thead>
+	 *         <td>Object</td>
+	 *         <td>Condition</td>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>void wait()</td>
+	 *             <td>void await()<br>void awaitUninterruptibly()</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>void wait(long timeout)</td>
+	 *             <td>boolean await(long time, TimeUnit unit)<br> long awaitNanos(long nanosTimeout)<br> boolean awaitUntil(Date deadline)</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>void notify()</td>
+	 *             <td>void signal()</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>void notifyAll()</td>
+	 *             <td>void signalAll()</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 */
+	class Memo6 {
+
+	}
+
+	/**
+	 * <h5>9.4 volatile</h5><br>
+	 * 멀티 코어 프로세서에서는 코어마다 별도의 캐시를 가지고 있다.<br>
+	 * 코어는 메모리에서 읽어온 값을 캐시에 저장하고 캐시에서 값을 읽어서 작업한다. 다시 같은 값을 읽어올 때는 먼저 캐시에 있는지 확인하고 없을 때만 메모리에서 읽어온다.<br>
+	 * 그러다보니 도중에 메모리에 저장된 변수의 값이 변경되었는데도 캐시에 저장된 값이 갱신되지 않아서 메모리에 저장된 값이 다른 경우가 발생한다.<br.
+	 * 변수 앞에 volatile을 붙이면, 코어가 변수의 값을 읽어올 때 캐시가 아닌 메모리에서 읽어오기 때문에 캐시와 메모리간의 값의 불일치가 해결된다.<br>
+	 * 변수에 volatile을 붙이는 대신에 synchronized블럭을 사용해도 같은 효과를 얻을 수 있다. 쓰레드가 synchronized블럭으로 들어갈 때와 나올 때, 캐시와 메모리간의 동기화가 이루어지기 떄문에 값의 불일치가 해소되기 때문이다.
+	 */
+	class Memo7 {
+
+	}
+
+	/**
+	 * <h5>volatile로 long과 double을 원자화</h5>
+	 */
+	class Memo8 {
 
 	}
 
