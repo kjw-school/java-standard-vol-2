@@ -168,7 +168,20 @@ public class Chapter13_9 {
 	}
 
 	/**
-	 * <h5>volatile로 long과 double을 원자화</h5>
+	 * <h5>volatile로 long과 double을 원자화</h5><br>
+	 * JVM은 데이터를 4 byte(=32bit)단위로 처리하기 때문에, int와 int보다 작은 타입들은 한 번에 릭거나 쓰는 것이 가능하다.<br>
+	 * 즉, 단 하나의 명령어로 읽거나 쓰기가 가능하다는 뜻이다. 하나의 명령어는 더 이상 나눌 수 없는 최소의 작업단위이므로 작업의 중간에 다른 쓰레드가 끼어들 틈이 없다.<br>
+	 * 그러나, 크기가 8 byte인 long과 double타입의 변수는 하나의 명령어로 값을 읽거나 쓸 수 없기 때문에, 변수의 값을 읽는 과정에 다른 쓰레드가 끼어들 여지가 있다.<br>
+	 * 다른 쓰레드가 끼어들지 못하게 하려고 변수를 읽고 쓰는 모든 문장을 synchronized블럭으로 감쌀수도 있지만, 더 간단한 방법이 있다. 변수를 선언할 때 volatile을 붙이는 것이다.<br>
+	 * <small>※ 상수에는 volatile을 붙일 수 없다. 즉, 변수에 final과 volatile을 같이 불일 수 없다. 사실 상수는 변하지 않는 값이므로 멀티쓰레드에 안전(thread-safe)하다. 그래서 volatile를 붙일 필요가 없다.</small><br>
+	 * <pre><code>
+	 *     volatile long sharedVal; // long타입의 변수(8 byte)를 원자화
+	 *     volatile double sharedVal; // double타입의 변수(8 byte)를 원자화
+	 * </code></pre>
+	 * <br>
+	 * volatile은 해당 변수에 대한 읽거나 쓰기가 원자화 된다. 원자화라는 것은 작업을 더 이상 나눌 수 없게 한다는 의미인데, synchronized블럭도 일종의 원자화라고 할 수 있다.<br>
+	 * 즉, synchronized블럭은 여러 문장을 원자화함으로써 쓰레드의 동기화를 구현한 것이라고 보면 된다.<br>
+	 * volatile은 변수의 읽거나 쓰기를 원자화 할 뿐, 동기화하는 것은 아니라는 점에 주의하자. 동기화가 필요할 때 synchronized블럭 대신 volatile을 쓸 수 없다.
 	 */
 	class Memo8 {
 
