@@ -12,7 +12,7 @@ import java.util.Vector;
  * ArrayList는 Object배열을 이용해서 데이터를 순차적으로 저장한다.<br>
  * 배열에 더 이상 저장할공간이 없으면 보다 큰 새로운 배열을 생성해서 기존의 배열에 저장된 내용을 새로 배열로 복사한 다음에 저장된다.
  */
-public class Chapter11_2 {
+public class Chapter11_1_2 {
 
 	/**
 	 * <b>ArrayList의 생성자와 메서드</b><br>
