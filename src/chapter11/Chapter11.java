@@ -52,8 +52,8 @@ public class Chapter11 {
 
 	/**
 	 * <h5>Collection인터페이스</h5><br>
-	 * Collection인터페이스는 컬렉션 클래스에 저장된 데이터를 읽고, 추가하고 삭제하는 등컬렉션을 다루는데 가장 기본적인 메서드들을 정의하고 있다.
-	 * <b>Collection인터페이스에 정의된 메서드</b>
+	 * Collection인터페이스는 컬렉션 클래스에 저장된 데이터를 읽고, 추가하고 삭제하는 등 컬렉션을 다루는데 가장 기본적인 메서드들을 정의하고 있다.<br>
+	 * <b>Collection인터페이스에 정의된 메서드</b><br>
 	 * <table border="1">
 	 * 		<thead>
 	 * 		 	<td>메서드</td>
