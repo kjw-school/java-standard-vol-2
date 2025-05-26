@@ -66,9 +66,49 @@ public class Chapter14_2_3 {
 	}
 
 	/**
-	 * <h5>변환 - map()</h5>
+	 * <h5>변환 - map()</h5><br>
+	 * 스트림의 요소에 저장된 값 중에서 원하는 필드만 뽑아내거나 특정 형태로 변환해야 할 때가 있다. 이 때 사용하는 것이 바로 map()이다.<br>
+	 * 이 메서드의 선언부는 아래와 같으며, 매개변수로 T타입을 R타입으로 변환해서 반환하는 함수를 지정해야 한다.<br>
+	 * <pre><code>
+	 *     Stream<R> map(Function<? super T, ? extends R> mapper)
+	 * </code></pre>
+	 * <br>
+	 * map()역시 중간 연산이므로, 연산 결과는 String을 요소로 하는 스트림이다.그리고 map()도 filter()처럼 하나의 스트림에 여러 번 적용할 수 있다.
+	 *
 	 */
 	class Memo4 {
+
+	}
+
+	/**
+	 * <h5>조회 - peek()</h5><br>
+	 * 연산과 연산 사이에 올바르게 처리되었는지 확인하고 싶다면, peek()를 사용하자.<br>
+	 * forEach()와 달리 스트림의 요소를 소모하지 않으므로 연산 사이에 여러 번 끼워 넣어도 문제가 되지 않는다.
+	 */
+	class Memo5 {
+
+	}
+
+	/**
+	 * <h5>mapToInt(), mapToLong(), mapToDouble()</h5><br>
+	 * map()은 연산의 결과로 Stream&lt;T&gt;타입의 스트림을 반환하는데, 스트림의 요소를 숫자로 변환하는 경우 IntStream과 같은 기본형 스트림으로 변환하는 것이 더 유용할 수 있다.<br>
+	 * Stream&lt;T&gt;타입의 스트림을 기본형으로 변환할 때 사용하는 메서드<br>
+	 * <pre><code>
+	 *     DoubleStream mapToDouble(ToDoubleFunction<? super T> mapper)
+	 *     IntStream mapToInt(ToIntFunction<? super T> mapper)
+	 *     LongStream mapToLong(ToLongFunction<? super T> mapper)
+	 * </code></pre>
+	 * <br>
+	 * IntStream과 같은 기본형 스트림은 아래와 같이 숫자를 다루는데 편리한 메서드들을 제공한다.<br>
+	 * <small>※max()와 min()은 Stream에도 정의되어 있지만, 매개변수로 Comparator를 지정해야 한다는 차이가 있다.</small><br>
+	 * <pre><code>
+	 *     int sum() 스트림의 모든 요소의 총합
+	 *     OptionalDouble average() sum() / (double)count()
+	 *     OptionalInt max() 스트림의 요소 중 제일 큰 값
+	 *     OptionalInt min() 스트림의 요소 중 제일 작은 값
+	 * </code></pre>
+	 */
+	class Memo6 {
 
 	}
 
