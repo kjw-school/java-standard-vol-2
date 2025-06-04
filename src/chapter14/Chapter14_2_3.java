@@ -107,8 +107,28 @@ public class Chapter14_2_3 {
 	 *     OptionalInt max() 스트림의 요소 중 제일 큰 값
 	 *     OptionalInt min() 스트림의 요소 중 제일 작은 값
 	 * </code></pre>
+	 * <br>
+	 * OptionalInt, OptionalDouble 등은 일종의 래퍼 클래스로 각각 int값과 Double값을 내부적으로 가지고 있다.<br>
+	 * 그리고 이 메서드들은 최종연산이기 때문에 호출 후에 스트림이 닫힌다는 점을 주의해야 한다.<br>
+	 * IntStream을 Stream&lt;T&gt;로 변환할 때는 mapToObj()를, Stream&lt;Integer&gt;로 변환할 때는 boxed()를 사용한다.<br>
+	 * 참고로 CharSequence에 정의된 chars()는 String이나 StringBuffer에 저장된 문자들을 IntStream으로 다룰 수 있게 해준다.
 	 */
 	class Memo6 {
+
+	}
+
+	/**
+	 * <h5>flatMap() - Stream&lt;T[]&gt;를 Stream&lt;T&gt;로 변환</h5><br>
+	 * 스트림의 요소가 배열이거나 map()의 연산결과가 배열인 경우, 즉 스트림의 타입이 Stream&lt;T[]&gt;인 경우, Stream&lt;T&gt;로 다루는 것이 더 편리할 때가 있다. 그럴 때는 map()대신 flatMap()을 사용하면 된다.<br>
+	 * map()과 flatMap()의 차이<br>
+	 * <pre><code>
+	 *     Stream<String> map() -> Stream<Stream<String>>
+	 *     Stream<String> flatMap() -> Stream<String>
+	 * </code></pre>
+	 * <br>
+	 * 드물지만, 스트림을 요소로 하는 스트림, 즉 스트림의 스트림을 하나의 스트림으로 합칠 때도 flatMap()을 사용한다.
+	 */
+	class Memo7 {
 
 	}
 
