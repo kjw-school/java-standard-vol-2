@@ -32,9 +32,63 @@ public class Chapter14_2_5 {
 	}
 
 	/**
-	 * <h5>통계 - count(), sum(), average(), max(), min</h5>
+	 * <h5>통계 - count(), sum(), average(), max(), min()</h5><br>
+	 * IOntStream과 같은 기본형 스트림에는 스트림의 요소들에 대한 통계 정보를 얻을 수 있는 메서드들이 있다.<br>
+	 * 그러나 기본형 스트림이 아닌 경우에는 통계와 관련된 메서드들이 아래의 3개뿐이다.<br>
+	 * <small>※기본형 스트림의 min(), max()와 달리 매개변수로 Comparator를 필요로 한다는 차이가 있다.</small><br>
+	 * <pre><code>
+	 *     long count()
+	 *     Optional<T> max(Comparator<? super T> comparator)
+	 *     Optional<T> min(Comparator<? super T> comparator)
+	 * </code></pre>
 	 */
 	class Memo3 {
+
+	}
+
+	/**
+	 * <h5>리듀싱 - reduce()</h5><br>
+	 * reduce()는 이름에서 짐작할 수 있듯이, 스트림의 요소를 줄여나가면서 연산을 수행하고 최종결과를 반환한다.<br>
+	 * 그래서 매개변수의 타입이 BinaryOperator&lt;T&gt;인 것이다.<br>
+	 * 처음 두 요소를 가지고 연산한 결과를 가지고 그 다음 요소와 연산한다. 이 과정에서 스트림의 요소를 하나씩 소모하게 되며, 스트림의 모든 요소를 소모하게 되면 그 결과를 반환한다.<br>
+	 * <pre><code>
+	 *	 Optional<T> reduce(BinaryOperator<T> accumulator)
+	 * </code></pre>
+	 * <br>
+	 * 연산결과의 초기값(identity)을 갖는 reduce()도 있는데, 이 메서드들은 초기값과 스트림의 첫 번째 요소로 연산을 시작한다.<br>
+	 * 스트림의 요소가 하나도 없는 경우, 초기값이 반환되므로, 반환 타입이 Optional&lt;T&gt;가 아니라 T이다.<br>
+	 * <small>※BinaryOperator&lt;T&gt; BiFunction의 자손이며, BiFunction&llt;T,T,T&gt;와 동등하다.</small><br>
+	 * reduce()를 사용하는 방법은 간단하다. 그저 초기값(identity)과 어떤 연산(BinaryOperator)으로 스트림의 요소를 줄여나갈 것인지만 결정하면 된다.
+	 */
+	class Memo4 {
+
+	}
+	
+	static class StreamEx5 {
+
+	}
+
+	/**
+	 * <h5>2.6 collect()</h5><br>
+	 * collect()는 스트림의 요소를 수집하는 최종 연산으로 앞서 배운 리듀싱(reducing)과 유사하다.<br>
+	 * collect()가 스트림의 요소를 수집하려면, 어떻게 수집할 것인가에 대한 방법이 정의되어 있어야 하는데, 이 방법을 정의한 것인 바로 컬렉터(collector)이다.<br>
+	 * 컬렉터는 Collector인터페이스를 구현한 것으로, 직접 구현할 수도 있고 미리 작성된 것을 사용할 수도 있다.<br>
+	 * <pre><code>
+	 *     collect() 스트림의 최종연산, 매개변수로 컬렉터를 필요로 한다.
+	 *     Collector 인터페이스, 컬렉터는 이 인터페이스를 구현해야한다.
+	 *     Collectors 클래스, static메서드로 미리 작성된 컬렉터를 제공한다.
+	 * </code></pre>
+	 * <br>
+	 * collect()는 매개변수의 타입이 Collector인데, 매개변수가 Collector를 구현한 클래스의 객체이어야 한다는 뜻이다.
+	 */
+	class Memo5 {
+
+	}
+
+	/**
+	 * <h5>스트림을 컬렉션과 배열로 변환 - toList(), toSet(), toMap(), toCollection(), toArray()</h5><br>
+	 */
+	class Memo6 {
 
 	}
 
