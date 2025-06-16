@@ -14,50 +14,66 @@ public class Chapter11_1_4 {
 	/**
 	 * 스택은 마지막에 저장한 데이터를 가장 먼저 꺼내게 되는 LIFO(Last In Frist Out)구조로 되어있고, 큐는 처음에 저장한 데이터를 가장 먼저 꺼내게 되는 FIFO(First In First Out)구조로 되어 있다.
 	 * <br>
-	 * 순차적으로 데이터를 추가하고 삭제하는 스택에는 ArrayList와 같은 배열기반의 컬렉션 클래스가 적합하지만, 큐는 데이터를 꺼낼 때 항상
-	 * <br>
-	 * 첫 번째 저장된 데이터를 삭제하므로, ArrayList와 같은 배열기반의 컬렉션 클래스를 사용한다면 데이터를 꺼낼 때 마다 빈 공간을 채우기 위해<br>
-	 * 데이터의 복사가 발생하므로 비효율적이다. 그래서 큐는 ArrayList보다 데이터의 추가/삭제가 쉬운 LinkedList로 구현하는 것이 더 적합하다.<br>
+	 * 순차적으로 데이터를 추가하고 삭제하는 스택에는 ArrayList와 같은 배열기반의 컬렉션 클래스가 적합하지만, 큐는 데이터를 꺼낼 때 항상첫 번째 저장된 데이터를 삭제하므로,<br> 
+	 * ArrayList와 같은 배열기반의 컬렉션 클래스를 사용한다면 데이터를 꺼낼 때 마다 빈 공간을 채우기 위해 데이터의 복사가 발생하므로 비효율적이다.<br> 
+	 * 그래서 큐는 ArrayList보다 데이터의 추가/삭제가 쉬운 LinkedList로 구현하는 것이 더 적합하다.<br>
 	 * <b>Stack의 메서드</b>
-	 * <table>
+	 * <table border="1">
 	 *     <tr>
-	 *         <th style="border: 1px solid white; text-align: center; vertical-align: center;">메서드</th>
-	 *         <th style="border: 1px solid white; text-align: center; vertical-align: center;">설명</th>
+	 *         <th>메서드</th>
+	 *         <th>설명</th>
 	 *     </tr>
 	 *     <tr>
-	 *         <td style="border: 1px solid white;">boolean empty()</td>
-	 *         <td style="border: 1px solid white;">Stack이 비어있는지 알려준다.</td>
+	 *         <td>boolean empty()</td>
+	 *         <td >Stack이 비어있는지 알려준다.</td>
 	 *     </tr>
 	 *     <tr>
-	 *         <td style="border: 1px solid white;">Object peek()</td>
-	 *         <td style="border: 1px solid white;">Stack의 맨 위에 저장된 객체를 반환, pop()과 달리 Stack에서 객체를 꺼내지는 않음.(비었을 때는 EmptyStackException 발생)</td>
+	 *         <td >Object peek()</td>
+	 *         <td >Stack의 맨 위에 저장된 객체를 반환, pop()과 달리 Stack에서 객체를 꺼내지는 않음.(비었을 때는 EmptyStackException 발생)</td>
 	 *     </tr>
 	 *     <tr>
-	 *         <td style="border: 1px solid white;">Object pop()</td>
-	 *         <td style="border: 1px solid white;">Stack의 맨 위에 저장된 객체를 꺼낸다.(비었을 때는 EmptystackException 발생)</td>
+	 *         <td >Object pop()</td>
+	 *         <td >Stack의 맨 위에 저장된 객체를 꺼낸다.(비었을 때는 EmptystackException 발생)</td>
 	 *     </tr>
 	 *     <tr>
-	 *         <td style="border: 1px solid white;">Object push(Object item)</td>
-	 *         <td style="border: 1px solid white;">Stack에 객체(item)를 저장한다.</td>
+	 *         <td >Object push(Object item)</td>
+	 *         <td >Stack에 객체(item)를 저장한다.</td>
 	 *     </tr>
 	 *     <tr>
-	 *         <td style="border: 1px solid white;">int search(Object o)</td>
-	 *         <td style="border: 1px solid white;">Stack에서 주어진 객체(o)를 찾아서 그위치를 반환, 못 찾으면 -1을 반환.(배열과 달리 위치는 0이 아닌 1부터 시작</td>
+	 *         <td >int search(Object o)</td>
+	 *         <td >Stack에서 주어진 객체(o)를 찾아서 그위치를 반환, 못 찾으면 -1을 반환.(배열과 달리 위치는 0이 아닌 1부터 시작</td>
 	 *     </tr>
 	 * </table>
+	 * <br>
 	 * <b>Queue의 메서드</b>
-	 * <br>
-	 * 메서드 | 설명
-	 * <br>
-	 * boolean add(Object o) | 지정된 객체를 Queue에 추가한다. 성공하면 true를 반환, 저장공간이 부족하면 IllegalStateException발생
-	 * <br>
-	 * Object remove() | Queue에서 객체를 꺼내 반환, 비어있으면 NoSuchElementException발생
-	 * <br>
-	 * boolean offer(Object o) | Queue에 객체를 저장, 성공하면 true, 실패하면 false를 반환
-	 * <br>
-	 * Object poll() | Queue에서 객체를 꺼내서 반환, 비어있으면 null을 반환
-	 * <br>
-	 * Object peek() | 삭제없이 요소를 읽어 온다. Queue가 비어있으면 null을 반환
+	 * <table border="1">
+	 *     <thead>
+	 *         <th>메서드</th>
+	 *         <th>설명</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>add(Object o)</td>
+	 *             <td>지정된 객체를 Queue에 추가한다. 성공하면 true를 반환, 저장공간이 부족하면 IllegalStateException 발생</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>Object remove()</td>
+	 *             <td>Queue에서 객체를 꺼내 반환, 비어있으면 NoSuchElementException발생</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>boolean offer(Object o)</td>
+	 *             <td>Queue에 객체를 저장, 성공하면 true, 실패하면 false를 반환</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>Object poll()</td>
+	 *             <td>Queue에서 객체를 꺼내서 반환, 비어있으면 null을 반환</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>Object peek()</td>
+	 *             <td>삭제없이 요소를 읽어 온다. Queue가 비어있으면 null을 반환</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
 	 */
 	class Memo01 {
 	}
