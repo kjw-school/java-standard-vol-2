@@ -63,7 +63,7 @@ public class Chapter14_2_5 {
 	class Memo4 {
 
 	}
-	
+
 	static class StreamEx5 {
 
 	}
@@ -87,8 +87,31 @@ public class Chapter14_2_5 {
 
 	/**
 	 * <h5>스트림을 컬렉션과 배열로 변환 - toList(), toSet(), toMap(), toCollection(), toArray()</h5><br>
+	 * 스트림의 모든 요소를 컬렉션에 수집하려면, Collectors클래스의 toList()와 같은 메서드를 사용하면 된다.<br>
+	 * List나 Set이 아닌 특정 컬렉션을 지정하려면, toCollection()에 해당 컬렉션의 생성자 참조를 매개변수로 넣어주면 된다.<br>
+	 * <pre><code>
+	 *     List<String> names = stuStream.map(Student::getName).collect(Collectors.toList());
+	 *     ArrayList<String> list = names.stream().collect(Collectors.toCollection(ArrayList::new));
+	 * </code></pre>
+	 * <br>
+	 * Map은 키와 값의 쌍으로 저장해야하므로 객체의 어떤 필드를 키로 사용할지와 값으로 사용할지를 지정해줘야 한다.<br>
+	 * <pre><code>
+	 *     Map<String, Person> map = personStream.collect(Collectors.toMap(p -> p.getRegId(), p -> p));
+	 * </code></pre>
+	 * <br>
+	 * 위의 문장은 요소 타입이 Person인 스트림에서 사람의 주민번호(regId)를 키로 하고, 값으로 Person객체를 그대로 저장한다.<br>
+	 * <small>※항등 함수를 의미하는 람다식 'p -> p' 대신 Function.identity()를 쓸 수도 있다.</small><br>
+	 * 스트림에 저장된 요소들을 "T[]"타입의 배열로 변환하려면, toArray()를 사용하면 된다.<br>
+	 * 단, 해당 타입의 생성자 참조를 매개변수로 지정해줘야 한다. 만일 매개변수를 지정하지 않으면 반환되는 배열의 타입은 'Object[]'이다.
 	 */
 	class Memo6 {
+
+	}
+
+	/**
+	 * <h5>통계 - counting(), summingInt(), averagingInt(), maxBy(), minBy()</h5>
+	 */
+	class Memo7 {
 
 	}
 
