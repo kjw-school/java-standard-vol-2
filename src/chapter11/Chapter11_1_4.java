@@ -188,7 +188,7 @@ public class Chapter11_1_4 {
 
 	/**
 	 * <h5>Deque(Double-Ended Queue)</h5><br>
-	 * Queue의 변형으로, 한 쪽 끝으로만 추가/삭제할 수 있는 Queue와 달ㄹ리, Deque(덱, 또는 디큐라고 읽음)은 양쪽 끝에 추가/삭제가 가능하다.<br>
+	 * Queue의 변형으로, 한 쪽 끝으로만 추가/삭제할 수 있는 Queue와 달리, Deque(덱, 또는 디큐라고 읽음)은 양쪽 끝에 추가/삭제가 가능하다.<br>
 	 * Deque의 조상은 Queue이며, 구현체로는 ArrayDeque과 LinkedList 등이 있다.<br>
 	 * 덱은 스택과 큐를 하나로 합쳐놓은 것과 같으며 스택으로 사용할 수도 있고, 큐로 사용할 수도 있다.<br>
 	 * 덱(Deque)의 메서드에 대응하는 큐와 스택의 메서드
@@ -220,7 +220,7 @@ public class Chapter11_1_4 {
 	 *             <td>-</td>
 	 *         </tr>
 	 *         <tr>
-	 *             <td>peekLAst()</td>
+	 *             <td>peekLast()</td>
 	 *             <td>-</td>
 	 *             <td>peek()</td>
 	 *         </tr>

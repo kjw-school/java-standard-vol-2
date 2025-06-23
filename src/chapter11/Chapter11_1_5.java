@@ -78,7 +78,7 @@ public class Chapter11_1_5 {
 	 *     <tbody>
 	 *         <tr>
 	 *             <td>boolean hasMoreElements()</td>
-	 *             <td>읽어 욜 소가 남아있는지 확인한다. 있으면 true, 없으면 false를 반환한다. Iterator의 hasNext()와 같다.</td>
+	 *             <td>읽어 욜 요소가 남아있는지 확인한다. 있으면 true, 없으면 false를 반환한다. Iterator의 hasNext()와 같다.</td>
 	 *         </tr>
 	 *         <tr>
 	 *             <td>Object nextElement()</td>
@@ -99,16 +99,16 @@ public class Chapter11_1_5 {
 	 *             <td>컬렉션에 새로운 객체(o)를 추가한다.(선택적 기능)</td>
 	 *         </tr>
 	 *         <tr>
-	 *             <td>boolean hashNext()</td>
+	 *             <td>boolean hasNext()</td>
 	 *             <td>읽어 올 다음 요소가 남아있는지 확인한다. 있으면 true, 없으면 false를 반환</td>
 	 *         </tr>
 	 *         <tr>
-	 *             <td>boolean hashPrevious()</td>
+	 *             <td>boolean hasPrevious()</td>
 	 *             <td>읽어 올 이전 요소가 남아있는지 확인한다. 있으면 true, 없으면 false를 반환</td>
 	 *         </tr>
 	 *         <tr>
 	 *             <td>Object next()</td>
-	 *             <td>다음 요소를 읽어 온다. previous()를 호출하기 전에 hashPrevious()를 호출해서 읽어 올 요소가 있는지 확인하는 것이 안전한다.</td>
+	 *             <td>다음 요소를 읽어 온다. previous()를 호출하기 전에 hasPrevious()를 호출해서 읽어 올 요소가 있는지 확인하는 것이 안전한다.</td>
 	 *         </tr>
 	 *         <tr>
 	 *             <td>Object previous()</td>
