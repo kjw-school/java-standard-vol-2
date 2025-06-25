@@ -120,29 +120,37 @@ public class Chapter12 {
 	 * <h5>1.3 지네릭 클래스의 객체 생성과 사용</h5>
 	 * 지네릭 클래스 Box&lt;T&gt;가 다음과 같이 정의되어 있다고 가정하자. 이 Box&lt;T&gt;의 객체에는 한 가지 종류, 즉 T타입의 객체만 저장할 수 있다.<br>
 	 * 전과 달리 ArrayList를 이용해서 여러 객체를 저장할 수 있도록 하였다.<br>
-	 * <code><br>
-	 *  class Box<T> {<br>
-	 *     ArrayList&lt;T&gt; list = new ArrayList&lt;T&gt;();<br>
-	 *     <br>
-	 *     void addItem(T item) { list.add(item); }<br>
-	 *     T get(int i) { return list.get(i); }<br>
-	 *     ArrayList<T> getList() { return list; }<br>
-	 *     int size() { return list.size(); }<br>
-	 *     public String toString() { return list.toString(); }<br>
-	 *  }<br>
-	 * </code><br>
-	 * Box&lt;T&gt;의 객체를 생성할 때는 다음과 같이 한다. 참조변수와 생성자에 대입된 타입(매개변수화된 타입)이 일치해야 한다. 일치하지 않으면<br>
-	 * 에러가 발생한다.<br>
-	 * Box&lt;Apple&gt; appleBox = new Box&lt;Apple&gt;(); // OK<br>
-	 * Box&lt;Apple&gt; appleBox = new Box&lt;Grape&gt;(); // 에러<br>
+	 * <pre><code>
+	 *  class Box<T> {
+	 *     ArrayList<T> list = new ArrayList<T>();
+	 *     void addItem(T item) { list.add(item); }
+	 *     T get(int i) { return list.get(i); }
+	 *     ArrayList<T> getList() { return list; }
+	 *     int size() { return list.size(); }
+	 *     public String toString() { return list.toString(); }
+	 *  }
+	 * </code></pre>
+	 * <br>
+	 * Box&lt;T&gt;의 객체를 생성할 때는 다음과 같이 한다. 참조변수와 생성자에 대입된 타입(매개변수화된 타입)이 일치해야 한다. 일치하지 않으면 에러가 발생한다.<br>
+	 * <pre><code>
+	 * 	Box<Apple> appleBox = new Box<Apple>(); // OK
+	 * 	Box<Apple> appleBox = new Box<Grape>(); // 에러
+	 * </code></pre>
+	 * <br>
 	 * 두 타입이 상송관계에 있어도 마찬가지이다. Apple이 Fruit의 자손이라고 가정하자.<br>
-	 * Box&lt;Fruit&gt; appleBox = new Box<Apple&gt;(); // 에러. 대입된 타입이 다르다.<br>
+	 * <pre><code>
+	 *     Box<Fruit> appleBox = new Box<Apple>(); // 에러. 대입된 타입이 다르다.
+	 * </code></pre>
 	 * 단, 두 지네릭 클래스의 타입이 상속관계에 있고, 대입된 타입이 같은 것은 괜찮다. FruitBox는 Box의 자손이라고 가정하자.<br>
-	 * Box&lt;Apple&gt; appleBox = new FruitBox&lt;Apple&gt;(); // OK. 다형성<br>
-	 * JDK1.7부터는 추정이 가능한 경우 타입을 생략할 수 있게 되었다. 참조변수의 타입으로부터 Box가 Apple타입의 객체만 저장한다는 것을 알<br>
-	 * 수 있기 때문에, 생성자에 반복해서 타입을 지정해주지 않아도 되는 것이다. 따라서 아래의 두 문장은 동일하다.<br>
-	 * Box&lt;Apple&gt; appleBox = new Box&lt;Apple&gt;();<br>
-	 * Box&lt;Apple&gt; appleBox = new Box&lt;&gt;(); // OK. JDK1.7부터 생략가능<br>
+	 * <pre><code>
+	 *     Box<Apple> appleBox = new FruitBox<Apple>(); // OK. 다형성
+	 * </code></pre>
+	 * JDK1.7부터는 추정이 가능한 경우 타입을 생략할 수 있게 되었다. 참조변수의 타입으로부터 Box가 Apple타입의 객체만 저장한다는 것을 알 수 있기 때문에,<br>
+	 * 생성자에 반복해서 타입을 지정해주지 않아도 되는 것이다. 따라서 아래의 두 문장은 동일하다.<br>
+	 * <pre><code>
+	 *     Box<Apple> appleBox = new Box<Apple>();
+	 *     Box<Apple> appleBox = new Box<>(); // OK. JDK1.7부터 생략가능
+	 * </code></pre>
 	 */
 	class Memo05{}
 
@@ -188,24 +196,24 @@ public class Chapter12 {
 	/**
 	 * <h5>1.4 제한된 지네릭 클래스</h5><br>
 	 * 지네릭 타입에 'extends'를 사용하면, 특정 타입의 자손들만 대입할 수 있게 제한할 수 있다.<br>
-	 * <code><br>
-	 * 		class FruitBox&lt;T extends Fruit&gt; { // Fruit의 자손만 타입으로 지정가능<br>
-	 * 		ArrayList&lt;T&gt; list = new ArrayList&lt;T&gt;<br>
-	 * 		...<br>
-	 * 		}<br>
-	 * </code><br>
+	 * <pre><code>
+	 * 		class FruitBox<T extends Fruit> { // Fruit의 자손만 타입으로 지정가능
+	 * 			ArrayList<T> list = new ArrayList<T>
+	 * 			...
+	 * 		}
+	 * </code></pre>
 	 * 여전히 한 종류의 타입만 담을 수 있지만, Fruit클래스의 자손들만 담을 수 있다는 제한이 더 추가된 것이다.<br>
-	 * <code><br>
-	 * 		FruitBox&lt;Apple&gt; appleBox = new FruitBox&lt;Apple&gt;(); // OK<br>
-	 * 		FruitBox&lt;Toy&gt; toyBox = new FruitBox&lt;Toy&gt;(); // 에러. Toy는 Fruit의 자손이 아님<br>
-	 * </code><br>
-	 * 다형성에서 조상타입의 참조변수로 자손타읍이 객체를 가리킬 수 있는 것처럼, 매개변수화된 타입의 자손 타입도 가능한 것이다. 타입 매개변수<br>
-	 * T에 Object를 대입하면, 모든 종류의 객체를 저장할 수 있게 된다.<br>
+	 * <pre><code>
+	 * 		FruitBox<Apple> appleBox = new FruitBox<Apple>(); // OK
+	 * 		FruitBox<Toy> toyBox = new FruitBox<Toy>(); // 에러. Toy는 Fruit의 자손이 아님
+	 * </code></pre>
+	 * 다형성에서 조상타입의 참조변수로 자손타입의 객체를 가리킬 수 있는 것처럼, 매개변수화된 타입의 자손 타입도 가능한 것이다.<br>
+	 * 타입 매개변수 T에 Object를 대입하면, 모든 종류의 객체를 저장할 수 있게 된다.<br>
 	 * 만일 클래스가 아니라 인터페이스를 구현해야 한다는 제약이 필요하다면, 이때도 'extends'를 사용한다. 'implements'를 사용하지 않는 다는점에 주의하자<br>
 	 * 클래스 Fruit의 자손이면서 Eatable인터페이스도 구현해야한다면 아래와 같이 '&'기호로 연결한다.<br>
-	 * <code><br>
-	 *     class FruitBox&lt;T extends Fruit & Eatable&gt; { ... }<br>
-	 * </code>
+	 * <pre><code>
+	 *     class FruitBox&lt;T extends Fruit & Eatable&gt; { ... }
+	 * </code></pre>
 	 */
 	class Memo06{}
 
@@ -255,37 +263,37 @@ public class Chapter12 {
 
 	/**
 	 * <h5>와일드 카드</h5>
-	 * <pre>
+	 * <pre><code>
 	 * class Juicer {
-	 *  static Juice makeJuice(FruitBox&lt;Fruit&gt; box) { // <Fruit>으로 지정
+	 *  static Juice makeJuice(FruitBox<Fruit> box) { // <Fruit>으로 지정
 	 *      String tmp = "";
 	 *      for(Fruit f : box.getList()) tmp += f + " ";
 	 *      return new Juice(tmp)
 	 *      }
 	 * }
-	 * </pre>
+	 * </code></pre>
 	 * <br>
-	 * Juicer클래스는 지네릭 클래스가 아닌데다, 지네릭 클래스라고 해도 static메서드에는 타입 매개변수 T를 매개변수에 사용할 수 없으므로 아
-	 * 예 지네릭스를 적용하지 않던가, 위와 같이 타입 매개변수 대신, 특정 타입을 지정해줘야 한다.
+	 * Juicer클래스는 지네릭 클래스가 아닌데다, 지네릭 클래스라고 해도 static메서드에는 타입 매개변수 T를 매개변수에 사용할 수 없으므로 아예 지네릭스를 적용하지 않던가,<br>
+	 * 위와 같이 타입 매개변수 대신, 특정 타입을 지정해줘야 한다.
 	 * <br>
-	 * FruitBox&lt;Fruit&gt; fruitBox = new FruitBox&lt;Fruit&gt;();<br>
-	 * FruitBox&lt;Apple&gt; appleBox = new FruitBox&lt;Apple&gt;();
+	 * <pre><code>
+	 * 		FruitBox<Fruit> fruitBox = new FruitBox<Fruit>();
+	 * 		FruitBox<Apple> appleBox = new FruitBox<Apple>();
+	 *
+	 * 		System.out.println(Juicer.makeJuice(fruitBox)); // OK, FruitBox<Fruit>
+	 * 		System.out.println(Juicer.makeJuice(appleBox)); // 에러, FruitBox<Apple>
+	 * </code></pre>
 	 * <br>
-	 * ...
-	 * <br>
-	 * System.out.println(Juicer.makeJuice(fruitBox)); // OK, FruitBox&lt;Fruit&gt<br>
-	 * System.out.println(Juicer.makeJuice(appleBox)); // 에러, FruitBox&lt;Apple&gt
-	 * <br>
-	 * 이렇게 지네릭 타입을 'FruitBox&lt;Fruit&gt'로 고정해 놓으면, 위의 코ㅓ드에서 알 수 있듯이 'FruitBox&lt;Apple&gt'타입의 객체는 makeJuice()
-	 * 의 매개변수가 될 수 없으므로, 다음과 같이 여러 가지 타입의 매개변수를 갖는 makeJuice()를 만들 수 밖에 없다.
-	 * <br>
-	 * <pre>
+	 * 이렇게 지네릭 타입을 'FruitBox&lt;Fruit&gt'로 고정해 놓으면,<br>
+	 * 위의 코드에서 알 수 있듯이 'FruitBox&lt;Apple&gt'타입의 객체는 makeJuice()의 매개변수가 될 수 없으므로,<br>
+	 * 다음과 같이 여러 가지 타입의 매개변수를 갖는 makeJuice()를 만들 수 밖에 없다.<br>
+	 * <pre><code>
 	 * static Juice makeJuice(FruitBox&lt;Fruit&gt box) {
 	 *  String tmp = "";
 	 *  for(Fruit f : box.getList()) tmp += f + " ";
 	 *  return new Juice(tmp)
 	 * }
-	 * </pre>
+	 * </code></pre>
 	 * <br>
 	 * <pre>
 	 * static Juice makeJuice(FruitBox&lt;Apple&gt box) {
