@@ -272,13 +272,12 @@ public class Chapter14 {
 	 * <h5>조건식에 표현에 사용되는 Predicate</h5><br>
 	 * Predicate는 Function의 변형으로, 반환타입이 boolean이라는 것만 다르다, Predicate는 조건식을 람다식으로 표현하는데 사용된다.<br>
 	 * <small>수학에서 결과로 true 또는 false를 반환하는 함수를 '프레디케이트(predicate)'라고 한다.</small><br>
-	 * <code>
-	 *     Predicate&lt;String&gt; isEmptyStr = s -> s.length() == 0;<br>
-	 *     String s = "";<br>
-	 *
-	 *     if(isEmptyStr.test(s)) // if(s.length == 0)<br>
-	 *     System.,out.println("This is an empty String.");
-	 * </code>
+	 * <pre><code>
+	 *     Predicate&lt;String&gt; isEmptyStr = s -> s.length() == 0;
+	 *     String s = "";
+	 *     if(isEmptyStr.test(s)) // if(s.length == 0)
+	 *     System.out.println("This is an empty String.");
+	 * </code></pre>
 	 */
 	class Memo07 {
 

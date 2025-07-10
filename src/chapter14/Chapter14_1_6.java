@@ -13,10 +13,10 @@ package chapter14;
  * </code></pre>
  * <br>
  * 위 메서드 참조에서 람다식의 일부가 생략되었지만, 컴파일러는 생략된 부분을 우변의 parseInt()메서드의 선어부로부터, 또는 좌변의 Function인터페이스에 지정된 지네릭 타입으로부터 쉽게 알아낼 수 있다.<br>
- * <code><pre>
+ * <pre><code>
  *     BiFunction<String, String, Boolean> f = (s1, s2) -> s1.equals(s2);
  *     BiFunction<String, String, Boolean> f = String::equals; // 메서드 참조
- * </pre></code>
+ * </code></pre>
  * <br>
  * 매개변수 s1과 s2를 생략해버리고 나면 equals만 남는데, 두 개의 String을 받아서 Boolean을 반환하는 equals라는 이름의 메서드는 다른 클래스에도 존재할 수 있기 때문에 equals앞에 클래스 이름은 반드시 필요하다.<br>
  * 메서드 참조를 사용할 수 있는 경우가 한 가지 더 있는데, 이미 생성된 객체의 메서드를 람다식에서 사용한 경우에는 클래스 이름 대신 그 객체의 참조변수를 적어줘야 한다.
