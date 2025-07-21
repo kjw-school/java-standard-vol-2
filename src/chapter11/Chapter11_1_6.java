@@ -36,8 +36,36 @@ public class Chapter11_1_6 {
 
 	/**
 	 * <h5>배열의 비교와 출력 - equals(), toString()</h5><br>
+	 * toString()은 배열의 모든 요소를 문자여롤 편하게 출력할 수 있다.<br>
+	 * toString()은 일차원 배열에만 사용할 수 있으므로, 다차원 배열에는 deepTo String()을 사용해야 한다.<br>
+	 * deepToString()은 배열의 모든 요소를 재귀적으로 접근해서 문자열을 구성하므로 2차원뿐만 아니라 3차원 이상의 배열에도 동작한다.<br>
+	 * equals()는 두 배열에 저장된 모든 요소를 비교해서 같으면 true, 다르면 false를 반환한다. equals()도 일차원 배열에만 사용가능하므로, 다차원 배열의 비교에는 deepEquals()를 사용해야 한다.<br>
+	 * 2차원 String배열을 equals()로 비교하면 배열에 저장된 내용이 같은데도 false를 결과로 얻는다. 다차원 배열은 '배열의 배열'의 형태로 구성하기 때문에 equals()로 비교하면,<br>
+	 * 문자열을 비교하는 것이 아니라 '배열에 저장된 배열의 주소'를 비교하게 된다. 서로 다른 배열은 항상 주소가 다르므로 false를 결과로 얻는다.
 	 */
 	class Memo4 {
+
+	}
+
+	/**
+	 * <h5>배열을 List로 변환 - asList(Object... a)</h5><br>
+	 * asList()는 배열을 List에 담아서 반환한다. 매개변수의 타입이 가변인수라서 배열 생성없이 저장할 요소들만 나열하는 것도 가능하다.<br>
+	 * 한 가지 주의할 점은 asList()가 반환한 List의 크기를 변경할 수 없다는 것이다.<br>
+	 * 즉, 추가 또는 삭제가 불가능하다. 저장된 내용은 변경가능하다. 만일 크기를 변경할 수 있는 List가 필요하다면, 다음과 같이 하면 된다.<br>
+	 * <pre><code>
+	 *     List list = new ArrayList(Arrays.asList(1,2,3,4,5));
+	 * </code></pre>
+	 */
+	class Memo5 {
+
+	}
+
+	/**
+	 * <h5>parallelXXX(), spliterator(), stream()</h5><br>
+	 * 이 외에도 'parallel'로 시작하는 이름의 메서드들이 있는데, 이 메서드들은 보다 빠른 결과를 얻기 위해 여러 쓰레드가 작업을 나누어 처리하도록 한다.<br>
+	 * spliterator()는 여러 쓰레드가 처리할 수 있게 하나의 작업을 여러 작업으로 나누는 Spliterator를 반환하며, stream()은 컬렉션을 스트림으로 변환한다.
+	 */
+	class Memo6 {
 
 	}
 
