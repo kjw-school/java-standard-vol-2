@@ -108,6 +108,48 @@ public class Chapter15_2 {
 
 	/**
 	 * <h5>2.3 FileInputStream과 FileOutputStream</h5><br>
+	 * FileInputStream/FileOutputStream은 파일에 입출력을 하기 위한 스트림이다. 실제 프로그래밍에서 많이 사용되는 스트림 중의 하나이다.<br>
+	 * FileInputStream과 FileOutputStream의 생성자<br>
+	 * <table>
+	 *     <thead>
+	 *         <th>생성자</th>
+	 *         <th>설명</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>FileInputStream(String name)</td>
+	 *             <td>지정된 파일이름(name)을 가진 실제 파일과 연결된 FileInputStream을 생성한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>FileInputStream(File file)</td>
+	 *             <td>파일의 이름이 String이 아닌 File인스턴스로 지정해주어야 하는 점을 제외하고 FileInputStream(String name)와 같다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>FileInputStream(FileDescriptor fdObj)</td>
+	 *             <td>파일 디스크립터(fdObj)로 FileInputStream을 생성한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>FileOutputStream(String name)</td>
+	 *             <td>지정된 파일이름(name)을 가진 실제 파일과의 연결된 FileOutputStream을 생성한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>FileOutputStream(String name, boolean append)</td>
+	 *             <td>지정된 파일이름(name)을 가진 실제 파일과 연결된 FileOutputStream을 생성한다. 두번째 인자인 append를 true로 하면, 출력 시 기존의 파일내용의 마지막에 덧붙인다. false면, 기존의 파일내용을 덮어쓰게 된다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>FileOutputStream(File file)</td>
+	 *             <td>파일의 이름을 String이 아닌 File인스턴스로 지정해주어야 하는 점을 제외하고 FileOutputStream(String name)과 같다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>FileOutputStream(File file, boolean append)</td>
+	 *             <td>파일의 이름을 String이 아닌 File인스턴스로 지정해주어야 하는 점을 제외하고 FileOutputStream(String name, boolean append)과 같다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>FileOutputStream(FileDescriptor fdObj)</td>
+	 *             <td>파일 디스크립터(fdObj)로 FileOutputStream을 생성한다.</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
 	 */
 	class Memo3 {
 
