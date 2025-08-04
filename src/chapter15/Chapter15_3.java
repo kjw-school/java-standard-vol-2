@@ -109,9 +109,135 @@ public class Chapter15_3 {
 
 	/**
 	 * <h5>3.3 DataInputStream과 DataOutputStream</h5><br>
+	 * DataInputStream/DataOutputStream도 각각 FilterInputStream/FilterOutputStream의 자손이며 DataInputStream은 DataInput인터페이스를,<br>
+	 * DataOutputStream은 DataOutput인터페이스를 각각 구현하였기 때문에, 데이터를 읽고 쓰는데 있어서 byte단위가 아닌, 8가지 기본 자료형의 단위로 읽고 쓸 수 있다는 있다는 장점이 있다.<br>
+	 * DataOutputStream이 출력하는 형식은 각 기본 자료형 값을 16진수로 표현하여 저장한다.<br>
+	 * DataInputStream의 생성자와 메서드<br>
+	 * <table>
+	 *     <thead>
+	 *         <th>메서드 / 생성자</th>
+	 *         <th>설명</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>DataInputStream(InputStream in)</td>
+	 *             <td>주어진 InputStream인스턴스를 기반스트림으로 하는 DataInputStream인스턴스를 생성한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>
+	 *                 boolean readBoolean()<br>
+	 *                 byte readByte()<br>
+	 *                 char readChar()<br>
+	 *                 short readShort()<br>
+	 *                 int readInt()<br>
+	 *                 long readLong()<br>
+	 *                 float readFloat()<br>
+	 *                 double readDouble()<br>
+	 *                 int readUnsignedByte()<br>
+	 *                 int readUnsignedShort()
+	 *             </td>
+	 *             <td>각 타입에 맞게 값을 읽어온다. 더 이상 읽을 값이 엇ㅂ으면 EOFException을 발생시킨다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>
+	 *                 void readFully(byte[] b)<br>
+	 *                 void readFully(byte[] b, int off, int len)
+	 *             </td>
+	 *             <td>입력스트림에서 지정된 배열의 크기만큼 또는 지정된 위치에서 len만큼 데이터를 읽어온다. 파일의 끝에 도달하면 EOFException이 발생하고, I/O에러가 발생하면 IOException n이 발생한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>String readUTF()</td>
+	 *             <td>UTF-8형식으로 쓰여진 문자를 읽는다. 더 이상 읽은 값이 없으면 EOFException이 발생한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>static String readUTF(DataInput in)</td>
+	 *             <td>입력스트림(in)에서 UTF-8형식의 유니코드를 읽어온다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>int skipBytes(int n)</td>
+	 *             <td>현재 읽고 있는 위치에서 지정된 숫자(n) 만큼을 건너뛴다.</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 * <br>
+	 * DataOutputStream의 생성자와 메서드<br>
+	 * <table>
+	 *     <thead>
+	 *         <th>메서드 / 생성자</th>
+	 *         <th>설명</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>DataOutputStream(OutputStream out)</td>
+	 *             <td>주어진 OutputStream인스턴스를 기반스트림으로 하는 DataOutputStream인스턴스를 생성한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>
+	 *                 void writeBoolean(boolean b)<br>
+	 *                 void writeByte(int b)<br>
+	 *                 void writeChar(int c)<br>
+	 *                 void writeChars(String s)<br>
+	 *                 void writeShort(int s)<br>
+	 *                 void writeInt(int i)<br>
+	 *                 void writeLong(long l)<br>
+	 *                 void writeFloat(float f)<br>
+	 *                 void writeDouble(double d)
+	 *             </td>
+	 *             <td>각 자료형에 알맞은 값들을 출력한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>void writeUTF(String s)</td>
+	 *             <td>UTF형식으로 문자를 출력한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>void writeChars(String s)</td>
+	 *             <td>주어진 문자열을 출력한다. writeChar(int c)메서드를 여러번 호출한 결과와 같다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>int size()</td>
+	 *             <td>지금까지 DataOutputStream에 쓰여진 byte의 수를 알려 준다.</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
 	 */
 	class Memo3 {
 
 	}
 
+	/**
+	 * <h5>3.4 SequenceInputStream</h5><br>
+	 * SequenceInputStream은 여러 개의 입력스트림을 연속적으로 연결해서 하나의 스트림으로부터 데이터를 읽는 것과 같이 처리할 수 있도록 도와준다.<br>
+	 * SequenceInputStream의 생성자를 제외하고 나머지 작업은 다른 입력스트림과 다르지 않다.<br>
+	 * 큰 파일을 여러 개의 작은 파일로 나누었다가 하나의 파일로 합치는 것과 같은 작업을 수행할 때 사용하면 좋을 것이다.<br>
+	 * <small>※ SequenceInputStream은 다른 보조스트림들과는 달리 FilterInputStream의 자손이 아닌 InputStream을 바로 상속받아서 구현하였다.</small><br>
+	 * SequenceInputStream의 생성자<br>
+	 * <table>
+	 *     <thead>
+	 *         <th>메서드 / 생성자</th>
+	 *         <th>설명</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>SequenceInputStream(Enumeration e)</td>
+	 *             <td>Enumeration에 저장된 순서대로 입력스트림을 하나의 스트림으로 연결한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>SequenceInputStream(InputStream s1, InputStream s2)</td>
+	 *             <td>두 개의 입력스트림을 하나로 연결한다.</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 */
+	class Memo4 {
+
+	}
+
+	/**
+	 * <h5>3.5 PrintStream</h5><br>
+	 */
+	class Memo5 {
+
+	}
+
 }
+
