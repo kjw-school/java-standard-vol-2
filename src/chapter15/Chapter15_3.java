@@ -234,6 +234,260 @@ public class Chapter15_3 {
 
 	/**
 	 * <h5>3.5 PrintStream</h5><br>
+	 * PrintStream은 데이터를 기반스트림에 다양한 형태로 출력할 수 있는 print, println, printf와 같은 메서드를 오버로딩하여 제공한다.<br>
+	 * PrintStream은 데이터를 적절한 문자로 출력하는 것이기 때문에 문자기반 스트림의 역할을 수행한다.<br>
+	 * 그래서 JDK1.1에서 부터 PrintStream보다 향상된 기능의 문자기반 스트림인 PrintWriter가 추가되었으나 그 동안 매우 빈번히 사용되던 System.out이 PrintStream이다 보니 둘 다 사용할 수밖에 없게 되엇다.<br>
+	 * PrintStream과 PrintWriter는 거의 같은 기능을 가지고 있지만 PrintWriter가 PrintStream에 비해 다양한 언어의 문자를 처리하는데 적합하기 때문에 가능하면 PrintWriter를 사용하는 것이 좋다.<br>
+	 * PrintStream의 생성자와 메서드<br>
+	 * <table>
+	 *     <thead>
+	 *         <th>생성자 / 메서드</th>
+	 *         <th>설명</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>
+	 *                 PrintStream(File file)<br>
+	 *                 PrintStream(File file, String csn)<br>
+	 *                 PrintStream(OutputStream out)<br>
+	 *                 PrintStream(OutputStream out, boolean autoFlush)<br>
+	 *                 PrintStream(OutputStream out, boolean autoFlush, String encoding)<br>
+	 *				   PrintStream(String fileName)<br>
+	 *				   PrintStream(String fileName, String csn)
+	 *             </td>
+	 *             <td>
+	 *                 지정된 출력스트림을 기반으로 하는 PrintStream인스턴스를 생성한다.<br>
+	 *                 autoFlush의 값을 true로 하면 println메서드가 호출되거나 개행문자가 출력될 때 자동으로 flush된다. 기본값을 false이다.
+	 *             </td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>boolean checkError()</td>
+	 *             <td>스트림을 flush하고 에러가 발생했는지를 알려 준다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>
+	 *                 void print(boolean b) | void println(boolean b)<br>
+	 *                 void print(char c) | void println(char c)<br>
+	 *                 void print(char[] c) | void println(char[] c)<br>
+	 *                 void print(double d) | void println(double d)<br>
+	 *                 void print(float f) | void println(float f)<br>
+	 *                 void print(int i) | void println(int i)<br>
+	 *                 void print(long l) | void println(long l)<br>
+	 *                 void print(Object o) | void println(Object o)<br>
+	 *                 void print(String s) | void println(String s)
+	 *             </td>
+	 *             <td>인자로 주어진 값을 출력소스에 문자로 출력한다. println메서드는 출력 후 줄바꿈을 하고, print메서드는 줄을 바꾸지 않는다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>void println()</td>
+	 *             <td>줄바꿈 문자(line separator)를 출력함으로써 줄을 바꾼다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>PrintStream printf(String format, Object... args)</td>
+	 *             <td>정형화된(formatted) 출력을 가능하게 한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>protected void setError()</td>
+	 *             <td>작업 중에 오류가 발생했음을 알린다. (setError()를 호출한 후에, checkError()를 호출하면 true를 반환한다.)</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 * <br>
+	 * printf()는 JDK1.5부터 추가된 것으로, C언어와 같이 편리한 형식화된 출력을 지원하게되었다.<br>
+	 * 정수의 출력에 사용할 수 있는 옵션<br>
+	 * <table>
+	 *     <thead>
+	 *         <th>format</th>
+	 *         <th>설명</th>
+	 *         <th>결과(int i = 65)</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>%d</td>
+	 *             <td>10진수(decimal integer)</td>
+	 *             <td>65</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>%o</td>
+	 *             <td>8진수(octal integer)</td>
+	 *             <td>101</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>%x</td>
+	 *             <td>16진수(hexadecimal integer)</td>
+	 *             <td>41</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>%c</td>
+	 *             <td>문자</td>
+	 *             <td>A</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>%s</td>
+	 *             <td>문자열</td>
+	 *             <td>65</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>%5d</td>
+	 *             <td>5자리 숫자, 빈자리는 공백으로 채운다.</td>
+	 *             <td>   65</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>%-5d</td>
+	 *             <td>5자리 숫자, 빈자리는 공백으로 채운다.(왼쪽 정렬)</td>
+	 *             <td>65</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>%05d</td>
+	 *             <td>5자리 숫자, 빈자리는 0으로 채운다.</td>
+	 *             <td>00065</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 * <br>
+	 * 문자열의 출력에 사용될 수 있는 옵션<br>
+	 * <tbody>
+	 *     <thead>
+	 *         <th>format</th>
+	 *         <th>설명</th>
+	 *         <th>결과(String str = "ABC")</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>%s</td>
+	 *             <td>문자열(string)</td>
+	 *             <td>ABC</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>%5s</td>
+	 *             <td>5자리 문자열, 빈자리는 공백으로 채운다.</td>
+	 *             <td>   ABC</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>%-5s</td>
+	 *             <td>5자리 문자열, 빈자리는 공백으로 채운다.(왼쪽 정렬)</td>
+	 *             <td>ABC</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </tbody>
+	 * <br>
+	 * 실수의 출력에 사용될 수 있는 옵션<br>
+	 * <table>
+	 *     <thead>
+	 *         <th>format</th>
+	 *         <th>설명</th>
+	 *         <th>결과(float f = 1234.56789f)</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>%e</td>
+	 *             <td>지수형태표현(exponent)</td>
+	 *             <td>1.234568e+03</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>%f</td>
+	 *             <td>10진수(decimal float)</td>
+	 *             <td>1234.56789</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>%3.1f</td>
+	 *             <td>출력될 자리수를 최소 3자리(소수점포함), 소수점 이하 1자리 (2번째 자리에서 반올림)</td>
+	 *             <td>1234.6</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>%8.1f</td>
+	 *             <td>소수점 이상 최소 6자리, 소수점 이하 1자리, 출력될 자리수를 최소 8자리(소수점포함)를 확보한다. 빈자리는 공백으로 채워진다.(오른쪽 정렬)</td>
+	 *             <td>   1234.6</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>%08.1f</td>
+	 *             <td>소수점이상 최소 6자리, 소수점 이하 1자리, 출력될 자리수를 최소 8자리(소수점포함)를 확보한다. 빈자리는 0으로 채워진다.</td>
+	 *             <td>001234.6</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>%-8.1f</td>
+	 *             <td>소수점이상 최소 6자리, 소수점 이하 1자리, 출력될 자리수를 최소 8자리(소수점포함)를 확보한다. 빈자리는 공백으로 채워진다.(왼쪽 정렬)</td>
+	 *             <td>1234.6</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 * <br>
+	 * 특수문자를 출력하는 옵션<br>
+	 * <table>
+	 *     <thead>
+	 *         <th>format</th>
+	 *         <th>설명</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>\f</td>
+	 *             <td>탭(tab)</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>%n</td>
+	 *             <td>줄바꿈 문자(new line)</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>%%</td>
+	 *             <td>%</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 * <br>
+	 * 날짜와 시간의 출력에 사용할 수 있는 옵션<br>
+	 * <table>
+	 *     <thead>
+	 *         <th>format</th>
+	 *         <th>설명</th>
+	 *         <th>결과</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>
+	 *                 %tR<br>
+	 *                 %tH:%tM
+	 *             </td>
+	 *             <td>시분(24시간)</td>
+	 *             <td>
+	 *                 21:05<br>
+	 *                 21:05
+	 *             </td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>
+	 *                 %tT<br>
+	 *                 %tH:%tM:%tS
+	 *             </td>
+	 *             <td>시분초(24시간)</td>
+	 *             <td>
+	 *                 21:05:33<br>
+	 *                 21:05:33
+	 *             </td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>
+	 *                 %tD<br>
+	 *                 %tm/%td/%ty
+	 *             </td>
+	 *             <td>월일년</td>
+	 *             <td>
+	 *                 11/16/15<br>
+	 *                 11/16/15
+	 *             </td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>
+	 *                 %tF<br>
+	 *                 %tY-%tm-%td
+	 *             </td>
+	 *             <td>년월일</td>
+	 *             <td>
+	 *                 2015-11-16<br>
+	 *                 2015-11-16
+	 *             </td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
 	 */
 	class Memo5 {
 
