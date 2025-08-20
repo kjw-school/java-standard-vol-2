@@ -172,8 +172,84 @@ public class Chapter10_3 {
 
 	/**
 	 * <h5>3.4 LocalDateTime과 ZonedDateTime</h5><br>
+	 * LocalDate와 LocalTime을 합쳐 놓은 것이 LocalDateTime이고, LocalDateTime에 시간대(time zone)을 추가한 것이 ZonedDateTime이다.<br>
+	 * <pre><code>
+	 *     LocalDate + LocalTime -> LocalDateTime
+	 *     LocalDateTime + 시간대 -> ZonedDateTime
+	 * </code></pre>
 	 */
 	class Memo11 {
+
+	}
+
+	/**
+	 * <h5>LocalDate와 LocalTime으로 LocalDateTime만들기</h5><br>
+	 * LocalDate와 LocalTime으로 합쳐서 하나의 LocalDateTime을 만들 수 있다.<br>
+	 * <pre><code>
+	 *     LocalDate date = LocalDate.of(2015, 12, 31);
+	 *     LocalTime time = LocalTime.of(12,34,56);
+	 *
+	 *     LocalDateTime dt = LocalDateTime.of(date, time);
+	 *     LocalDateTime dt2 = date.atTime(time);
+	 *     LocalDateTime dt3 = time.atDate(date);
+	 *     LocalDateTime dt4 = date.atTime(12, 34, 56);
+	 *     LocalDateTime dt5 = time.atDate(LocalDate.of(2015, 12, 31));
+	 *     LocalDateTime dt6 = date.atStartOfDay(); // dt6 = date.atTime(0, 0, 0);
+	 * </code></pre>
+	 */
+	class Memo12 {
+
+	}
+
+	/**
+	 * <h5>LocalDateTime의 변환</h5><br>
+	 * <pre><code>
+	 *     LocalDateTime dt = LocalDateTime.of(2015, 12, 31, 12, 34, 56);
+	 *     LocalDate date = dt.toLocalDate(); // LocalDateTime -> LocalDate
+	 *     LocalTime time = dt.toLocalTime(); // LocalDateTime -> LocalTime
+	 * </code></pre>
+	 */
+	class Memo13 {
+
+	}
+
+	/**
+	 * <h5>LocalDateTime으로 ZonedDateTime만들기</h5><br>
+	 * LocalDateTime에 시간대(time-zone)를 추가하면, ZonedDateTime이 된다.<br>
+	 * 새로운 시간 패키지에서는 ZonedId라는 클래스를 사용한다.<br>
+	 * ZonedId는 일광 절약시간(DST, Daylight Saving Time)을 자동적으로 처리해주므로 더 편리하다.<br>
+	 * LocalDateTime에 atZone()으로 시간대 정보를 추가하면, ZonedDateTime을 얻을 수 있다.<br>
+	 * <small>※사용가능한 ZonedId의 목록은 ZonedId.getAvailableZonedIds()로 얻을 수 있다.</small>
+	 */
+	class Memo14 {
+
+	}
+
+	/**
+	 * <h5>ZoneOffset</h5><br>
+	 * UTC로부터 얼마만큼 떨어져 있는지를 ZonedOffSet으로 표현한다.
+	 */
+	class Memo15 {
+
+	}
+
+	/**
+	 * <h5>OffsetDateTime</h5><br>
+	 * ZonedDateTime은 ZoneId로 구역을 표현하는데, ZonedId가 아닌 ZoneOffset을 사용하는 것이 OffsetDateTime이다.<br>
+	 * ZoneId는 일광절약시간처럼 시간대와 관련된 규칙들을 포함하고 있는데, ZoneOffset은 단지 시간대를 시간의 차이로만 구분한다.<br>
+	 * 컴퓨터에게 일광절약시간처럼 계절별로 시간을 더했다 뺐다하는 것과 같은 행위는 위험하기 그지없다.<br>
+	 * 아무런 변화 없이 일관된 시간체계를 유지하는 것이 더 안전하다.<br>
+	 * 같은 지역 내의 컴퓨터 간에 데이터를 주고받을 때, 전송시간을 표현하기에 LocalDateTime이면, 충분하겠지만, 서로 다른 시간대에 존재하는 컴퓨터간의 통신에는 OffsetDateTime이 필요하다.
+	 */
+	class Memo16 {
+
+	}
+
+	/**
+	 * <h5>3.5 TemporalAdjusters</h5><br>
+	 *
+	 */
+	class Memo17 {
 
 	}
 

@@ -60,8 +60,37 @@ public class Chapter11_1_10 {
 
 	/**
 	 * <h5>1.12 Properties</h5><br>
+	 * Properties는 HashMap의 구버전인 Hashtable을 상속받아 구현한 것으로, Hashtable은 키와 값을 (Object, Object)의 형태로 저장하는데 비해 Properties는 (String, String)의 형태로 저장하는 보다 단순화된 컬렉션클래스이다.<br>
+	 * 주로 애플리케이션의 환경설정과 관련된 속성(property)을 저장하는데 사용되며 데이터를 파일로부터 읽고 쓰는 편리한 기능을 제공한다.<br>
+	 * 데이터를 저장하는데 사용되는 setProperty()는 단순히 Hashtable의 put메서드를 호출할 뿐이다. 그리고 setProperty()는 기존에 같은 키로 저장된 값이 있는 경우 그 값을 Object타입으로 반환하며, 그렇지 않을 때는 null을 반환한다.<br>
+	 * <pre><code>
+	 *     Object setProperty(String key, String value)
+	 * </code></pre>
+	 * <br>
+	 * getProperty()는 Properties에 저장된 값을 읽어오는 일을 하는데, 만일 읽어오려는 키가 존재하지 않으면 지정된 기본값(defaultValue)을 반환한다.<br>
+	 * <pre><code>
+	 *     String getProperty(String key)
+	 *     String getProperty(String key, String defaultValue)
+	 * </code></pre>
+	 * <br>
+	 * list메서드를 이용하면 Properties에 저장된 모든 데이터를 화면 또는 파일에 편리하게 출력할 수 있다.<br>
+	 * <pre><code>
+	 *     void list(PrintStream out)
+	 *     void list(PrintWriter out)
+	 * </code></pre>
+	 * <br>
+	 * System클래스의 getProperties()를 호출하면 시스템과 관련된 속성이 저장된 Properties를 가져올 수 있다.<br>
+	 * 이 중에서 원하는 속성을 getProperty()를 통해 얻을 수 있다.
 	 */
 	class Memo3 {
+
+	}
+
+	/**
+	 * <h5>1.13 Collections</h5><br>
+	 *
+	 */
+	class Memo4 {
 
 	}
 
