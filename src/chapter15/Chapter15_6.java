@@ -56,4 +56,62 @@ public class Chapter15_6 {
 		}
 	}
 
+	/**
+	 * <h5>6.2 표준입출력의 대상변경 - setOut(), setErr(), setIn()</h5><br>
+	 * 초기에는 System.in, System.out, System.er의 입출력대상이 콘솔화면이지만, setIn(), setOut(), setErr()를 사용하면 입출력을 콘솔 이외에 다른 입출력대상으로 변경하는 것이 가능하다.<br>
+	 * <table>
+	 *     <thead>
+	 *         <th>메서드</th>
+	 *         <th>설명</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>static void setOut(PrintStream out)</td>
+	 *             <td>System.out의 출력을 지정된 PrintStream으로 변경</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>static void setErr(PrintStream err)</td>
+	 *             <td>System.err의 출력을 지정한 PrintStream으로 변경</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>static void setIn(InputStream in)</td>
+	 *             <td>System.in의 입력을 지정한 InputStream으로 변경</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 * <br>
+	 * 그러나 JDK1.5부터 Scanner클래스가 제공되면서 System.in으로부터 데이터를 입력받아 작업하는 것이 편리해졌다.<br>
+	 * System.out, System.err 모두 출력대상이 콘솔이기 때문에 System.out대신 System.err을 사용해도 같은 결과를 얻는다.
+	 */
+	class Memo2 {
+
+	}
+
+	/**
+	 * <h5>6.3 RandomAccessFile</h5><br>
+	 * 자바에서는 입력과 출력이 각각 분리되어 별도로 작업을 하도록 설계되어 있는데, RandomAccessFile만은 하나의 클래스로 파일에 대한 입력과 출력을 모두 할 수 있도록 되어있다.<br>
+	 * InputStream이나 OutputStream으로부터 상속받지 않고, DataInput인터페이스와 DataOutput인터페이스를 구현했기 때문에 읽기와 쓰기가 모두 가능하다.<br>
+	 * 사실 DataInputStream은 DataInput인터페이스를, DataOutputStream은 DataOutput인터페이스를 구현했다. 이 두 클래스의 기본 자료형(primitive data type)을 읽고 쓰기위한 메서드들은 모두 이 2개의 인터페이스에 정의되어있는 것들이다.<br>
+	 * 따라서, RandomAccessFile클래스도 DataInputStream과 DataOutputStream처럼, 기본자료형 단위로 데이터를 읽고 쓸 수 있다.<br>
+	 * 그래도 역시 RandomAccessFile클래스의 가장 큰 장점은 파일의 어느 위치에나 읽기/쓰기가 가능하다는 것이다. 다른 입출력 클래스들은 입출력소스에 순차적으로 읽기/쓰기를 하기 때문에 읽기와 쓰기가 제한적인데 반해서 RandomAccessFile클래스는 파일에 읽고 쓰는 위치에 제한이 없다.<br>
+	 * 이것을 가능하게 하기 위해서 내부적으로 파일 포인터를 사용하는데, 입출력 시에 작업이 수행되는 곳이 바로 파일 포인터가 위치한 곳이 된다.<br>
+	 * 파일 포인터의 위치는 파일의 제일 첫 부분(0부터 시작)이며, 읽기 또는 쓰기를 수행할 때 마다 작업이 수행된 다음 위치로 이동하게 된다.<br>
+	 * 순차적으로 읽기나 쓰기를 한다면, 파일 포인터를 이동시키기 위해 별도의 작업이 필요하지 않지만, 파일의 임의의 위치에 있는 내용에 대해서 작업하고자 한다면, 먼저 파일 포인터를 원하는 위치로 옮긴 다음 작업을 해야 한다.<br>
+	 * 현재 작업 중인 파일에서 파일 포인터의 위치를 알고 싶을 때는 getFilePointer()를 사용하면 되고, 파일 포인터의 위치를 옮기기 위해서는 seek(long pos)나 skipBytes(int n)를 사용하면 된다.<br>
+	 * <small>※사실 모든 입출력에 사용되는 클래스들은 입출력 시 다음 작업이 이루어질 위치를 저장하고 있는 포인터를 내부적으로 갖고 있다. 다만 내부적으로만 사용될 수 있기 때문에 작업자가 포인터의 위치를 마음대로 변경할 수 없다는 것이 RandomAccessFile과 다른 점이다.</small>
+	 */
+	class Memo3 {
+
+	}
+
+	/**
+	 * <h5>6.4 File</h5><br>
+	 * 자바에서는 File클래스를 통해서 파일과 디렉토리를 다룰 수 있도록 하고 있다. 그래서 File인스턴스는 파일 일 수도 있고 디렉토리일 수도 있다.<br>
+	 * File의 생성자와 경로와 관련된 메서드<br>
+	 *
+	 */
+	class Memo4 {
+
+	}
+
 }

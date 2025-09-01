@@ -247,9 +247,129 @@ public class Chapter10_3 {
 
 	/**
 	 * <h5>3.5 TemporalAdjusters</h5><br>
-	 *
+	 * 자주 쓰일만한 날짜 계산들을 대신 해주는 메서드를 정의해놓은 것이 TemporalAdjusters클래스이다.<br>
+	 * TemporalAdjusters의 메서드<br>
+	 * <table>
+	 *     <thead>
+	 *         <th>메서드</th>
+	 *         <th>설명</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>firstDayOfNextYear()</td>
+	 *             <td>다음 해의 첫날</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>firstDayOfNextMonth()</td>
+	 *             <td>다음 달의 첫 날</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>firstDayOfYear()</td>
+	 *             <td>올 해의 첫 날</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>firstDayOfMonth()</td>
+	 *             <td>이번 달의 첫 날</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>lastDayOfYear()</td>
+	 *             <td>올 해의 마지막 날</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>lastDayOfMonth()</td>
+	 *             <td>이번 달의 마지막 날</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>firstInMonth (DayOfWeek dayOfWeek)</td>
+	 *             <td>이번 달의 첫 번째 ?요일</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>lastInMonth (DayOfWeek dayOfWeek)</td>
+	 *             <td>이번 달의 마지막 ?요일</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>previous (DayOfWeek dayOfWeek)</td>
+	 *             <td>지난 ?요일(당일 미포함)</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>previousOrSame (DayOfWeek dayOfWeek)</td>
+	 *             <td>지난 ?요일(당일 포함)</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>next (DayOfWeek dayOfWeek)</td>
+	 *             <td>다음 ?요일(당일 미포함)</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>nextOrSame (DayOfWeek dayOfWeek)</td>
+	 *             <td>다음 ?요일(당일 포함)</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>dayOfWeekInMonth(int ordinal, DayOfWeek dayOfWeek)</td>
+	 *             <td>이번 달의 n번째 ?요일</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
 	 */
 	class Memo17 {
+
+	}
+
+	/**
+	 * <h5>3.6 Period와 Duration</h5><br>
+	 * Period는 날짜의 차이를, Duration은 시간의 차이를 계산하기 위한 것이다.<br>
+	 * <pre><code>
+	 *     날짜 - 날짜 = Period
+	 *     시간 - 시간 = Duration
+	 * </code></pre>
+	 */
+	class Memo18 {
+
+	}
+
+	/**
+	 * <h5>between()</h5><br>
+	 * 예를 들어 두 날짜 date1과 date2의 차이를 나타내는 Period는 between()으로 얻을 수 있다.<br>
+	 * <pre><code>
+	 *     LocalDate date1 = LocalDate.of(2014, 1, 1);
+	 *     LocalDate date2 = LocalDate.of(2015, 12, 31);
+	 *
+	 *     Period pe = Period.between(date1, date2);
+	 * </code></pre>
+	 * <br>
+	 * date1이 date2보다 날짜 상으로 이전이면 양수로, 이후면 음수로 Period에 저장된다.<br>
+	 * 그리고 시간차이를 구할 때는 Duration을 사용한다는 것을 제외하고는 Period와 똑같다.<br>
+	 * <pre><code>
+	 *     LocalTime time1 = LocalTime.of(00, 00, 00);
+	 *     LocalTime time2 = LocalTime.of(12, 34, 56); // 12시 34분 56초
+	 *
+	 *     Duration du = Duration.between(time1, time2);
+	 * </code></pre>
+	 */
+	class Memo19 {
+
+	}
+
+	/**
+	 * <h5>between()과 until()</h5><br>
+	 * until()은 between()과 거의 같은 일을 한다. between()은 static메서드이고, until()은 인스턴스 메서드라는 차이가 있다.
+	 */
+	class Memo20 {
+
+	}
+
+	/**
+	 * <h5>사칙연산, 비교연산, 기타 메서드</h5><br>
+	 * plus(), minus()외에 곱셈과 나눗셈을 위한 메서드도 있다.<br>
+	 * Period에 나눗셈을 위한 메서드가 없는데, Period는 날짜의 기간을 표현하기 위한 것이므로 나눗셈을 위한 메서드가 별로 유용하지 않기 때문에 넣지 않는 것이다.
+	 */
+	class Memo21 {
+
+	}
+
+	/**
+	 * <h5>3.7 파싱과 포멧</h5><br>
+	 */
+	class Memo22 {
 
 	}
 
