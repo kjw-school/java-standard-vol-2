@@ -88,9 +88,27 @@ public class Chapter11_1_10 {
 
 	/**
 	 * <h5>1.13 Collections</h5><br>
-	 *
+	 * Collections는 컬렉션과 관련된 메서드를 제공한다.<br>
+	 * <small>※ java.util.Collection은 인터페이스이고, java.util.Collections는 클래스이다.</small>
 	 */
 	class Memo4 {
+
+	}
+
+	/**
+	 * <h5>컬렉션의 동기화</h5><br>
+	 * 멀티 쓰레드(multi-thread) 프로그래밍에서는 하나의 객체를 여러 쓰레드가 동시에 접근할 수 있기 때문에 데이터의 일관성(consistency)을 유지하기 위해서는 공유되는 객체에 동기화(synchronization)가 필요하다.<br>
+	 * Vector와 Hashtable과 같은 구버젼(JDK1.2 이전)의 클래스들은 자체적으로 동기화 처리가 되어 있는데, 멀티쓰레드 프로그래밍이 아닌 경우에는 불필요한 기능이 되어 성능을 떨어뜨리는 요인이 된다.<br>
+	 * 새로 추가된 ArrayList와 HashMap과 같은 컬렉션은 동기화를 자체적으로 처리하지 않고 필요한 경우에만 java.util.Collections클래스의 동기화 메서드를 이용해서 동기화처리가 가능하도록 변경하였다.
+	 */
+	class Memo05 {
+
+	}
+
+	/**
+	 * <h5>변경불가 컬렉션 만들기</h5>
+	 */
+	class Memo06 {
 
 	}
 

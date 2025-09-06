@@ -368,8 +368,49 @@ public class Chapter10_3 {
 
 	/**
 	 * <h5>3.7 파싱과 포멧</h5><br>
+	 * 날짜와 시간을 원하는 형식으로 출력하고 해석(파싱, parsing)하는 방법<br>
+	 * 형식화(formatting)와 관련된 클래스들은 java.time.format패키지에 들어있는데, 이 중에서 DateTimeFormatter가 핵심이다.<br>
+	 * 이 클래스에는 자주 쓰이는 다양성 형식들을 기본적으로 정의하고 있으며, 그 외의 형식이 필요하다면 직접 정의해서 사용할 수도 있다.
 	 */
 	class Memo22 {
+
+	}
+
+	/**
+	 * <h5>로케일에 종속된 형식화</h5><br>
+	 * DateTimeFormatter의 static메서드 ofLocalizedDate(), ofLocalizedTime(), ofLocalizedDateTime()은 로케일(locale)에 종속적인 포맷터를 생성한다.
+	 */
+	class Memo23 {
+
+	}
+
+	/**
+	 * <h5>출력형식 직접 정의하기</h5><br>
+	 * DateTimeFormatter의 ofPattern()으로 원하는 출력형식을 직접 작성할 수도 있다.<br>
+	 * <pre><code>
+	 *     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+	 * </code></pre>
+	 */
+	class Memo24 {
+
+	}
+
+	/**
+	 * <h5>문자열을 날짜와 시간으로 파싱하기</h5><br>
+	 * 문자열을 날짜 또는 시간으로 변환하려면 static메서드 parse()를 사용하면 된다.<br>
+	 * 날짜와 시간을 표현하는데 사용되는 클래스에는 이 메서드가 거의 다 포함되어 있다.<br>
+	 * parse()는 오버로딩된 메서드가 여러 개 있는데, 그중에서 다음의 2개가 자주 쓰인다.<br>
+	 * <pre><code>
+	 *     static LocalDateTime parse(CharSequence text)
+	 *     static LocalDateTime parse(CharSequence text, DateTimeFormatter formatter)
+	 * </code></pre>
+	 * <br>
+	 * DateTimeFormatter에 상수로 정의된 형식을 사용할 때는 다음과 같이 한다.<br>
+	 * <pre><code>
+	 *     LocalDate date = LocalDate.parse("2016-01-02", DateTimeFormatter.ISO_LOCAL_DATE);
+	 * </code></pre>
+	 */
+	class Memo25 {
 
 	}
 
