@@ -106,9 +106,104 @@ public class Chapter11_1_10 {
 	}
 
 	/**
-	 * <h5>변경불가 컬렉션 만들기</h5>
+	 * <h5>변경불가 컬렉션 만들기</h5><br>
+	 * 컬렉션에 저장된 데이터를 보호하기 위해서 컬렉션을 변경할 수 없게, 즉 읽기전용으로 만들어야할 때가 있다.<br>
+	 * 주로 멀티 쓰레드 프로그래밍에서 여러 쓰레드가 하나의 컬렉션을 공유하다보면 데이터가 손상될 수 있는데, 이를 방지하려면 아래의 메서드들을 이용하자.<br>
+	 * <pre><code>
+	 *     static Collection unmodifiableCollection(Collection c)
+	 *     static List unmodifiableList(List list)
+	 * </code></pre>
 	 */
 	class Memo06 {
+
+	}
+
+	/**
+	 * <h5>한 종류의 객체만 저장하는 컬렉션 만들기</h5><br>
+	 * 컬렉션에 모든 종류의 객체를 저장할 수 있다는 것은 장점이기도하고 단점이기도 하다.<br>
+	 * 대부분의 경우 한 종류의 객체를 저장하며, 컬렉션에 저장된 종류의 객체만 저장할 수 있도록 제한하고 싶을 떄 아래의 메서드를 사용한다.<br>
+	 * <pre><code>
+	 *     static Collection checkedCollection(Collection c, Class type)
+	 *     static List checkedList(List list, Class type)
+	 *     static Set checkedSet(SEt s, Class type)
+	 *     static Map checkedMap(Map m, Class keyType, Class valueType)
+	 *     static Queue checkedQueue(Queue queue, Class type)
+	 *     static NavigableSet checkedNavigableSet(NavigableSet s, Class type)
+	 *     static SortedSet checkedSortedSet(SortedSet s, Class type)
+	 *	   static NavigableMap checkedNavigableMap(NavigableMap m, Class keyType, Class valueType)
+	 *	   static SortedMap checkedSortedMap(SortedMap m, Class keyType, Class valueType)
+	 * </code></pre>
+	 * <br>
+	 * 사용방법은 다음과 같이 두 번째 매개변수에 저장할 객체의 클래스를 지정하면 된다.<br>
+	 * <pre><code>
+	 *     List list = new ArrayList();
+	 *     List checkedList = checkedList(list, String,class); // String만 저장가능
+	 *     checkedList.add("abc"); // OK
+	 *     checkedList.add(new Integer(3)); // 에러. ClassCastException발생
+	 * </code></pre>
+	 * <br>
+	 * 컬렉션에 저장할 요소의 타입을 제한하는 것은 호환성 때문이다.
+	 */
+	class Memo07 {
+
+	}
+
+	/**
+	 * <h5>1.14 컬렉션 클래스 정리 & 요약</h5><br>
+	 * 컬렉션 클래스의 특징<br>
+	 * <table>
+	 *     <thead>
+	 *         <th>컬렉션</th>
+	 *         <th>특징</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>ArrayList</td>
+	 *             <td>배열기반, 데이터의 추가와 삭제에 불리, 순차적인 추가삭제는 제일 빠름, 임의의 요소에 대한 접근성(accessibility)이 뛰어남</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>LinkedList</td>
+	 *             <td>연결기반, 데이터의 추가와 삭제에 유리, 임의의 요소에 대한 접근성이 좋지 않다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>HashMap</td>
+	 *             <td>배열과 연결이 결합된 형태, 추가, 삭제, 검색, 접근성이 모두 뛰어남. 검색에는 최고성능을 보인다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>TreeMap</td>
+	 *             <td>연결기반, 정렬과 검색(특히 범위검색)에 적합. 검색성능은 HashMap보다 떨어짐.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>Stack</td>
+	 *             <td>Vector를 상속받아 구현</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>Queue</td>
+	 *             <td>LinkedList가 Queue인터페이스를 구현</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>Properties</td>
+	 *             <td>Hashtable을 상속받아 구현</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>HashSet</td>
+	 *             <td>HashMap을 이용해서 구현</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>TreeSet</td>
+	 *             <td>TreeMap을 이용해서 구현</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>
+	 *                 LinkedHashMap<br>
+	 *                 LinkedHashSet
+	 *             </td>
+	 *             <td>HashMap과 HashSet에 저장순서유지기능을 추가</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 */
+	class Memo08 {
 
 	}
 
