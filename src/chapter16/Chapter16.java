@@ -60,8 +60,202 @@ public class Chapter16 {
 
 	/**
 	 * <h5>1.3 InetAddress</h5><br>
+	 * 자바에서는 IP주소를 다루기 위한 클래스로 InetAddress를 제공하며 다음과 같은 메서드가 정의되어 있다.<br>
+	 * InetAddress의 메서드<br>
+	 * <table>
+	 *     <thead>
+	 *         <th>메서드</th>
+	 *         <th>설명</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>byte[] getAddress()</td>
+	 *             <td>IP주소를 byte배열로 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>
+	 *                 static InetAddress[]<br>
+	 *                 getAllByName(String host)
+	 *             </td>
+	 *             <td>도메인명(host)에 지정된 모든 호스트의 IP주소를 배열에 담아 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>static InetAddress(byte[] addr)</td>
+	 *             <td>byte배열을 통해 IP주소를 얻는다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>
+	 *                 static InetAddress<br>
+	 *                 getByName(String host)
+	 *             </td>
+	 *             <td>도메인명(host)을 통해 IP주소를 얻는다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>string getCanonicalHostName()</td>
+	 *             <td>FQDN(fully qualified domain name)을 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>String getHostAddress()</td>
+	 *             <td>호스트의 IP주소를 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>String getHostName()</td>
+	 *             <td>호스트의 이름을 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>static InetAddress getLocalHost()</td>
+	 *             <td>지역호스트의 IP주소를 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>boolean isMulticastAddress()</td>
+	 *             <td>IP주소가 멀티캐스트 주소인지 알려준다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>boolean isLoopbackAddress()</td>
+	 *             <td>IP주소가 loopback 주소(127.0.0.1)인지 알려준다.</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
 	 */
 	class Memo3 {
+
+	}
+
+	/**
+	 * <h5>1.4 URL(Uniform Resource Locator)</h5><br>
+	 * URL은 인터넷에 존재하는 여러 서버들이 제공하는 자원에 접근할 수 있는 주소를 표현하기 위한 것으로 '프로토콜://호스트명:포트번호/경로명/파일명?쿼리스트링#참조'의 형태로 이루어져 있다.<br>
+	 * <small>※ URL에서 포트번호, 쿼리, 참조는 생략할 수 있다.</small><br>
+	 * <pre><code>
+	 *     http://www.codechobo.com:80/sample/hello.html?referer=codechobo#index1
+	 *
+	 *     프로토콜 - 자원에 접근하기 위해 서버와 통신하는데 사용되는 통신규약(http)
+	 *     호스트명 - 자원을 제공하는 서버의 이름(www.codechobo.com)
+	 *     포트번호 - 통신에 사용되는 서버의 포트번호(80)
+	 *     경로명 - 접근하려는 자원이 저장된 서버상의 위치(/sample/)
+	 *     파일명 - 접근하려는 자원의 이름(hello.html)
+	 *     쿼리(query) - URL에서 '?'이후의 부분(referer = codechobo)
+	 *     참조(anchor) - URL에서 '#'이후의 부분(index1)
+	 * </code></pre>
+	 * <br>
+	 * <small>※ HTTP프로토콜에서는 80번 포트를 사용하기 때문에 URL에서 포트번호를 생략하는 경우 80으로 간주한다.</small><br>
+	 * 자바에서는 URL을 다루기 위한 클래스로 URL클래스를 제공하며 다음과 같은 메서드가 정의되어 있다.<br>
+	 * URL의 메서드<br>
+	 * <table>
+	 *     <thead>
+	 *         <th>메서드</th>
+	 *         <th>설명</th>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>URL(String spec)</td>
+	 *             <td>지정된 문자열 정보의 URL객체를 생성한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>URL(String protocol, String host, String file)</td>
+	 *             <td>지정된 값으로 구성된 URL 객체를 생성한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>URL(String protocol, String host, int port, String file)</td>
+	 *             <td>지정된 값으로 구성된 URL 객체를 생성한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>String getAuthority()</td>
+	 *             <td>호스트명과 포트를 문자열로 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>Object getContent()</td>
+	 *             <td>URL의 Content객체를 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>Object getContent(Class[] classes)</td>
+	 *             <td>URL의 Content객체를 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>int getDefaultPort()</td>
+	 *             <td>URL의 기본 포트를 반환한다. (http는 80)</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>String getFile()</td>
+	 *             <td>파일명을 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>String getHost()</td>
+	 *             <td>호스트명을 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>String getPath()</td>
+	 *             <td>경로명을 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>int getPort()</td>
+	 *             <td>포트를 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>String getProtocol()</td>
+	 *             <td>프토콜을 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>String getQuery()</td>
+	 *             <td>쿼리를 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>String getRef()</td>
+	 *             <td>참조(anchor)를 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>String getUserInfo()</td>
+	 *             <td>사용자정보를 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>URLConnection openConnection()</td>
+	 *             <td>URL과 연결된 URLConnection을 얻는다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>URLConnection openConnection(Proxy proxy)</td>
+	 *             <td>URL과 연결된 URLConnection을 얻는다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>InputStream openStream()</td>
+	 *             <td>URL과 연결된 URlConnection의 InputStream을 얻는다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>boolean sameFile(URL other)</td>
+	 *             <td>두 URL이 서로 같은 것인지 알려준다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>
+	 *                 void set(String protocol, String host, int port, String file, String ref)
+	 *             </td>
+	 *             <td>URL 객체의 속성을 지정된 값으로 설정한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>void set(String protocol, String host, int port, String authority, String userInfo, String path, String query, String ref)</td>
+	 *             <td>URL 객체의 속성을 지정된 값으로 설정한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>String toExternalForm()</td>
+	 *             <td>URL을 문자열로 변환하여 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>URI toURI()</td>
+	 *             <td>URL을 URI로 변환하여 반환한다.</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 */
+	class Memo4 {
+
+	}
+
+	/**
+	 * <h5>1.5 URLConnection</h5><br>
+	 * URLConnection은 어플리케이션과 URL간의 통신연결을 나타내는 클래스의 최상위 클래스로 추상클래스이다.<br>
+	 * URLConnection을 상속받아 구현한 클래스로는 HttpURLConnection과 JarURLConnection이 있으며 URL의 프로토콜이 http프로토콜이라면 openConnection()은 HttpURLConnection을 반환한다.<br>
+	 * URLConnection을 사용해서 연결하고자하는 자원에 접근하고 읽고 쓰기를 할 수 있다.<br>
+	 * <small>※ openConnection()은 URL클래스의 메서드이다.</small><br>
+	 * <small>※ HttpURLConnection은 sun.net.www.protocol.http패키지에 속해있다.</small>
+	 */
+	class Memo5 {
 
 	}
 
