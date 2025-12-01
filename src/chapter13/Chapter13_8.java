@@ -414,8 +414,8 @@ public class Chapter13_8 {
 
 	/**
 	 * 만일 suspended의 값이 true라면, 즉 잠시 실행을 멈추게 한 상태라면, 쓰레드는 주어진 실행시간을 그저 while문을 의미없이 돌면서 낭비하게 될 것이다.<br>
-	 * 이런 상황을 '바쁜 대기상태(bust-waiting)'이라고 한다.<br>
-	 * 그러나 yield()을 호출해서 남은 실행시간을 while문에서 낭비하지 않고 다른 쓰레등게 양보(yield)하게 되므로 더 효울적이다.
+	 * 이런 상황을 '바쁜 대기상태(busy-waiting)'이라고 한다.<br>
+	 * 그러나 yield()을 호출해서 남은 실행시간을 while문에서 낭비하지 않고 다른 쓰레드에게 양보(yield)하게 되므로 더 효울적이다.
 	 */
 	static class TheadEx07 {
 		public static void main(String[] args) {

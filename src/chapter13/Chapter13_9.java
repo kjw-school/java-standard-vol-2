@@ -15,16 +15,16 @@ public class Chapter13_9 {
 
 	/**
 	 * <h5>9.1 synchronized를 이용한 동기화</h5><br>
-	 * <code>
-	 *     <b>1. 메서드 전체를 임계 영역으로 지정</b><br>
-	 *     public <b>synchronized</b> void calcSum() {<br>
+	 * <pre><code>
+	 *     1. 메서드 전체를 임계 영역으로 지정
+	 *     public synchronized void calcSum() {
 	 *         // ...
-	 *     }<br>
-	 *     <b>2. 특정한 영역을 임계 영역으로 지정</b><br>
-	 *     <b>synchronized(객체의 참조변수)</b> {<br>
-	 *         // ...<br>
 	 *     }
-	 * </code>
+	 *     2. 특정한 영역을 임계 영역으로 지정
+	 *     synchronized(객체의 참조변수) {
+	 *         // ...<
+	 *     }
+	 * </code></pre>
 	 * <br>
 	 * 첫 번째 방법은 메서드 앞에 synchronized를 붙이는 것인데, synchronized를 붙이면 메서드 전체가 임계 영역으로 설정된다.<br>
 	 * 쓰레드는 synchronized메서드가 호출된 시점부터 해당 메서드가 포함된 객체의 lock을 얻어 작업을 수행하다가 메서드가 종료되면 lock을 반환한다.<br>
