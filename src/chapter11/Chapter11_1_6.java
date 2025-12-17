@@ -36,7 +36,7 @@ public class Chapter11_1_6 {
 
 	/**
 	 * <h5>배열의 비교와 출력 - equals(), toString()</h5><br>
-	 * toString()은 배열의 모든 요소를 문자여롤 편하게 출력할 수 있다.<br>
+	 * toString()은 배열의 모든 요소를 문자열로 편하게 출력할 수 있다.<br>
 	 * toString()은 일차원 배열에만 사용할 수 있으므로, 다차원 배열에는 deepTo String()을 사용해야 한다.<br>
 	 * deepToString()은 배열의 모든 요소를 재귀적으로 접근해서 문자열을 구성하므로 2차원뿐만 아니라 3차원 이상의 배열에도 동작한다.<br>
 	 * equals()는 두 배열에 저장된 모든 요소를 비교해서 같으면 true, 다르면 false를 반환한다. equals()도 일차원 배열에만 사용가능하므로, 다차원 배열의 비교에는 deepEquals()를 사용해야 한다.<br>
