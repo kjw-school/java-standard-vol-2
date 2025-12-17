@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="288752ca-1459-4457-af91-157084e530da" name="Changes" comment="Fix">
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.agent.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.edit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;kjw1995&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/kjw-school/java-standard-vol-2.git&quot;,
+    &quot;accountId&quot;: &quot;3ea39b83-5ebe-4d7d-b41f-1f007ab25a22&quot;
+  }
+}</component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="true" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2r4RmRmO2e1shHXSU1BGCREmsp3" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Chapter10$CalendarEx1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter10_3$Ex01.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter10_4$Ex01.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter11_1_7$Ex1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter11_3$ArrayListLinkedListTest2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter11_4$StackQueueEx.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_3$ThreadEx1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_3$ThreadEx2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_4$ThreadEx1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_4$ThreadEx2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_4$ThreadEx3.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_4$ThreadEx4.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_5$TheadEx1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_6$ThreadEx1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_7$ThreadEx01.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_7$ThreadEx02.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_8$JoinEx.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_8$JoinEx4.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_8$TheadEx03.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_8$TheadEx04.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_8$TheadEx07.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_8$ThreadEx01.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_8$ThreadEx02.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_8$ThreadEx03.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_8$ThreadEx05.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter13_8$ThreadEx06.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter14$LambdaEx02.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter14$LambdaEx03.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chapter14$LambdaEx1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/admin/OneDrive/Desktop/project/java-standard-vol-2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Application.Chapter11_1_7$Ex1">
+    <configuration name="Chapter10$CalendarEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="chapter10.Chapter10$CalendarEx1" />
+      <module name="java-standard-vol-2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="chapter10.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Chapter10_3$Ex01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="chapter10.Chapter10_3$Ex01" />
+      <module name="java-standard-vol-2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="chapter10.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Chapter10_4$Ex01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="chapter10.Chapter10_4$Ex01" />
+      <module name="java-standard-vol-2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="chapter10.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Chapter11_1_7$Ex1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="chapter11.Chapter11_1_7$Ex1" />
+      <module name="java-standard-vol-2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="chapter11.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Chapter13_8$JoinEx4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="chapter13.Chapter13_8$JoinEx4" />
+      <module name="java-standard-vol-2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="chapter13.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Chapter13_8$JoinEx4" />
+        <item itemvalue="Application.Chapter11_1_7$Ex1" />
+        <item itemvalue="Application.Chapter10_4$Ex01" />
+        <item itemvalue="Application.Chapter10_3$Ex01" />
+        <item itemvalue="Application.Chapter10$CalendarEx1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.28539.13" />
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-IU-252.28539.13" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="288752ca-1459-4457-af91-157084e530da" name="Changes" comment="" />
+      <created>1735816528832</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1735816528832</updated>
+      <workItem from="1735816534231" duration="1338000" />
+      <workItem from="1735999100920" duration="764000" />
+      <workItem from="1736051528348" duration="594000" />
+      <workItem from="1736056716233" duration="443000" />
+      <workItem from="1736057208326" duration="119000" />
+      <workItem from="1736057392551" duration="589000" />
+      <workItem from="1736058449681" duration="110000" />
+      <workItem from="1736058587494" duration="7000" />
+      <workItem from="1736058787743" duration="594000" />
+      <workItem from="1736868201959" duration="2157000" />
+      <workItem from="1737175684307" duration="2693000" />
+      <workItem from="1737186706889" duration="7764000" />
+      <workItem from="1737274124328" duration="1798000" />
+      <workItem from="1737384747133" duration="2498000" />
+      <workItem from="1737810992499" duration="5570000" />
+      <workItem from="1737989786053" duration="2786000" />
+      <workItem from="1738681171154" duration="883000" />
+      <workItem from="1739200992656" duration="1617000" />
+      <workItem from="1739452588868" duration="2721000" />
+      <workItem from="1740408134190" duration="1715000" />
+      <workItem from="1741084955865" duration="1073000" />
+      <workItem from="1741093453154" duration="2178000" />
+      <workItem from="1741271571278" duration="825000" />
+      <workItem from="1741419549215" duration="802000" />
+      <workItem from="1741427717683" duration="1736000" />
+      <workItem from="1741605211199" duration="4932000" />
+      <workItem from="1741620091479" duration="7000" />
+      <workItem from="1741706376366" duration="693000" />
+      <workItem from="1742035705150" duration="808000" />
+      <workItem from="1742045222998" duration="2279000" />
+      <workItem from="1742093435793" duration="3570000" />
+      <workItem from="1742225013695" duration="12000" />
+      <workItem from="1742312063030" duration="625000" />
+      <workItem from="1742312759945" duration="137000" />
+      <workItem from="1742831254407" duration="1830000" />
+      <workItem from="1743264600413" duration="3716000" />
+      <workItem from="1743346456855" duration="1467000" />
+      <workItem from="1743855242633" duration="2623000" />
+      <workItem from="1744211293177" duration="1422000" />
+      <workItem from="1744643905261" duration="839000" />
+      <workItem from="1745057806633" duration="1462000" />
+      <workItem from="1745144046539" duration="578000" />
+      <workItem from="1745334089194" duration="40000" />
+      <workItem from="1745507191501" duration="1340000" />
+      <workItem from="1745856387310" duration="437000" />
+      <workItem from="1746107180501" duration="1339000" />
+      <workItem from="1746180076014" duration="3296000" />
+      <workItem from="1746273889924" duration="1172000" />
+      <workItem from="1746369511367" duration="4671000" />
+      <workItem from="1746628224428" duration="625000" />
+      <workItem from="1746630699077" duration="1174000" />
+      <workItem from="1746848048191" duration="128000" />
+      <workItem from="1746848282905" duration="93000" />
+      <workItem from="1746848388650" duration="1741000" />
+      <workItem from="1747060527341" duration="1903000" />
+      <workItem from="1747547011441" duration="2162000" />
+      <workItem from="1747661639637" duration="51000" />
+      <workItem from="1747661708024" duration="2995000" />
+      <workItem from="1748071205238" duration="1175000" />
+      <workItem from="1748269278778" duration="20000" />
+      <workItem from="1748269312828" duration="1097000" />
+      <workItem from="1749055303406" duration="2228000" />
+      <workItem from="1749567990128" duration="633000" />
+      <workItem from="1749568660968" duration="1655000" />
+      <workItem from="1749741872580" duration="587000" />
+      <workItem from="1750085217345" duration="616000" />
+      <workItem from="1750345768002" duration="299000" />
+      <workItem from="1750507761875" duration="585000" />
+      <workItem from="1750595522817" duration="4877000" />
+      <workItem from="1750777281538" duration="719000" />
+      <workItem from="1750938404791" duration="2749000" />
+      <workItem from="1751103228720" duration="5120000" />
+      <workItem from="1751293706283" duration="40000" />
+      <workItem from="1751466914472" duration="2600000" />
+      <workItem from="1751961304780" duration="6651000" />
+      <workItem from="1752132263740" duration="5935000" />
+      <workItem from="1752247689983" duration="3000" />
+      <workItem from="1752498288725" duration="1319000" />
+      <workItem from="1752507400631" duration="1643000" />
+      <workItem from="1752605293877" duration="298000" />
+      <workItem from="1752605609725" duration="1000" />
+      <workItem from="1753097481111" duration="69000" />
+      <workItem from="1753097567498" duration="4751000" />
+      <workItem from="1753164692993" duration="2966000" />
+      <workItem from="1753671516034" duration="627000" />
+      <workItem from="1753672498494" duration="9365000" />
+      <workItem from="1753940886266" duration="2927000" />
+      <workItem from="1754229032386" duration="183000" />
+      <workItem from="1754229232597" duration="390000" />
+      <workItem from="1754299147660" duration="7143000" />
+      <workItem from="1754713984117" duration="489000" />
+      <workItem from="1754897845019" duration="533000" />
+      <workItem from="1754898525115" duration="109000" />
+      <workItem from="1754904630123" duration="5542000" />
+      <workItem from="1755241587258" duration="7133000" />
+      <workItem from="1755679848782" duration="4059000" />
+      <workItem from="1756390319109" duration="1074000" />
+      <workItem from="1756482618585" duration="681000" />
+      <workItem from="1756487399545" duration="597000" />
+      <workItem from="1756743101801" duration="631000" />
+      <workItem from="1756756090653" duration="4237000" />
+      <workItem from="1757091991732" duration="136000" />
+      <workItem from="1757092169149" duration="595000" />
+      <workItem from="1757155273212" duration="1856000" />
+      <workItem from="1757408234264" duration="681000" />
+      <workItem from="1757412597706" duration="3882000" />
+      <workItem from="1757789523606" duration="2776000" />
+      <workItem from="1758514778962" duration="666000" />
+      <workItem from="1758527078492" duration="1776000" />
+      <workItem from="1758815371576" duration="441000" />
+      <workItem from="1758815855708" duration="602000" />
+      <workItem from="1758870044189" duration="2808000" />
+      <workItem from="1759153817879" duration="1095000" />
+      <workItem from="1759154965944" duration="2641000" />
+      <workItem from="1759309068977" duration="140000" />
+      <workItem from="1759309328183" duration="35000" />
+      <workItem from="1764604934322" duration="1500000" />
+      <workItem from="1765093495261" duration="16000" />
+      <workItem from="1765116306168" duration="2545000" />
+      <workItem from="1765373372166" duration="607000" />
+      <workItem from="1765606917451" duration="603000" />
+      <workItem from="1765611762929" duration="4402000" />
+      <workItem from="1765696654126" duration="79000" />
+      <workItem from="1765696834826" duration="382000" />
+    </task>
+    <task id="LOCAL-00001" summary="Study Day 13(열거형, 어노테이션)">
+      <option name="closed" value="true" />
+      <created>1736870355670</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1736870355670</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Study Day 14(어노테이션)">
+      <option name="closed" value="true" />
+      <created>1737195811159</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1737195811159</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Study Day 15(어노테이션, 쓰레드)">
+      <option name="closed" value="true" />
+      <created>1737387253517</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1737387253517</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Study Day 15(어노테이션, 쓰레드)">
+      <option name="closed" value="true" />
+      <created>1737992750288</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1737992750288</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Study Day 16(쓰레드, 람다식)">
+      <option name="closed" value="true" />
+      <created>1737994950232</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1737994950232</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Study Day 17(쓰레드 우선순위, 람다식 작성하기)">
+      <option name="closed" value="true" />
+      <created>1738682049202</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738682049202</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Study Day 18(쓰레드 그룹, 함수형 인터페이스)">
+      <option name="closed" value="true" />
+      <created>1739202598507</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1739202598507</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Study Day 19(LinkedList, Stack, Queue)">
+      <option name="closed" value="true" />
+      <created>1739455360008</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1739455360008</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Study Day 20(쓰레드그룹, 데몬 쓰레드)">
+      <option name="closed" value="true" />
+      <created>1740409247329</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1740409247329</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Study Day 21(데몬 쓰레드, 쓰레드의 실행제어)">
+      <option name="closed" value="true" />
+      <created>1741094629643</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1741094629643</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Study Day 21-1(람다식의 타입과 형변환)">
+      <option name="closed" value="true" />
+      <created>1741095635443</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1741095635443</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Study Day 22(Thread, fork&amp;join)">
+      <option name="closed" value="true" />
+      <created>1741618769422</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1741618769422</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Study Day 23(java.util.function)">
+      <option name="closed" value="true" />
+      <created>1741707061100</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1741707061100</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Study Day 24(yield)">
+      <option name="closed" value="true" />
+      <created>1742051276193</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1742051276193</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Study Day 25(yield(), join())">
+      <option name="closed" value="true" />
+      <created>1742312857122</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1742312857122</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Study Day 26(열거형의 정의와 사용, join(), 쓰레드의 동기화)">
+      <option name="closed" value="true" />
+      <created>1742833069002</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1742833069002</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Study Day 27(Chapter11, Chapter14)">
+      <option name="closed" value="true" />
+      <created>1743347893462</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1743347893462</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Study Day 28(Chapter12_2, Chapter13_9)">
+      <option name="closed" value="true" />
+      <created>1744212721432</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1744212721432</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Study Day 29(Chapter13_9)">
+      <option name="closed" value="true" />
+      <created>1744644740500</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1744644740500</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Study Day 30(Chapter13_9, Chapter14)">
+      <option name="closed" value="true" />
+      <created>1745509477967</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1745509477967</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Study Day 31(Chapter11_4)">
+      <option name="closed" value="true" />
+      <created>1745856815939</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1745856815939</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Study Day 32(Chapter11, Chapter14)">
+      <option name="closed" value="true" />
+      <created>1746374480587</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1746374480587</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Day 33 - Chapter14_2_2, Chapter14_2_3">
+      <option name="closed" value="true" />
+      <created>1747063478050</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1747063478050</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Day 34 - Chapter11_1_2, Chapter11_1_6, Chapter14_2_3">
+      <option name="closed" value="true" />
+      <created>1747670072145</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1747670072145</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Day 35 - Chapter14_2_3">
+      <option name="closed" value="true" />
+      <created>1748274858251</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1748274858251</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Day 36 - Chapter14_2_3, Chapter14_2_4, Chapter14_2_5">
+      <option name="closed" value="true" />
+      <created>1749056386858</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1749056386858</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Day 37 - Chapter10, Chapter14_2_5">
+      <option name="closed" value="true" />
+      <created>1749569320687</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1749569320687</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Day 40 - Chapter14_2_8, Chapter15">
+      <option name="closed" value="true" />
+      <created>1751109359500</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1751109359500</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Day 41 - Chapter15">
+      <option name="closed" value="true" />
+      <created>1751473085545</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1751473085545</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Day 42 - Chapter10, Chapter10_2,Chapter15, Chapter15_2">
+      <option name="closed" value="true" />
+      <created>1751995525279</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1751995525279</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Fix- Chapter14, Chapter14_1_6">
+      <option name="closed" value="true" />
+      <created>1752167820889</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1752167820889</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Day43- Chapter15_2">
+      <option name="closed" value="true" />
+      <created>1752510217512</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1752510217512</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Day44- Chapter11_1_6, Chapter11_1_7">
+      <option name="closed" value="true" />
+      <created>1753126356418</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1753126356418</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Day45 - Chapter10_2, Chapter10_3, Chapter11_1_7, Chapter11_1_8, Chapter15_2, Chapter15_3">
+      <option name="closed" value="true" />
+      <created>1753688852191</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1753688852191</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Day46 - Chapter10_3, Chapter11_1_8, Chapter11_1_9, Chapter15_3">
+      <option name="closed" value="true" />
+      <created>1754321457742</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1754321457742</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Day47 - Chapter10_3, Chapter11_1_9, Chapter11_1_10, Chapter15_4, Chapter15_3, Chapter15_5">
+      <option name="closed" value="true" />
+      <created>1755278424490</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1755278424490</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Day48 - Chapter10_3, Chapter11_1_10, Chapter15_5, Chapter15_6">
+      <option name="closed" value="true" />
+      <created>1755682863806</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1755682863806</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Day51 - Chapter10_3, Chapter11_1_10, Chapter15_6, Chapter15_7">
+      <option name="closed" value="true" />
+      <created>1757157125074</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1757157125074</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Day55 - Chapter16_2">
+      <option name="closed" value="true" />
+      <created>1758883144212</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1758883144212</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Fix">
+      <option name="closed" value="true" />
+      <created>1764607778816</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1764607778816</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Study Day 26(열거형의 정의와 사용, join(), 쓰레드의 동기화)" />
+    <MESSAGE value="Study Day 27(Chapter11, Chapter14)" />
+    <MESSAGE value="Study Day 28(Chapter12_2, Chapter13_9)" />
+    <MESSAGE value="Study Day 29(Chapter13_9)" />
+    <MESSAGE value="Study Day 30(Chapter13_9, Chapter14)" />
+    <MESSAGE value="Study Day 31(Chapter11_4)" />
+    <MESSAGE value="Study Day 32(Chapter11, Chapter14)" />
+    <MESSAGE value="Day 33 - Chapter14_2_2, Chapter14_2_3" />
+    <MESSAGE value="Day 34 - Chapter11_1_2, Chapter11_1_6, Chapter14_2_3" />
+    <MESSAGE value="Day 35 - Chapter14_2_3" />
+    <MESSAGE value="Day 36 - Chapter14_2_3, Chapter14_2_4, Chapter14_2_5" />
+    <MESSAGE value="Day 37 - Chapter10, Chapter14_2_5" />
+    <MESSAGE value="Day 40 - Chapter14_2_8, Chapter15" />
+    <MESSAGE value="Day 41 - Chapter15" />
+    <MESSAGE value="Day 42 - Chapter10, Chapter10_2,Chapter15, Chapter15_2" />
+    <MESSAGE value="Fix- Chapter14, Chapter14_1_6" />
+    <MESSAGE value="Day43- Chapter15_2" />
+    <MESSAGE value="Day44- Chapter11_1_6, Chapter11_1_7" />
+    <MESSAGE value="Day45 - Chapter10_2, Chapter10_3, Chapter11_1_7, Chapter11_1_8, Chapter15_2, Chapter15_3" />
+    <MESSAGE value="Day46 - Chapter10_3, Chapter11_1_8, Chapter11_1_9, Chapter15_3" />
+    <MESSAGE value="Day47 - Chapter10_3, Chapter11_1_9, Chapter11_1_10, Chapter15_4, Chapter15_3, Chapter15_5" />
+    <MESSAGE value="Day48 - Chapter10_3, Chapter11_1_10, Chapter15_5, Chapter15_6" />
+    <MESSAGE value="Day51 - Chapter10_3, Chapter11_1_10, Chapter15_6, Chapter15_7" />
+    <MESSAGE value="Day55 - Chapter16_2" />
+    <MESSAGE value="Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>false</integration-enabled>
+    <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>

@@ -41,12 +41,12 @@ public class Chapter14 {
 	 *     <h5>1.2 람다식 작성하기</h5><br>
 	 *		람다식은 '익명 함수'답게 메서드에서 이름과 반환타입을 제거하고 매개변수 선언부와 몸통{} 사이에 '->'를 추가한다.<br>
 	 *		반환타입 메서드이름(매개변수 선언) {<br>
-	 *  			&nbsp;문장들<br>
-	 *        }<br>
+     *  			&nbsp;문장들<br>
+	 *		}<br>
 	 *		↓<br>
 	 *		(매개변수 선언) -> {<br>
 	 *  		&nbsp;문장들<br>
-	 *        }
+	 *		}
 	 *		<br>
 	 *		반환값이 있는 메서드의 경우, return문 대신 '식(expression)'으로 대신할 수 있다.<br>
 	 *		식의 연산결과가 자동적으로 반환값이 된다. 이때는 '문장(statement)'이 아닌 '식'이므로 끝에 ';'을 붙이지 않는다.<br>
@@ -272,12 +272,13 @@ public class Chapter14 {
 	 * <h5>조건식에 표현에 사용되는 Predicate</h5><br>
 	 * Predicate는 Function의 변형으로, 반환타입이 boolean이라는 것만 다르다, Predicate는 조건식을 람다식으로 표현하는데 사용된다.<br>
 	 * <small>수학에서 결과로 true 또는 false를 반환하는 함수를 '프레디케이트(predicate)'라고 한다.</small><br>
-	 * <pre><code>
-	 *     Predicate&lt;String&gt; isEmptyStr = s -> s.length() == 0;
-	 *     String s = "";
-	 *     if(isEmptyStr.test(s)) // if(s.length == 0)
-	 *     System.out.println("This is an empty String.");
-	 * </code></pre>
+	 * <code>
+	 *     Predicate&lt;String&gt; isEmptyStr = s -> s.length() == 0;<br>
+	 *     String s = "";<br>
+	 *
+	 *     if(isEmptyStr.test(s)) // if(s.length == 0)<br>
+	 *     System.,out.println("This is an empty String.");
+	 * </code>
 	 */
 	class Memo07 {
 
@@ -343,39 +344,9 @@ public class Chapter14 {
 	}
 
 	/**
-	 * <h5>기본형을 사용하는 함수형 인터페이스</h5><br>
-	 * 함수형 인터페이스는 매개변수와 반환값의 타입이 모두 지네릭 타입이었는데, 기본형 타입의 값을 처리할 때도 래퍼(wrapper)클래스를 사용해왔다.<br>
-	 * 그러나 기본형 대신 래퍼클래스를 사용하는 것은 당연히 비효율적이다. 그래서 보다 효율적으로 처리할 수 있도록 기본형을 사용하는 함수형 인터페이스들이 제공된다.<br>
-	 * <table border="1">
-	 *	 <thead>
-	 *	     <th>함수형 인터페이스</th>
-	 *	     <th>메서드</th>
-	 *	     <th>설명</th>
-	 *	 </thead>
-	 *	 <tbody>
-	 *	     <tr>
-	 *	         <td>DoubleToIntFunction</td>
-	 *	         <td>(double)-> int applyAsInt(double d) ->(int)</td>
-	 *	         <td>AToBFunction은 입력이 A타입 출력이 B타입</td>
-	 *	     </tr>
-	 *	     <tr>
-	 *	         <td>ToIntFunction&lt;T&gt;</td>
-	 *	         <td>(T)->int applyAsInt(T value)->(int)</td>
-	 *	         <td>ToBFunction은 출력이 B타입이다. 입력은 지네릭 타입</td>
-	 *	     </tr>
-	 *	     <tr>
-	 *	         <td>intFunction&lt;R&gt;</td>
-	 *	         <td>(int)-> R apply(T t, U u) -> R</td>
-	 *	         <td>AFunction은 입력이 A타입이고 출력은 지네릭 타임</td>
-	 *	     </tr>
-	 *	     <tr>
-	 *	         <td>ObjIntConsumer&lt;T&gt;</td>
-	 *	         <td>(T, int)-> void accept(T t, U u)</td>
-	 *	         <td>ObjAFunction은 입력이 T, A타입이고 출력은 없다.</td>
-	 *	     </tr>
-	 *	 </tbody>
-	 * </table>
+	 * <h5>컬렉션 프레임웍과 함수형 인터페이스</h5><br>
 	 */
 	class Memo10 {
 	}
+
 }

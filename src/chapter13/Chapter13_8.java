@@ -12,74 +12,22 @@ public class Chapter13_8 {
 	/**
 	 * 쓰레드 프로그래밍이 어려운 이유는 동기화(synchronization)와 스케줄링(scheduling)때문이다.<br>
 	 * <b>쓰레드의 스케줄링과 관련된 메서드</b><br>
-	 * <table border="1">
-	 *     <thead>
-	 *         <th>메서드</th>
-	 *         <th>설명</th>
-	 *     </thead>
-	 *     <tbody>
-	 *         <tr>
-	 *             <td>static void sleep(long millis),<br> static void sleep(long millis, int nanos)</td>
-	 *             <td>지정된 시간(천분의 일초 단위)동안 쓰레드를 일시정지시킨다. 지정한 시간이 지나고 나면, 자동적으로 다시 실행대기 상태가 된다.</td>
-	 *         </tr>
-	 *         <tr>
-	 *             <td>void join(),<br> void join(long millis), <br>void join(long millis, int nanos)</td>
-	 *             <td>지정된 시간동안 쓰레드가 실행되도록 한다. 지정된 시간이 지나거나 작업이 종료되면 join()을 호출한 쓰레드로 다시 돌아와 실행을 계속한다.</td>
-	 *         </tr>
-	 *         <tr>
-	 *             <td>void interrupt()</td>
-	 *             <td>sleep()이나 join()에 의해 일시정지 상태인 쓰레드를 깨워서 실행대기상태로 만든다. 해당 쓰레드에서는 InterruptedException이 발생함으로써 일시정지상태를 벗어나게 된다.</td>
-	 *         </tr>
-	 *         <tr>
-	 *             <td>void stop()</td>
-	 *             <td>쓰레드를 즉시 종료시킨다.</td>
-	 *         </tr>
-	 *         <tr>
-	 *             <td>void suspend()</td>
-	 *             <td>쓰레드를 일시정지시킨다. resume()을 호출하면 다시 실행대기상태가 된다.</td>
-	 *         </tr>
-	 *         <tr>
-	 *             <td>void resume()</td>
-	 *             <td>suspend()에 의해 일시정지상태에 있는 쓰레드를 실행대기상태로 만든다.</td>
-	 *         </tr>
-	 *         <tr>
-	 *             <td>static void yield()</td>
-	 *             <td>실행 중에 자신에게 주어진 실행시간을 다른 쓰레드에게 양보(yield)하고 자신은 실행대기상태가 된다.</td>
-	 *         </tr>
-	 *     </tbody>
-	 * </table>
-	 * <br>
+	 * 메서드 | 설명<br>
+	 * static void sleep(long millis), static void sleep(long millis, int nanos) | 지정된 시간(천분의 일초 단위)동안 쓰레드를 일시정지시킨다. 지정한 시간이 지나고 나면, 자동적으로 다시 실행대기 상태가 된다.<br>
+	 * void join(), void join(long millis), void join(long millis, int nanos) | 지정된 시간동안 쓰레드가 실행되도록 한다. 지정된 시간이 지나거나 작업이 종료되면 join()을 호출한 쓰레드로 다시 돌아와 실행을 계속한다.<br>
+	 * void interrupt() | sleep()이나 join()에 의해 일시정지 상태인 쓰레드를 깨워서 실행대기상태로 만든다. 해당 쓰레드에서는 InterruptedException이 발생함으로써 일시정지상태를 벗어나게 된다.<br>
+	 * void stop() | 쓰레드를 즉시 종료시킨다.<br>
+	 * void suspend() | 쓰레드를 일시정지시킨다. resume()을 호출하면 다시 실행대기상태가 된다.<br>
+	 * void resume() | suspend()에 의해 일시정지상태에 있는 쓰레드를 실행대기상태로 만든다.<br>
+	 * static void yield() | 실행 중에 자신에게 주어진 실행시간을 다른 쓰레드에게 양보(yield)하고 자신은 실행대기상태가 된다.<br>
 	 * <small>※resume(), stop(), suspend()는 쓰레드를 교착상태(dead-lock)로 만들기 쉽기 때문에 deprecated되었다.</small><br>
 	 * <b>쓰레드의 상태</b><br>
-	 * <table border="1">
-	 *     <thead>
-	 *         <th>상태</th>
-	 *         <th>설명</th>
-	 *     </thead>
-	 *     <tbody>
-	 *         <tr>
-	 *             <td>NEW</td>
-	 *             <td>쓰레드가 생성되고 아직 start()가 호출되지 않은 상태</td>
-	 *         </tr>
-	 *         <tr>
-	 *             <td>RUNNABLE</td>
-	 *             <td>실행 중 또는 실행 가능한 상태</td>
-	 *         </tr>
-	 *         <tr>
-	 *             <td>BLOCKED</td>
-	 *             <td>동기화블럭에 의해서 일시정지된 상태(lock이 풀릴 때까지 기다리는 상태)</td>
-	 *         </tr>
-	 *         <tr>
-	 *             <td>WAITING, <br> TIMED_WAITING</td>
-	 *             <td>쓰레드의 작업이 종료되지는 않았지만 실행가능하지 않은(unrunnable) 일시정지 상태, TIMED_WAITING은 일시정지시간이 지정된 경우를 의미한다.</td>
-	 *         </tr>
-	 *         <tr>
-	 *             <td>TERMINATED</td>
-	 *             <td>쓰레드의 작업이 종료된 상태</td>
-	 *         </tr>
-	 *     </tbody>
-	 * </table>
-	 * <br>
+	 * 상태 | 설명<br>
+	 * NEW | 쓰레드가 생성되고 아직 start()가 호출되지 않은 상태<br>
+	 * RUNNABLE | 실행 중 또는 실행 가능한 상태<br>
+	 * BLOCKED | 동기화블럭에 의해서 일시정지된 상태(lock이 풀릴 때까지 기다리는 상태)<br>
+	 * WAITING, TIMED_WAITING | 쓰레드의 작업이 종료되지는 않았지만 실행가능하지 않은(unrunnable) 일시정지 상태, TIMED_WAITING은 일시정지시간이 지정된 경우를 의미한다.<br>
+	 * TERMINATED | 쓰레드의 작업이 종료된 상태<br>
 	 * <small>※쓰레드의 상태는 Thread의 getState()메서드를 호출해서 확인할 수 있다.JDK1.5부터 추가되었다.</small><br>
 	 * <b>쓰레드의 생성부터 소멸까지의 과정</b><br>
 	 * 1. 쓰레드를 생성하고 start()를 호출하면 바로 실행되는 것이 아니라 실행대기열에 저장되어 자신의 차례가 될 때까지 기다려야 한다. 실행대기열은 큐(queue)와 같은 구조로 먼저 실행대기열에 들어온 쓰레드가 먼저 실행된다.<br>
@@ -414,8 +362,8 @@ public class Chapter13_8 {
 
 	/**
 	 * 만일 suspended의 값이 true라면, 즉 잠시 실행을 멈추게 한 상태라면, 쓰레드는 주어진 실행시간을 그저 while문을 의미없이 돌면서 낭비하게 될 것이다.<br>
-	 * 이런 상황을 '바쁜 대기상태(busy-waiting)'이라고 한다.<br>
-	 * 그러나 yield()을 호출해서 남은 실행시간을 while문에서 낭비하지 않고 다른 쓰레드에게 양보(yield)하게 되므로 더 효울적이다.
+	 * 이런 상황을 '바쁜 대기상태(bust-waiting)'이라고 한다.<br>
+	 * 그러나 yield()을 호출해서 남은 실행시간을 while문에서 낭비하지 않고 다른 쓰레등게 양보(yield)하게 되므로 더 효울적이다.
 	 */
 	static class TheadEx07 {
 		public static void main(String[] args) {
