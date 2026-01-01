@@ -15,16 +15,17 @@ public class Chapter13_9 {
 
 	/**
 	 * <h5>9.1 synchronized를 이용한 동기화</h5><br>
-	 * <code>
-	 *     <b>1. 메서드 전체를 임계 영역으로 지정</b><br>
-	 *     public <b>synchronized</b> void calcSum() {<br>
+	 * <pre><code>
+	 *     1. 메서드 전체를 임계 영역으로 지정
+	 *     public synchronized void calcSum() {
 	 *         // ...
-	 *     }<br>
-	 *     <b>2. 특정한 영역을 임계 영역으로 지정</b><br>
-	 *     <b>synchronized(객체의 참조변수)</b> {<br>
-	 *         // ...<br>
 	 *     }
-	 * </code>
+	 *
+	 *     2. 특정한 영역을 임계 영역으로 지정
+	 *     synchronized(객체의 참조변수) {
+	 *         // ...
+	 *     }
+	 * </code></pre>
 	 * <br>
 	 * 첫 번째 방법은 메서드 앞에 synchronized를 붙이는 것인데, synchronized를 붙이면 메서드 전체가 임계 영역으로 설정된다.<br>
 	 * 쓰레드는 synchronized메서드가 호출된 시점부터 해당 메서드가 포함된 객체의 lock을 얻어 작업을 수행하다가 메서드가 종료되면 lock을 반환한다.<br>
@@ -48,10 +49,12 @@ public class Chapter13_9 {
 	 * wait()과 notify()는 특정 객체에 대한 것이므로 Object클래스에 정의되어있다.<br>
 	 * wait()은 notify() 또는 notifyAll()이 호출될 때까지 기다리지만, 매개변수가 있는 wait()은 지정된 시간동안만 기다린다. 지정된 시간이 지난 후에 자동적으로 notify()가 호출되는 것과 같다.<br>
 	 * waiting pool은 객체마다 존재하는 것이므로 notifyAll()이 호출된다고 해서 모든 객체의 waiting pool에 있는 쓰레드가 깨워지는 것은 아니다. notifyAll()이 호출된 객체의 waiting pool에 대기 중인 쓰레드만 해당된다는 것을 기억하자.<br>
-	 * <b>wait(), notify(), notifyAll()</b><br>
-	 * - Object에 정의되어 있다.<br>
-	 * - 동기화 블록(synchronized블록)내에서만 사용할 수 있다.<br>
-	 * - 보다 효율적인 동기화를 가능하게 한다.
+	 * <pre><code>
+	 * 	wait(), notify(), notifyAll()
+	 * 	- Object에 정의되어 있다.
+	 * 	- 동기화 블록(synchronized블록)내에서만 사용할 수 있다.
+	 * 	- 보다 효율적인 동기화를 가능하게 한다.
+	 * </code></pre>
 	 */
 	class Memo2 {
 
@@ -72,21 +75,23 @@ public class Chapter13_9 {
 	 * 이 패키지는 JDK1.5에 와서야 추가된 것으로 그 전에는 동기화 방법이 synchronized블럭뿐이었다.<br>
 	 * synchronized블럭으로 동기화를 하면 자동적으로 lock이 잠기고 풀리기 때문에 편리하다.<br>
 	 * 심지어 synchronized블럭 내에서 예외가 발생해도 lock은 자동적으로 풀린다. 그러나 때로는 같은 메서드 내에서만 lock을 걸 수 있다는 제약이 불편하기도 하다. 그럴 때 이 lock클래스를 사용한다.<br>
-	 * <b>lock클래스의 종류</b><br>
-	 * <b>ReentrantLock</b> 재집이 가능한 lock, 가장 일반적인 배타 lock<br>
-	 * <b>ReentrantReadWriteLock</b> 읽기에는 공유적이고, 쓰기에는 배타적인 lock<br>
-	 * <b>StampedLock</b> ReentrantReadWriteLock에 낙관적인 lock의 기능을 추가<br>
+	 * <pre><code>
+	 * 	lock클래스의 종류
+	 * 	ReentrantLock 재진입이 가능한 lock, 가장 일반적인 배타 lock
+	 * 	ReentrantReadWriteLock 읽기에는 공유적이고, 쓰기에는 배타적인 lock
+	 * 	StampedLock ReentrantReadWriteLock에 낙관적인 lock의 기능을 추가
+	 * </code></pre>
 	 * <small>※ StampedLock은 JDK1.8부터 추가되었으며, 다른 lock과 달리 Lock인터페이스를 구현하지 않았다.</small><br>
 	 * ReentrantLock은 가장 일반적인 lock이다. 'reentrant(재진입할 수 있는)'이라는 단어가 앞에 붙은 이유는 우리가 앞서 wait() & notify()에서 배운 것처럼,<br>
 	 * 특정 조건에서 lock을 풀고 나중에 다시 lock을 얻고 임계영역으로 들어와서 이후의 작업을 수행할 수 있기 때문이다.<br>
 	 * ReentrantReadWriteLock은 이름에서 알 수 있듯이, 읽기를 위한 lock과 쓰기를 위한 lock을 제공한다.<br>
 	 * ReentrantLock은 배타적인 lock이라서 무조건 lock이 있어야만 임계 영역의 코드를 수행할 수 있지만,<br>
-	 * ReentrantReadWriteLock은 읽이 lock이 걸려있으면, 다른 쓰레드가 읽이 lock을 중복해서 걸고 읽기를 수행할 수 있다.<br>
-	 * 읽기는 애용을 변경하지 않으므로 동시에 여러 쓰레드가 읽어도 문제가 되지 않는다. 그러나 읽기 lock이 걸린 상태에서 쓰기 lock을 거는 것은 허용되지 않는다.<br>
+	 * ReentrantReadWriteLock은 읽기 lock이 걸려있으면, 다른 쓰레드가 읽기 lock을 중복해서 걸고 읽기를 수행할 수 있다.<br>
+	 * 읽기는 내용을 변경하지 않으므로 동시에 여러 쓰레드가 읽어도 문제가 되지 않는다. 그러나 읽기 lock이 걸린 상태에서 쓰기 lock을 거는 것은 허용되지 않는다.<br>
 	 * 반대의 경우도 마찬가지다, 읽기를 할때는 읽기 lock을 걸고, 쓰기 할 때는 쓰기 lock을 거는 것일 뿐 lock을 거는 방법은 같다.<br>
 	 * StampedLock은 lock을 걸거나 해지할 때 '스탬프(long타입의 정수값)'를 사용하며, 읽기와 쓰기를 위한 lock외에 '낙관적 읽기 lock(optimstic reading lock)'이 추가된 것이다.<br>
 	 * 읽기 lock이 걸려있으면, 쓰기 lock을 얻기 위해서는 읽기 lock이 풀릴 때까지 기다려야하는데 비해, '낙관적 읽기 lock'은 쓰기 lock에 의해 바로 풀린다.<br>
-	 * 그래서 낙관적 읽기에 실패하면, 읽기 lock을 얻어서 다시 읽어 와야 한다, <b>무조건 읽기 lock을 걸지 않고, 쓰기와 읽기가 충동할 때만 쓰기가 끝난 후에 읽기 lock을 거는 것이다.</b>
+	 * 그래서 낙관적 읽기에 실패하면, 읽기 lock을 얻어서 다시 읽어 와야 한다, <b>무조건 읽기 lock을 걸지 않고, 쓰기와 읽기가 충돌할 때만 쓰기가 끝난 후에 읽기 lock을 거는 것이다.</b>
 	 */
 	class Memo4 {
 	}
