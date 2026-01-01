@@ -39,7 +39,11 @@ public class Chapter13_2 {
      *         Thread t2 = new Thread(new ThreadEx01_2()); // 위의 두 줄을 한 줄로 간단히
      *     </blockquote><br>
      *      {@code Runnable}인터페이스를 구현한 경우, {@code Runnable}인터페이스를 구현한 클래스의 인스턴스를 생성한 다음, 이 인스턴스를
-     *      Thread클래스의 생성자의 매개변수로 제공해야 한다.
+     *      {@code Thread}클래스의 생성자의 매개변수로 제공해야 한다.<br>
+     *      {@code Thread}클래스를 상속받으면, 자손 클래스에서 조상인 {@code Thread}클래스의 메서드를 직접 호출할 수 있지만,<br>
+     *      {@code Runnable}을 구현하면 {@code Thread}클래스의 {@code static}메서드인 {@code currentThread()}를 호출하여 쓰레드에 대한 참조를 얻어 와야만 호출이 가능하다.<br>
+     *      {@code static Thread currentThread() - 현재 실행중인 쓰레드의 참조를 반환한다.}<br>
+     *      {@code String getName() - 쓰레드의 이름을 반환한다.}
      * </p>
      */
     static class TheadEx01 {
@@ -73,5 +77,20 @@ public class Chapter13_2 {
         }
 
     }
+
+    /**
+     * <p>
+     *     <h5>쓰레드의 실행 - start()</h5><br>
+     *     쓰레드를 생성했다고 해서 자동으로 실행되는 것은 아니다. {@code start()}를 호출해야함 쓰레드가 실행된다.<br>
+     *     사실은 {@code start()}가 호출되었다고 해서 바로 실행되는 것이 아니라, 일단 실행대기 상태에 있다가 자신의 차례가 되어야 실행된다.<br>
+     *     물론 실행대기중인 쓰레드가 하나도 없으면 곧바로 실행상태가 된다.<br>
+     *     <small>※쓰레드의 실행순서는 OS의 스케쥴러가 작성한 스케쥴에 의해 결정된다.</small><br>
+     *     한가지 더 알아 두어야 하는 것은 한 번 실행이 종료된 쓰레드는 다시 실행할 수 없다는 것이다.즉,<br>
+     *     하나의 쓰레드에 대해 start()가 한 번만 호출될 수 있다는 뜻이다.<br>
+     *     만일 쓰레드의 작업을 한 번 더 수행해야 한다면 새로운 쓰레드를 생성한 다음에 {@code start()}를 호출해야 한다.<br>
+     *     하나의 쓰레드에 대해 {@code start()}를 두 번 이상 호출하면 실행시에 {@code IllegalThreadStateException}이 발생한다.
+     * </p>
+     */
+    static class Memo02 {}
 
 }

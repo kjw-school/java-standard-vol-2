@@ -1,86 +1,177 @@
 package chapter12;
 
 /**
- * 1.2 지네릭 클래스의 선언
+ * <h1>2. 열거형(enums)</h1>
  */
 public class Chapter12_2 {
 
-    /**
-     * 지네릭 타입은 클래스와 메서드에 선언할 수 있다.
-     * class Box {
-     *     Object item;
-     *
-     *     void setItem(Object item) { this.item = item; }
-     *     Object getItem() { return item; }
-     * }
-     * 이 클래스를 지네릭 클래스로 변경하면 다음과 같이 클래스 옆에 '<T>'를 붙이면 된다. 그리고 'Object'를 모두 'T'로 바꾼다.
-     * class Box<T> {
-     *     T item;
-     *     void setItem(T item) { this.item = item; }
-     *     T getItem() { return item; }
-     * }
-     * Box<T>에서 T를 '타입 변수(type variable)'라고 하며, 'Type'의 첫 글자에서 따온 것이다. 타입 변수는 T가 아닌 다른 것을 사용해도
-     * 된다. ArrayList<E>의 경우, 타입 변수 E는 'Element(요소)'의 첫글자를 따서 사용했다. 타입 변수가 여러 개인 경우에는 Map<K,V>와
-     * 같이 콤마','를 구분자로 나열하면 된다. K는 Key(키)를 의미하고, V는 Value(값)을 의미한다. 무조건 'T'를 사용하기보다 가능하면, 이처럼
-     * 상황에 맞게 의미있는 문자를 선택해서 사용하는 것이 좋다. 이들은 기호만 다를 뿐 '임이의 참조형 타입'을 의미한다는 것은 모두 같다.
-     * 기존에는 다양한 종류의 타입을 다루는 메서드의 매개변수나 리턴타입으로 Object타입의 참조변수를 많이 사용했고, 그로 인해 형변환이 불가피
-     * 했지만, 이젠 Object타입 대신 원하는 타입을 지정하기만 하면 되는 것이다.
-     * 이제 지네릭 클래스가 된 Box클래스의 객체를 생성할 때는 다음과 같이 참조변수와 생성자에 타입 T대신에 사용될 실제 타입을 지정해주어야
-     * 한다.
-     * Box<String> b = new Box<String>(); // 타입 T 대신, 실제 타입을 지정
-     * b.setItem(new Object()); // 에러, String 이외의 타입을 지정불가
-     * b.setItem("ABC"); // OK, String타입이므로 가능
-     * String item = b.getItem(); // 형변환이 필요없음
-     * 위의 코드에서 타입 T대신에 String타입을 지정해줬으므로, 지네릭 클래스 Box<T>는 다음과 같이 정의된 것과 같다.
-     * class Box { // 지네릭 타입을 String으로 지정
-     *  String item;
-     *  void setItem(String item) { this.item = item; }
-     *  String getItem() { return item; }
-     * }
-     */
+	/**
+	 * <p>
+	 * 		<h5>2.1 열거형 이란?</h5><br>
+	 * 		열거형은 서로 관련된 상수를 편리하게 선언하기 위한 것으로 여러 상수를 정의할 때 사용하면 유용하다.<br>
+	 * 		원래 자바는 C언어와 달리 열거형이라는 것이 존재하지 않았으나 JDK1.5부터 새로 추가되었다.<br>
+	 * 		자바의 열거형은 C언어의 열거형보다 더 향상된 것으로 열거형이 갖는 값뿐만 아니라 타입도 관리하기 때문에 보다 논리적인 오류를 줄일 수 있다.<br>
+	 * 		<code>
+	 * 		 	class Card {<br>
+	 * 		 	    static final int CLOVER = 0;<br>
+	 * 		 	    static final int HEART = 1;<br>
+	 * 		 	    static final int DIAMOND = 2;<br>
+	 * 		 	    static final int SPADE = 3;<br>
+	 * 		 	    <br>
+	 * 		 	    static final int TWO = 0;<br>
+	 * 		 	    static final int THREE = 0;<br>
+	 * 		 	    static final int FOUR = 0;<br>
+	 * 		 	    <br>
+	 * 		 	    final int kind;<br>
+	 * 		 	    final int num;<br>
+	 * 		 	    <br>
+	 *            }<br>
+	 * 		↓<br>
+	 *			class Card {<br
+	 *				enum Kind { CLOVER, HEART, DIAMOND, SPADE; } // 열거형 Kind를 정의<br>
+	 *				enum num { TWO, THREE, FOUR; } // 열거형 num를 정의<br>
+	 *				final Kind kind;<br>
+	 *				final Num num;<br>
+	 *            }<br>
+	 * 		</code><br>
+	 * 		기존의 많은 언어들, 예를 들어 C언어에서는 타입이 달라도 값이 같으면 조건식결과가 참(true)이였으나, 자바의 열거형은<br>
+	 * 		'타입에 안전한 열거형(typesafe enum)'이라서 실제 값이 같아도 타입이 다르면 컴파일 에러가 발생한다.<br>
+	 * 		이처럼 값뿐만 아니라 타입까지 체크하기 때문에 타입에 안전하다고 하는 것이다.<br>
+	 * 		<code>
+	 * 			if(Card.CLOVER == Card.TWO) // true지만 false이어야 의미상 맞음.<br>
+	 * 			if(Card.Kind.CLOVER == Card.Value.TWO) // 컴파일 에러. 값은 같지만 타입이 다름.
+	 * 		</code>
+	 * 		<br>
+	 * 		그리고 더 중요한 것은 상수의 값이 바뀌면, 해당 상수를 참조하는 모든 소스를 다시 컴파일해야 한다는 것이다.<br>
+	 * 		하지만 열거형 상수를 사용하면, 기존의 소스를 다시 컴파일하지 않아도 된다.
+	 * </p>
+	 */
+	static class Memo01 {
+	}
 
-    /**
-     * 지네릭스의 용어
-     * class Box<T> {}, Box: 원시타입, Box<T>: 지네릭 클래스
-     * Box<T>, 지네릭 클래스, 'T의 Box' 또는 'T Box'라고 읽는다.
-     * T, 타입 변수 또는 타입 매개변수.(T는 타입문자)
-     * Box, 원시 타입(raw type)
-     * 타입 문자 T는 지네릭 클래스 Box<T>의 타입 변수 또는 타입 매개변수라고 하는데, 메서드의 매개변수와 유사한 면이 있기 때문이다.
-     * 그래서 아래와 같이 타입 매개변수에 타입을 지정하는 것을 '지네릭 타입 호출'이라고 하고, 지정된 타입'String'을 '매개변수화된 타입(para
-     * meterized type)'이라고 한다.
-     * Box<String> b = new Box<String>();, String: 대입된 타입(매개변수화된 타입, parameterized type), Box<String>: 지네릭 타입
-     * 호출
-     */
+	/**
+	 * <h5>2.2 열거형의 정의와 사용</h5><br>
+	 * 열거형을 정의하는 방법은 간단하다. 다음과 같이 괄호 {}안에 상수의 이름을 나열하기만 하면 된다.<br>
+	 * <code>
+	 *     enum 열거형 이름 { 상수명1, 상수명2, ... }
+	 * </code>
+	 * <br>
+	 * 이 열거형에 정의된 상수를 사용하는 방법은 '열거형이름.상수명'이다. 클래스의 static변수를 참조하는 것과 동일하다.<br>
+	 * 열거형 상수간의 비교에는 '=='를 사용할 수 있다. equals()가 아닌 '=='로 비교가 가능하다는 것은 그만큼 빠른 성능을 제공한다는 얘기다.<br>
+	 * 그러나 '&lt;', '&gt;'와 같은 비교연산자는 사용할 수 없고 compareTo()는 사용가능하다. 앞서 배운 것과 같이 compareTo()는 두 비교대상이 같으면 0, 왼쪽이 크면 양수, 오른쪽이 크면 음수를 반환한다.
+	 * 주의할 점은 case문에 열거형의 이름은 적지 않고 상수의 이름만 적어야 한다는 제약이 있다.
+	 */
+	static class Memo02 {
+	}
 
-    /**
-     * 지네릭스의 제한
-     * 지네릭 클래스 Box의 객체를 생성할 때, 객체별로 다른 타입을 지정하는 것은 적절하다. 지네릭스는 이처럼 인스턴스별로 다르게 동작하도록
-     * 하려고 만든 기능이니까.
-     * 그러나 모든 객체에 대해 동일하게 동작해야하는 static멤버에 타입 변수 T를 사용할 수 없다. T는 인스턴스변수로 간주되기 때문이다.
-     * static멤버는 인스턴스변수를 참조할 수 없다.
-     * class Box<T> {
-     *     static T item; // 에러
-     *     static int compare(T t1, T t2) {...} // 에러
-     * }
-     * static멤버는 타입 변수에 지정된 타입, 즉 대입된 타입의 종류에 관계없이 동일한 것이어야 하기 때문이다. 지네릭타입의 배열을 생성하는 것
-     * 도 허용되지 않는다. 지네릭 배열 타입의 참조변수를 선언하는 것은 가능하지만, 'new T[10]'과 같이 배열을 생성하는 것은 안 된다는 뜻
-     * 이다.
-     * class Box<T> {
-     *     T[] itemArr; // OK. T타입의 배열을 위한 참조변수
-     *     ...
-     *     T[] toArray() {
-     *         T[] tmpArr = new T[itemArr.length]; // 에러. 지네릭 배열 생성불가
-     *         ...
-     *         return temArr;
-     *         ...
-     *     }
-     *     ...
-     * }
-     * 지네릭 배열을 생성할 수 없는 것은 new연산자 때문인데, 이 연산자는 컴파일 시점에 타입 T가 뭔지 정확히 알아야 한다. instanceof연산자
-     * 도 new연산자와 같은 이유로 T를 피연산자로 사용할 수 없다.
-     * 꼭 지네릭 배열을 생성해야할 필요가 있을 때는, new연산자대신 'Reflection API'의 newInstance()와 같이 동적으로 객체를 생성하는
-     * 메서드로 배열을 생성하거나, Object배열을 생성해서 복사한 다음에 'T[]'로 형변환하는 방법 등을 사용한다.
-     */
+	/**
+	 * <h5>모든 열거형의 조상 - java.lang.Enum</h5><br>
+	 * values()는 열거형의 모든 상수를 배열에 담아 반환한다. 이 메서드는 모든 열거형이 가지고 잇는 것으로 컴파일러가 자동으로 추가해 준다.<br>
+	 * ordinal()은 모든 열거형의 조상인 java.lang.Enum클래스에 정의된 것으로, 열거형 상수가 정의된 순서(0부터 시작)를 정수로 반환한다.<br>
+	 * <table border="1">
+	 *     <thead>
+	 *         <td>메서드</td>
+	 *         <td>설명</td>
+	 *     </thead>
+	 *     <tbody>
+	 *         <tr>
+	 *             <td>Class&lt;E&gt; getDeclaringClass()</td>
+	 *             <td>열거형의 Class객체를 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>String name()</td>
+	 *             <td>열거형 상수의 이름을 문자열로 반환한다.</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>int ordinal()</td>
+	 *             <td>열거형 상수가 정의된 순서를 반환한다.(0부터 시작)</td>
+	 *         </tr>
+	 *         <tr>
+	 *             <td>T valueOf(Class&lt;T&gt; enumType, String name)</td>
+	 *             <td>지정된 열거형에서 name과 일치하는 열거형 상수를 반환한다.</td>
+	 *         </tr>
+	 *     </tbody>
+	 * </table>
+	 * <br>
+	 * 이외에도 values()처럼 컴파일러가 자동적으로 추가해주는 메서드가 하나 더 있다.
+	 * <pre><code>
+	 *     static E values()
+	 *     static E valueOf(String name)
+	 * </code></pre>
+	 * <br>
+	 * 이 메서드는 열거형 상수의 이름으로 문자열 상수에 대한 참조를 얻을 수 있게 해준다.
+	 * <pre><code>
+	 *     Direction d = Direction.valueOf("WEST)";
+	 *
+	 *     System.out.println(d); // WEST
+	 *     System.out.println(Direction.WEST == Direction.valueOf("WEST")); // true
+	 * </code></pre>
+	 */
+	class Memo03 {
 
+	}
+
+	/**
+	 * <h5>2.3 열거형에 멤버 추가하기</h5><br>
+	 * Enum클래스에 정의된 ordinal()이 열거형 상수가 정의된 순서를 반환하지만, 이 값을 열거형 상수의 값으로 사용하지 않는 것이 좋다.<br>
+	 * 이 값은 내부적인 용도로만 사용되기 위한 것이기 때문이다.<br>
+	 * 열거형 상수의 값이 불연속적인 경우에는 이때는 다음과 같이 열거형 상수의 이름 옆에 원하는 값을 괄호()와 함께 적어주면 된다.<br>
+	 * <code>
+	 *     enum Direction { EAST(1), SOUTH(5), WEST(-1), NORTH(10) }
+	 * </code>
+	 * <br>
+	 * 그리고 지정된 값을 저장할 수 있는 인스턴스 변수와 생성자를 새로 추가해 주어야 한다.<br>
+	 * 이 때 주의할 점은, 먼저 열거형 상수를 모두 정의한 다음에 다른 멤버들을 추가해야한다는 것이다.<br>
+	 * 열거형 상수의 마지막에 ';'도 잊지 말아야 한다.<br>
+	 * <pre><code>
+	 *
+	 *     enum Direction {
+	 *         EAST(1), SOUTh(5), WESt(-1), NORTH(10); // 끝에 ';'를 추가해야 한다.
+	 *
+	 *         private final int value; //; 정수를 저장할 필드(인스턴스 변수)를 추가
+	 *         Direction(int value) { this.value = value; } // 생성자 추가
+	 *         public int getValue() { return value; }
+	 *     }
+	 *
+	 * </code></pre>
+	 * <br>
+	 * <code>
+	 *     Direction d = new Direction(1); // 에러, 열거형의 생성자는 외부에서 호출불가
+	 * </code>
+	 * <br>
+	 * 열거형 Direction에 새로운 생성자가 추가되었지만, 위와 같이 열거형의 객체를 생성할 수 없다. 열거형의 생성자는 제어자가 묵시적으로 private이기 때문이다.<br>
+	 * 하나의 열거형 상수에 여러 값을 지정할 수도 있다. 다만 그에 맞게 인스턴스 변수와 생성자 등을 새로 추가해주어야 한다.<br>
+	 * <pre><code>
+	 *
+	 *     enum Direction {
+	 *
+	 *         EAST(1, ">"), SOUTH(2, "V"), WEST(3, "<"), NORTH(4, "^");
+	 *
+	 *         private final int value;
+	 *         private final String symbol;
+	 *
+	 *         Direction(int value, String symbol) { // 접근 제어자 private이 생략됨
+	 *             this.value = value;
+	 *             this.symbol = symbol;
+	 *         }
+	 *
+	 *         public int getValue() { return value; }
+	 *         public String getSymbol() { return symbol;}
+	 *
+	 *     }
+	 *
+	 * </code></pre>
+	 *
+	 */
+	class Memo4 {
+
+	}
+
+	/**
+	 * <h5>얼겨헝에 추상 메서드 추가하기</h5>
+	 */
+	class Memo5 {
+
+	}
 
 }
