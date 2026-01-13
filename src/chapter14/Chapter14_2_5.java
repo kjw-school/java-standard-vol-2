@@ -57,7 +57,7 @@ public class Chapter14_2_5 {
 	 * <br>
 	 * 연산결과의 초기값(identity)을 갖는 reduce()도 있는데, 이 메서드들은 초기값과 스트림의 첫 번째 요소로 연산을 시작한다.<br>
 	 * 스트림의 요소가 하나도 없는 경우, 초기값이 반환되므로, 반환 타입이 Optional&lt;T&gt;가 아니라 T이다.<br>
-	 * <small>※BinaryOperator&lt;T&gt; BiFunction의 자손이며, BiFunction&llt;T,T,T&gt;와 동등하다.</small><br>
+	 * <small>※BinaryOperator&lt;T&gt; BiFunction의 자손이며, BiFunction&lt;T,T,T&gt;와 동등하다.</small><br>
 	 * reduce()를 사용하는 방법은 간단하다. 그저 초기값(identity)과 어떤 연산(BinaryOperator)으로 스트림의 요소를 줄여나갈 것인지만 결정하면 된다.
 	 */
 	class Memo4 {
