@@ -214,7 +214,7 @@ public class Chapter15 {
 	 *             <td>BufferedReader, BufferedWriter</td>
 	 *         </tr>
 	 *         <tr>
-	 *             <td>FilterInputStream, FilerOutputStream</td>
+	 *             <td>FilterInputStream, FilterOutputStream</td>
 	 *             <td>FilterReader, FilterWriter</td>
 	 *         </tr>
 	 *         <tr>

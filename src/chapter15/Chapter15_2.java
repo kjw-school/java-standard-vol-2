@@ -29,7 +29,7 @@ public class Chapter15_2 {
 	 *         </tr>
 	 *         <tr>
 	 *             <td>boolean markSupported()</td>
-	 *             <td>mark()와 reset()을 지원하는지를 알려 준다. mark()와 reset()기능을 지원하는 것은 서택적이므로, mark()와 reset()을 사용하기 전에 markSupported()를 호출해서 지원여부를 확인해야한다.</td>
+	 *             <td>mark()와 reset()을 지원하는지를 알려 준다. mark()와 reset()기능을 지원하는 것은 선택적이므로, mark()와 reset()을 사용하기 전에 markSupported()를 호출해서 지원여부를 확인해야한다.</td>
 	 *         </tr>
 	 *         <tr>
 	 *             <td>abstract int read()</td>
