@@ -44,7 +44,7 @@ public class Chapter15_3 {
 	/**
 	 * <h5>3.2 BufferedInputStream과 BufferedOutputStream</h5><br>
 	 * BufferedInputStream/BufferedOutputStream은 스트림의 입출력 효율을 높이기 위해 버퍼를 사용하는 보조스트림이다.<br>
-	 * 한 바이트씩 입출력하는 것 보다는 버퍼(바이트배열)를 이용해서 한 번에 여러 바이트를 입출력하는 것이 빠르게 때문에 대부분의 입출력 작업에 사용된다.<br>
+	 * 한 바이트씩 입출력하는 것 보다는 버퍼(바이트배열)를 이용해서 한 번에 여러 바이트를 입출력하는 것이 빠르기 때문에 대부분의 입출력 작업에 사용된다.<br>
 	 * BufferedInputStream의 생성자<br>
 	 * <table>
 	 *     <thead>
