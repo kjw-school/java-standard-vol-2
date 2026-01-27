@@ -136,14 +136,14 @@ public class Chapter15_3 {
 	 *                 int readUnsignedByte()<br>
 	 *                 int readUnsignedShort()
 	 *             </td>
-	 *             <td>각 타입에 맞게 값을 읽어온다. 더 이상 읽을 값이 엇ㅂ으면 EOFException을 발생시킨다.</td>
+	 *             <td>각 타입에 맞게 값을 읽어온다. 더 이상 읽을 값이 없으면 EOFException을 발생시킨다.</td>
 	 *         </tr>
 	 *         <tr>
 	 *             <td>
 	 *                 void readFully(byte[] b)<br>
 	 *                 void readFully(byte[] b, int off, int len)
 	 *             </td>
-	 *             <td>입력스트림에서 지정된 배열의 크기만큼 또는 지정된 위치에서 len만큼 데이터를 읽어온다. 파일의 끝에 도달하면 EOFException이 발생하고, I/O에러가 발생하면 IOException n이 발생한다.</td>
+	 *             <td>입력스트림에서 지정된 배열의 크기만큼 또는 지정된 위치에서 len만큼 데이터를 읽어온다. 파일의 끝에 도달하면 EOFException이 발생하고, I/O에러가 발생하면 IOException이 발생한다.</td>
 	 *         </tr>
 	 *         <tr>
 	 *             <td>String readUTF()</td>
