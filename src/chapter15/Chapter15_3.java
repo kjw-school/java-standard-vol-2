@@ -346,30 +346,32 @@ public class Chapter15_3 {
 	 * </table>
 	 * <br>
 	 * 문자열의 출력에 사용될 수 있는 옵션<br>
-	 * <tbody>
-	 *     <thead>
-	 *         <th>format</th>
-	 *         <th>설명</th>
-	 *         <th>결과(String str = "ABC")</th>
-	 *     </thead>
+	 * <table>
 	 *     <tbody>
-	 *         <tr>
-	 *             <td>%s</td>
-	 *             <td>문자열(string)</td>
-	 *             <td>ABC</td>
-	 *         </tr>
-	 *         <tr>
-	 *             <td>%5s</td>
-	 *             <td>5자리 문자열, 빈자리는 공백으로 채운다.</td>
-	 *             <td>   ABC</td>
-	 *         </tr>
-	 *         <tr>
-	 *             <td>%-5s</td>
-	 *             <td>5자리 문자열, 빈자리는 공백으로 채운다.(왼쪽 정렬)</td>
-	 *             <td>ABC</td>
-	 *         </tr>
-	 *     </tbody>
-	 * </tbody>
+	 * 	      <thead>
+	 * 	          <th>format</th>
+	 * 	          <th>설명</th>
+	 * 	          <th>결과(String str = "ABC")</th>
+	 * 	      </thead>
+	 * 	      <tbody>
+	 * 	          <tr>
+	 * 	              <td>%s</td>
+	 * 	              <td>문자열(string)</td>
+	 * 	              <td>ABC</td>
+	 * 	          </tr>
+	 * 	          <tr>
+	 * 	              <td>%5s</td>
+	 * 	              <td>5자리 문자열, 빈자리는 공백으로 채운다.</td>
+	 * 	             <td>   ABC</td>
+	 * 	         </tr>
+	 * 	         <tr>
+	 * 	            <td>%-5s</td>
+	 * 	              <td>5자리 문자열, 빈자리는 공백으로 채운다.(왼쪽 정렬)</td>
+	 * 	              <td>ABC</td>
+	 * 	          </tr>
+	 * 	      </tbody>
+	 * 	  </tbody>
+	 * </table>
 	 * <br>
 	 * 실수의 출력에 사용될 수 있는 옵션<br>
 	 * <table>
